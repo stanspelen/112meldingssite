@@ -23,713 +23,470 @@
     --teal-dim: rgba(59,255,194,0.12);
     --blue: #4da6ff;
     --blue-dim: rgba(77,166,255,0.12);
-    --accent: #ff3b3b;
+    --purple: #cc44ff;
+    --purple-dim: rgba(204,68,255,0.12);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* GRID BACKGROUND */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* SCANLINE */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.04) 2px,
-      rgba(0,0,0,0.04) 4px
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+  body::after { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px); pointer-events: none; z-index: 0; }
   .wrap { position: relative; z-index: 1; }
 
-  /* HEADER */
-  header {
-    border-bottom: 1px solid var(--border);
-    background: rgba(10,12,15,0.9);
-    backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-  }
+  header { border-bottom: 1px solid var(--border); background: rgba(10,12,15,0.92); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+  .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); animation: pulse-red 2s infinite; }
+  @keyframes pulse-red { 0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(255,59,59,0.4)} 50%{opacity:.8;transform:scale(1.1);box-shadow:0 0 0 6px rgba(255,59,59,0)} }
+  .header-right { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+  .live-badge { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); border: 1px solid rgba(59,255,194,0.3); background: rgba(59,255,194,0.06); padding: 4px 10px; border-radius: 3px; display: flex; align-items: center; gap: 6px; }
+  .live-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+  .last-update { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
 
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  #testBanner { background: rgba(255,184,59,0.1); border-bottom: 1px solid rgba(255,184,59,0.3); padding: 8px 2rem; display: none; align-items: center; gap: 12px; font-size: 12px; color: var(--amber); font-family: 'DM Mono', monospace; }
+  #testBanner.visible { display: flex; }
+  #testBanner .tb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: blink 1s infinite; flex-shrink: 0; }
 
-  .logo-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--red);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(255,59,59,0.4); }
-    50% { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(255,59,59,0); }
-  }
-
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .live-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--teal);
-    border: 1px solid rgba(59,255,194,0.3);
-    background: rgba(59,255,194,0.06);
-    padding: 4px 10px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .live-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse-teal 1.5s infinite; }
-  @keyframes pulse-teal {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .last-update {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text3);
-  }
-
-  /* HERO STATS */
-  .hero {
-    padding: 2.5rem 2rem 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(28px, 5vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-
+  .hero { padding: 2.5rem 2rem 2rem; border-bottom: 1px solid var(--border); }
+  .hero-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(26px,5vw,48px); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: .4rem; }
   .hero-title span { color: var(--red); }
-
-  .hero-sub {
-    font-size: 14px;
-    color: var(--text2);
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-
-  @media (max-width: 700px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
-
-  .stat-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1rem 1.25rem;
-    transition: border-color 0.2s;
-  }
-  .stat-card:hover { border-color: var(--border2); }
-
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1;
-    margin-bottom: 4px;
-    transition: color 0.5s;
-  }
+  .hero-sub { font-size: 14px; color: var(--text2); margin-bottom: 2rem; }
+  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  @media(max-width:700px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; }
+  .stat-num { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 28px; line-height: 1; margin-bottom: 4px; }
   .stat-lbl { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
 
-  /* MAIN LAYOUT */
-  .main {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 0;
-    min-height: calc(100vh - 200px);
-  }
+  .main { display: grid; grid-template-columns: 1fr 310px; }
+  @media(max-width:900px){.main{grid-template-columns:1fr}}
 
-  @media (max-width: 900px) { .main { grid-template-columns: 1fr; } }
+  .feed-col { border-right: 1px solid var(--border); padding: 1.5rem 2rem; }
+  .col-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; gap: 8px; flex-wrap: wrap; }
+  .col-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--text2); }
 
-  /* FEED */
-  .feed-col {
-    border-right: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-  }
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .filter-btn { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 12px; border-radius: 3px; border: 1px solid var(--border); background: transparent; color: var(--text2); cursor: pointer; transition: all .15s; }
+  .filter-btn:hover,.filter-btn.active { border-color: var(--border2); color: var(--text); background: var(--bg3); }
+  .filter-btn.active[data-type="BRAND"] { border-color: rgba(255,59,59,.4); color: var(--red); background: var(--red-dim); }
+  .filter-btn.active[data-type="MEDISCH"] { border-color: rgba(77,166,255,.4); color: var(--blue); background: var(--blue-dim); }
+  .filter-btn.active[data-type="POLITIE"] { border-color: rgba(255,184,59,.4); color: var(--amber); background: var(--amber-dim); }
+  .filter-btn.active[data-type="NATUUR"] { border-color: rgba(59,255,194,.4); color: var(--teal); background: var(--teal-dim); }
+  .filter-btn.active[data-type="CRISIS"] { border-color: rgba(204,68,255,.4); color: var(--purple); background: var(--purple-dim); }
+  .filter-btn.active[data-type="TEST"] { border-color: rgba(255,184,59,.5); color: var(--amber); background: var(--amber-dim); }
 
-  .col-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.25rem;
-  }
-
-  .col-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text2);
-  }
-
-  .filter-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 1.25rem;
-  }
-
-  .filter-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    padding: 5px 12px;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .filter-btn:hover, .filter-btn.active { border-color: var(--border2); color: var(--text); background: var(--bg3); }
-  .filter-btn.active[data-type="BRAND"] { border-color: rgba(255,59,59,0.4); color: var(--red); background: var(--red-dim); }
-  .filter-btn.active[data-type="MEDISCH"] { border-color: rgba(77,166,255,0.4); color: var(--blue); background: var(--blue-dim); }
-  .filter-btn.active[data-type="POLITIE"] { border-color: rgba(255,184,59,0.4); color: var(--amber); background: var(--amber-dim); }
-  .filter-btn.active[data-type="NATUUR"] { border-color: rgba(59,255,194,0.4); color: var(--teal); background: var(--teal-dim); }
-
-  /* INCIDENT CARD */
-  .incident {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 10px;
-    transition: all 0.2s;
-    animation: slideIn 0.4s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .incident::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-  }
-
+  .incident { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 10px; transition: border-color .2s; animation: slideIn .35s ease; position: relative; overflow: hidden; }
+  .incident::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
   .incident[data-type="BRAND"]::before { background: var(--red); }
   .incident[data-type="MEDISCH"]::before { background: var(--blue); }
   .incident[data-type="POLITIE"]::before { background: var(--amber); }
   .incident[data-type="NATUUR"]::before { background: var(--teal); }
-  .incident[data-type="CRISIS"]::before { background: #cc44ff; }
+  .incident[data-type="CRISIS"]::before { background: var(--purple); }
+  .incident[data-type="TEST"]::before { background: var(--amber); background: repeating-linear-gradient(45deg,var(--amber),var(--amber) 4px,transparent 4px,transparent 8px); }
+  .incident.is-test { border-color: rgba(255,184,59,0.25); }
+  .incident:hover { border-color: var(--border2); }
+  @keyframes slideIn { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
 
-  .incident:hover { border-color: var(--border2); transform: translateX(2px); }
+  .incident-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 6px; }
+  .incident-title { font-weight: 500; font-size: 14px; line-height: 1.4; flex: 1; }
+  .badge { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+  .badge-BRAND { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,59,59,.25); }
+  .badge-MEDISCH { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(77,166,255,.25); }
+  .badge-POLITIE { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255,184,59,.25); }
+  .badge-NATUUR { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(59,255,194,.25); }
+  .badge-CRISIS { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(204,68,255,.25); }
+  .badge-TEST { background: rgba(255,184,59,.2); color: var(--amber); border: 1px solid rgba(255,184,59,.5); }
+  .badge-rss { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(59,255,194,.2); font-size: 9px; padding: 2px 6px; margin-left: 4px; }
 
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .incident-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 6px;
-  }
-
-  .incident-title {
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.4;
-    flex: 1;
-  }
-
-  .incident-type {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 2px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  [data-type="BRAND"] .incident-type { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,59,59,0.25); }
-  [data-type="MEDISCH"] .incident-type { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(77,166,255,0.25); }
-  [data-type="POLITIE"] .incident-type { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255,184,59,0.25); }
-  [data-type="NATUUR"] .incident-type { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(59,255,194,0.25); }
-  [data-type="CRISIS"] .incident-type { background: rgba(204,68,255,0.12); color: #cc44ff; border: 1px solid rgba(204,68,255,0.25); }
-
-  .incident-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text3);
-  }
-
+  .incident-meta { display: flex; align-items: center; gap: 1rem; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); flex-wrap: wrap; }
   .incident-loc { color: var(--text2); }
   .incident-body { font-size: 13px; color: var(--text2); margin: 8px 0 0; line-height: 1.5; }
   .incident-source { font-size: 11px; color: var(--text3); margin-top: 8px; font-family: 'DM Mono', monospace; }
   .incident-source a { color: var(--blue); text-decoration: none; }
   .incident-source a:hover { text-decoration: underline; }
 
-  /* SIDEBAR */
-  .sidebar {
-    padding: 1.5rem 1.5rem;
-  }
-
-  .source-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
+  .sidebar { padding: 1.5rem; }
+  .source-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
   .source-item:last-child { border-bottom: none; }
+  .src-status { font-family: 'DM Mono', monospace; font-size: 10px; display: flex; align-items: center; gap: 5px; }
+  .src-ok { color: var(--teal); }
+  .src-err { color: var(--red); }
+  .src-load { color: var(--amber); }
+  .dot-s { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 
-  .source-name { color: var(--text); font-weight: 400; }
-  .source-status {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .source-status.ok { color: var(--teal); }
-  .source-status.warn { color: var(--amber); }
-  .source-status.err { color: var(--red); }
+  .sep { height: 1px; background: var(--border); margin: 1.25rem 0; }
 
-  .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  #testPanel { background: rgba(255,184,59,0.04); border: 1px solid rgba(255,184,59,0.2); border-radius: 8px; padding: 1.25rem; display: none; }
+  #testPanel.open { display: block; }
+  .tp-row { margin-bottom: 10px; }
+  .tp-label { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; margin-bottom: 4px; }
+  .tp-input,.tp-select,.tp-textarea { width: 100%; background: var(--bg); border: 1px solid var(--border2); border-radius: 4px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 7px 10px; outline: none; transition: border-color .15s; }
+  .tp-input:focus,.tp-select:focus,.tp-textarea:focus { border-color: var(--amber); }
+  .tp-select option { background: var(--bg2); }
+  .tp-textarea { resize: vertical; min-height: 68px; }
+  .tp-btn { width: 100%; background: rgba(255,184,59,0.1); border: 1px solid rgba(255,184,59,0.35); color: var(--amber); font-family: 'DM Mono', monospace; font-size: 12px; padding: 9px; border-radius: 4px; cursor: pointer; transition: all .15s; }
+  .tp-btn:hover { background: rgba(255,184,59,0.18); }
+  .tp-btn-clear { background: rgba(255,59,59,0.07); border-color: rgba(255,59,59,0.25); color: var(--red); margin-top: 6px; }
+  .tp-btn-clear:hover { background: rgba(255,59,59,0.13); }
+  .tp-divider { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; text-align: center; margin: 10px 0 8px; }
 
-  .region-list { margin-top: 0.5rem; }
-  .region-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    cursor: pointer;
-    transition: color 0.15s;
-  }
-  .region-item:hover { color: var(--blue); }
-  .region-count {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text3);
-    background: var(--bg3);
-    padding: 2px 7px;
-    border-radius: 2px;
-  }
+  .toggle-test-btn { font-family: 'DM Mono', monospace; font-size: 11px; background: transparent; border: 1px solid rgba(255,184,59,0.3); color: var(--amber); padding: 5px 12px; border-radius: 3px; cursor: pointer; transition: all .15s; }
+  .toggle-test-btn:hover { background: rgba(255,184,59,0.08); }
+  .toggle-test-btn.active { background: rgba(255,184,59,0.12); border-color: rgba(255,184,59,0.5); }
 
-  .refresh-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    background: transparent;
-    border: 1px solid var(--border2);
-    color: var(--text2);
-    padding: 6px 14px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .refresh-btn { font-family: 'DM Mono', monospace; font-size: 11px; background: transparent; border: 1px solid var(--border2); color: var(--text2); padding: 6px 12px; border-radius: 3px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 6px; }
   .refresh-btn:hover { background: var(--bg3); color: var(--text); }
-  .refresh-btn.spinning .spin-icon { animation: spin 1s linear infinite; }
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .refresh-btn.spinning .ri { animation: spin 1s linear infinite; display: inline-block; }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-  .empty-state {
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--text3);
-    font-size: 13px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .notice {
-    background: rgba(77,166,255,0.07);
-    border: 1px solid rgba(77,166,255,0.2);
-    border-radius: 6px;
-    padding: 0.9rem 1.1rem;
-    font-size: 12px;
-    color: var(--text2);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-  }
+  .notice { background: rgba(77,166,255,0.07); border: 1px solid rgba(77,166,255,0.2); border-radius: 6px; padding: .9rem 1.1rem; font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 1.25rem; }
   .notice strong { color: var(--blue); }
+  .notice a { color: var(--blue); }
 
-  .sep { height: 1px; background: var(--border); margin: 1.5rem 0; }
+  .rss-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; margin-bottom: 1rem; }
+  .rss-count { color: var(--teal); }
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text3); font-size: 13px; font-family: 'DM Mono', monospace; line-height: 1.8; }
 
-  .tag { display: inline-block; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; padding: 2px 7px; font-size: 10px; color: var(--text3); margin-right: 4px; }
+  .region-item { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .region-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); background: var(--bg3); padding: 2px 7px; border-radius: 2px; }
 
-  @media (max-width: 600px) {
-    header { padding: 0 1rem; }
-    .hero, .feed-col, .sidebar { padding: 1.25rem 1rem; }
-    .hero-title { font-size: 26px; }
-  }
+  footer { border-top: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; flex-wrap: wrap; gap: .5rem; }
+  .tag { display: inline-block; background: var(--bg3); border: 1px solid var(--border); border-radius: 2px; padding: 2px 7px; font-size: 10px; margin-right: 4px; }
+
+  @media(max-width:600px){ header{padding:0 1rem} .hero,.feed-col,.sidebar{padding:1rem} .hero-title{font-size:24px} }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="logo">
-    <div class="logo-dot"></div>
-    Hulp112
-  </div>
+  <div class="logo"><div class="logo-dot"></div>Hulp112</div>
   <div class="header-right">
     <span class="last-update" id="lastUpdate">laden...</span>
+    <button class="toggle-test-btn" id="toggleTestBtn" onclick="toggleTestMode()">⚗ Testmodus</button>
     <div class="live-badge"><div class="live-dot"></div>LIVE</div>
   </div>
 </header>
 
+<div id="testBanner">
+  <div class="tb-dot"></div>
+  TESTMODUS ACTIEF — Testmeldingen worden bovenaan getoond met een oranje markering. Ze tellen niet mee in de echte statistieken.
+</div>
+
 <section class="hero">
   <h1 class="hero-title">Belgische<br><span>hulpdienst</span>meldingen</h1>
-  <p class="hero-sub">Publieke meldingen van 112, brandweerzones, Be-Alert en Crisis.be — 100% legaal</p>
+  <p class="hero-sub">Live publieke meldingen via RSS van crisiscenter.be, be-alert.be, brandweerzones en politie.be</p>
   <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-num" id="statTotal" style="color:var(--text)">—</div>
-      <div class="stat-lbl">meldingen vandaag</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="statBrand" style="color:var(--red)">—</div>
-      <div class="stat-lbl">brandweer</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="statMedisch" style="color:var(--blue)">—</div>
-      <div class="stat-lbl">medisch / MUG</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="statNatuur" style="color:var(--teal)">—</div>
-      <div class="stat-lbl">natuur & milieu</div>
-    </div>
+    <div class="stat-card"><div class="stat-num" id="statTotal" style="color:var(--text)">—</div><div class="stat-lbl">meldingen geladen</div></div>
+    <div class="stat-card"><div class="stat-num" id="statBrand" style="color:var(--red)">—</div><div class="stat-lbl">brandweer</div></div>
+    <div class="stat-card"><div class="stat-num" id="statMedisch" style="color:var(--blue)">—</div><div class="stat-lbl">medisch</div></div>
+    <div class="stat-card"><div class="stat-num" id="statNatuur" style="color:var(--teal)">—</div><div class="stat-lbl">natuur &amp; crisis</div></div>
   </div>
 </section>
 
 <div class="main">
 
-  <!-- FEED -->
   <div class="feed-col">
     <div class="col-header">
       <span class="col-title">Recente meldingen</span>
-      <button class="refresh-btn" id="refreshBtn" onclick="refresh()">
-        <span class="spin-icon">↻</span> Vernieuwen
+      <button class="refresh-btn" id="refreshBtn" onclick="loadRSS()">
+        <span class="ri">↻</span> Vernieuwen
       </button>
     </div>
 
     <div class="notice">
-      <strong>Legale gegevensbron</strong> — Alle meldingen zijn afkomstig van officiële publieke kanalen:
-      <a href="https://crisiscenter.be" target="_blank" style="color:var(--blue)">crisiscenter.be</a>,
-      <a href="https://be-alert.be" target="_blank" style="color:var(--blue)">be-alert.be</a>,
-      Twitter/X @112Belgium, en openbare websites van brandweerzones.
-      Er wordt geen radioverkeer afgeluisterd.
+      <strong>Echte data via RSS</strong> — Meldingen worden live opgehaald van
+      <a href="https://crisiscenter.be" target="_blank">crisiscenter.be</a>,
+      <a href="https://be-alert.be" target="_blank">be-alert.be</a> en
+      officiële brandweer- en politiesites via een publieke CORS-proxy.
+      Geen scanner, geen afluisteren — 100% legaal.
+    </div>
+
+    <div class="rss-row">
+      <span id="rssIcon" style="color:var(--amber)">○</span>
+      <span id="rssText">Bronnen ophalen...</span>
+      <span class="rss-count" id="rssCount"></span>
     </div>
 
     <div class="filter-row">
-      <button class="filter-btn active" data-type="ALL" onclick="setFilter('ALL', this)">Alles</button>
-      <button class="filter-btn" data-type="BRAND" onclick="setFilter('BRAND', this)">🔴 Brandweer</button>
-      <button class="filter-btn" data-type="MEDISCH" onclick="setFilter('MEDISCH', this)">🔵 Medisch</button>
-      <button class="filter-btn" data-type="POLITIE" onclick="setFilter('POLITIE', this)">🟡 Politie</button>
-      <button class="filter-btn" data-type="NATUUR" onclick="setFilter('NATUUR', this)">🟢 Natuur</button>
-      <button class="filter-btn" data-type="CRISIS" onclick="setFilter('CRISIS', this)">⚪ Crisis</button>
+      <button class="filter-btn active" data-type="ALL" onclick="setFilter('ALL',this)">Alles</button>
+      <button class="filter-btn" data-type="BRAND" onclick="setFilter('BRAND',this)">🔴 Brandweer</button>
+      <button class="filter-btn" data-type="MEDISCH" onclick="setFilter('MEDISCH',this)">🔵 Medisch</button>
+      <button class="filter-btn" data-type="POLITIE" onclick="setFilter('POLITIE',this)">🟡 Politie</button>
+      <button class="filter-btn" data-type="NATUUR" onclick="setFilter('NATUUR',this)">🟢 Natuur</button>
+      <button class="filter-btn" data-type="CRISIS" onclick="setFilter('CRISIS',this)">⚪ Crisis</button>
+      <button class="filter-btn" data-type="TEST" id="filterTest" style="display:none" onclick="setFilter('TEST',this)">⚗ Test</button>
     </div>
 
     <div id="feed"></div>
   </div>
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="col-title" style="margin-bottom:1rem;">Bronnen</div>
+    <div class="col-title" style="margin-bottom:1rem">Bronnen</div>
+    <div class="source-item"><span>Crisis.be</span><span class="src-status src-load" id="src-crisis"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="source-item"><span>Be-Alert</span><span class="src-status src-load" id="src-bealert"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="source-item"><span>Brandweer Antwerpen</span><span class="src-status src-load" id="src-antwerp"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="source-item"><span>Brandweer Oost-VL</span><span class="src-status src-load" id="src-oostvl"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="source-item"><span>Politie.be</span><span class="src-status src-load" id="src-politie"><span class="dot-s"></span><span>laden</span></span></div>
 
-    <div class="source-item">
-      <span class="source-name">Crisis.be RSS</span>
-      <span class="source-status ok" id="src-crisis"><span class="dot"></span>actief</span>
+    <div class="sep"></div>
+    <div class="col-title" style="margin-bottom:.75rem">Regio's</div>
+    <div id="regionList"></div>
+
+    <div class="sep"></div>
+
+    <!-- TEST PANEL TOGGLE -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+      <div class="col-title" style="color:var(--amber)">⚗ Testmeldingen</div>
     </div>
-    <div class="source-item">
-      <span class="source-name">Be-Alert</span>
-      <span class="source-status ok" id="src-bealert"><span class="dot"></span>actief</span>
-    </div>
-    <div class="source-item">
-      <span class="source-name">@112Belgium</span>
-      <span class="source-status ok" id="src-twitter"><span class="dot"></span>actief</span>
-    </div>
-    <div class="source-item">
-      <span class="source-name">Brandweerzones (34)</span>
-      <span class="source-status ok" id="src-zones"><span class="dot"></span>actief</span>
-    </div>
-    <div class="source-item">
-      <span class="source-name">RIZIV / MUG</span>
-      <span class="source-status warn" id="src-mug"><span class="dot"></span>beperkt</span>
+    <div id="testPanel">
+      <div class="tp-row">
+        <div class="tp-label">Titel</div>
+        <input class="tp-input" id="tp-title" placeholder="bijv. Woningbrand Gentstraat 12">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="tp-row">
+          <div class="tp-label">Type</div>
+          <select class="tp-select" id="tp-type">
+            <option value="BRAND">🔴 Brandweer</option>
+            <option value="MEDISCH">🔵 Medisch</option>
+            <option value="POLITIE">🟡 Politie</option>
+            <option value="NATUUR">🟢 Natuur</option>
+            <option value="CRISIS">⚪ Crisis</option>
+          </select>
+        </div>
+        <div class="tp-row">
+          <div class="tp-label">Locatie</div>
+          <input class="tp-input" id="tp-loc" placeholder="bijv. Gent">
+        </div>
+      </div>
+      <div class="tp-row">
+        <div class="tp-label">Beschrijving (optioneel)</div>
+        <textarea class="tp-textarea" id="tp-body" placeholder="Extra details..."></textarea>
+      </div>
+      <button class="tp-btn" id="sendTestBtn" onclick="sendTestIncident()">↑ Testmelding versturen</button>
+      <div class="tp-divider" id="testCount" style="display:none"></div>
+      <button class="tp-btn tp-btn-clear" id="clearTestBtn" style="display:none" onclick="clearTests()">✕ Alle testmeldingen wissen</button>
     </div>
 
     <div class="sep"></div>
-    <div class="col-title" style="margin-bottom:0.75rem;">Regio's</div>
-
-    <div class="region-list" id="regionList"></div>
-
-    <div class="sep"></div>
-    <div class="col-title" style="margin-bottom:0.75rem;">Legenda</div>
-    <div style="font-size:12px; color:var(--text2); line-height:2;">
+    <div class="col-title" style="margin-bottom:.5rem">Legenda</div>
+    <div style="font-size:12px;color:var(--text2);line-height:2.1">
       <div><span style="color:var(--red)">█</span> Brandweer / brand / gaslek</div>
-      <div><span style="color:var(--blue)">█</span> Medisch / MUG / ziekenwagen</div>
+      <div><span style="color:var(--blue)">█</span> Medisch / MUG / ambulance</div>
       <div><span style="color:var(--amber)">█</span> Politie / verkeersongeval</div>
       <div><span style="color:var(--teal)">█</span> Natuur / overstroming / storm</div>
-      <div><span style="color:#cc44ff">█</span> Nationale crisis / CBRN</div>
+      <div><span style="color:var(--purple)">█</span> Nationale crisis / CBRN</div>
     </div>
 
-    <div class="sep"></div>
-    <div style="font-size:11px; color:var(--text3); line-height:1.7; font-family:'DM Mono',monospace;">
-      Vernieuwd elke 5 min.<br>
-      Enkel publieke data.<br>
-      Geen scanner / afluisteren.<br>
-      © Hulp112 — open source
+    <div style="font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1.25rem;line-height:1.9">
+      Auto-refresh: elke 10 min<br>
+      Proxy: allorigins.win<br>
+      © Hulp112 — geen officiële dienst
     </div>
   </div>
-
 </div>
 
 <footer>
-  <div>
-    <span class="tag">legaal</span>
-    <span class="tag">publieke data</span>
-    <span class="tag">België</span>
-    RSS + sociale media + be-alert.be + crisiscenter.be
-  </div>
-  <div>hulp112 — geen officiële dienst</div>
+  <div><span class="tag">legaal</span><span class="tag">RSS</span><span class="tag">publieke data</span><span class="tag">België</span></div>
+  <div>hulp112 — niet verbonden met 112 of overheid</div>
 </footer>
 
-</div><!-- wrap -->
+</div>
 
 <script>
-// ─── DATA ────────────────────────────────────────────────────────
-// In productie: vervang door echte RSS/API-calls (zie bronnen)
-// Demo: realistische gesimuleerde meldingen op basis van echte patronen
+// ─── CONFIG ──────────────────────────────────────────────────────
+const PROXY = 'https://api.allorigins.win/get?url=';
 
-const SOURCES = [
-  'Crisis.be RSS',
-  'Be-Alert',
-  '@112Belgium',
-  'Brandweerzone Antwerpen',
-  'Brandweerzone Gent',
-  'Brandweerzone West-Vlaanderen',
-  'Brandweerzone Oost-Brabant',
-  'Brandweerzone Namen'
+const FEEDS = [
+  { id: 'src-crisis',  name: 'Crisis.be',            url: 'https://crisiscenter.be/nl/rss',                     fallback: 'CRISIS'  },
+  { id: 'src-bealert', name: 'Be-Alert',              url: 'https://www.be-alert.be/nl/rss.xml',                 fallback: 'NATUUR'  },
+  { id: 'src-antwerp', name: 'Brandweer Antwerpen',   url: 'https://www.brandweerzone1.be/rss',                  fallback: 'BRAND'   },
+  { id: 'src-oostvl',  name: 'Brandweer Oost-VL',     url: 'https://www.brandweerzoneovl.be/rss',                fallback: 'BRAND'   },
+  { id: 'src-politie', name: 'Politie.be',             url: 'https://www.politie.be/rss/nl',                     fallback: 'POLITIE' }
 ];
 
-const REGIONS = ['Antwerpen','Gent','Brussel','Brugge','Leuven','Luik','Charleroi','Namen','Hasselt','Kortrijk','Mechelen','Aalst'];
+const CITIES = ['Antwerpen','Gent','Brussel','Brugge','Leuven','Luik','Charleroi','Namen','Hasselt','Kortrijk','Mechelen','Aalst','Turnhout','Roeselare','Genk','Sint-Niklaas','Dendermonde','Ieper','Mouscron','Verviers','Arlon','Mons','Liège','Bruges','Namur'];
 
-const TEMPLATES = {
-  BRAND: [
-    { t: 'Woningbrand in {loc} — brandweer ter plaatse', b: 'Brandweerzone meldt een woningbrand. Bewoners geëvacueerd. Geen gewonden gerapporteerd.' },
-    { t: 'Industriebrand {loc} — rookontwikkeling gemeld', b: 'Grote rookontwikkeling zichtbaar. Omwonenden worden gevraagd ramen en deuren te sluiten.' },
-    { t: 'Voertuigbrand op E{n} ter hoogte van {loc}', b: 'Voertuig uitgebrand op de snelweg. Rijstroken deels afgesloten. Geen gewonden.' },
-    { t: 'Gaslek in {loc} — straat afgezet', b: 'Preventieve evacuatie van naburige woningen. Fluvius en brandweer ter plaatse.' },
-    { t: 'Schoorsteenbrand in {loc}', b: 'Brandweer preventief ter plaatse. Situatie onder controle.' },
-  ],
-  MEDISCH: [
-    { t: 'MUG-interventie in {loc}', b: 'Medische urgentie. MUG en ziekenwagen uitgestuurd. Details niet publiek.' },
-    { t: 'Verkeersongeval met gewonden op N{n} ({loc})', b: 'Meerdere voertuigen betrokken. Ziekenwagen en MUG ter plaatse. Rijbaan gedeeltelijk vrij.' },
-    { t: 'Ziekenwagen-interventie {loc} — spoedgeval', b: 'Ambulance uitgestuurd voor medische urgentie. Geen verdere publieke details beschikbaar.' },
-  ],
-  POLITIE: [
-    { t: 'Verkeersongeval {loc} — politie regelt verkeer', b: 'Politie verzekert de veiligheid en onderzoekt het incident. Omleiding in voege.' },
-    { t: 'Politie-interventie gemeld in {loc}', b: 'Gepubliceerd via politiezone. Situatie onder controle. Buurt gevraagd kalm te blijven.' },
-    { t: 'Rijden onder invloed — controleactie in {loc}', b: 'Grootschalige politiecontrole op rijden onder invloed en gordeldracht.' },
-  ],
-  NATUUR: [
-    { t: 'Wateroverlast gemeld in {loc} na hevige regenval', b: 'Be-Alert meldt lokale overstromingen. Autorijders worden gevraagd omgeving te mijden.' },
-    { t: 'Stormschade in {loc} — omgewaaide bomen', b: 'Brandweer verwijdert boomstammen van rijbaan. Elektriciteitspanne mogelijk.' },
-    { t: 'Hoge waterstand Schelde/Maas — Be-Alert actief', b: 'Be-Alert verstuurt waarschuwing naar inwoners van risicogebieden langs de rivier.' },
-    { t: 'Chemisch lek gemeld nabij {loc}', b: 'Brandweer HAZMAT-team ter plaatse. Omwonenden gevraagd te schuilen.' },
-  ],
-  CRISIS: [
-    { t: 'Nationaal crisiscentrum activeert fase {n}', b: 'Het nationaal crisiscentrum heeft een verhoogde alarmfase afgekondigd voor de betrokken regio.' },
-    { t: 'Be-Alert bericht verstuurd naar {loc}', b: 'Officieel Be-Alert bericht via sms en app. Inwoners gevraagd aanwijzingen op te volgen.' },
-  ]
-};
-
-let allIncidents = [];
+// ─── STATE ───────────────────────────────────────────────────────
+let realIncidents = [];
+let testIncidents = [];
 let activeFilter = 'ALL';
-let totalInterval;
+let testPanelOpen = false;
 
-function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-function randN(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
-
-function generateIncident(overrideType) {
-  const types = ['BRAND','BRAND','BRAND','MEDISCH','MEDISCH','POLITIE','NATUUR','NATUUR','CRISIS'];
-  const type = overrideType || randFrom(types);
-  const templates = TEMPLATES[type];
-  const tpl = randFrom(templates);
-  const loc = randFrom(REGIONS);
-  const n = randN(1, 99);
-  const title = tpl.t.replace('{loc}', loc).replace('{n}', n);
-  const body = tpl.b;
-  const src = type === 'CRISIS' ? 'Crisis.be RSS' : type === 'NATUUR' ? 'Be-Alert' : randFrom(SOURCES.slice(2));
-  const minsAgo = randN(1, 180);
-  return { id: Date.now() + Math.random(), type, title, body, loc, src, minsAgo };
+// ─── CLASSIFY ────────────────────────────────────────────────────
+function classify(text, fallback) {
+  const t = (text || '').toLowerCase();
+  if (/brand|vuur|gaslek|ontploff|bluswerken|rookontwikk|schoorst/.test(t)) return 'BRAND';
+  if (/medisch|mug|ambulan|ziekenwagen|gewond|reanimat|hartstilstand|spoedeis/.test(t)) return 'MEDISCH';
+  if (/politie|verkeersongeval|botsing|aanrijding|overval|inbraak|diefstal/.test(t)) return 'POLITIE';
+  if (/overstroming|storm|wateroverlast|schade|chemisch|gevaarlijk|milieu|tornado|aardbeving/.test(t)) return 'NATUUR';
+  if (/crisis|alarm|fase|noodplan|cbrn|nucleair|evacuati|be-alert/.test(t)) return 'CRISIS';
+  return fallback;
 }
 
-function generateInitial() {
-  const incidents = [];
-  const counts = { BRAND: randN(4,8), MEDISCH: randN(3,6), POLITIE: randN(2,4), NATUUR: randN(2,5), CRISIS: randN(0,2) };
-  for (const [type, n] of Object.entries(counts)) {
-    for (let i = 0; i < n; i++) {
-      const inc = generateIncident(type);
-      inc.minsAgo = randN(5, 240);
-      incidents.push(inc);
-    }
+function extractCity(text) {
+  for (const c of CITIES) {
+    if ((text || '').toLowerCase().includes(c.toLowerCase())) return c;
   }
-  incidents.sort((a, b) => a.minsAgo - b.minsAgo);
-  return incidents;
+  return 'België';
 }
 
-function formatTime(minsAgo) {
-  if (minsAgo < 2) return 'nu';
-  if (minsAgo < 60) return `${minsAgo}m geleden`;
-  const h = Math.floor(minsAgo / 60);
-  const m = minsAgo % 60;
-  return m > 0 ? `${h}u ${m}m geleden` : `${h}u geleden`;
+// ─── RSS PARSER ──────────────────────────────────────────────────
+function parseRSS(xml, srcName, fallback) {
+  const doc = new DOMParser().parseFromString(xml, 'text/xml');
+  return Array.from(doc.querySelectorAll('item')).slice(0, 20).map(item => {
+    const title = item.querySelector('title')?.textContent?.trim() || '(geen titel)';
+    const raw   = item.querySelector('description')?.textContent || '';
+    const body  = raw.replace(/<[^>]+>/g, '').replace(/&[a-z]+;/gi, ' ').trim();
+    const link  = item.querySelector('link')?.textContent?.trim() || '#';
+    const pub   = item.querySelector('pubDate')?.textContent?.trim() || '';
+    const combined = title + ' ' + body;
+    return {
+      id:     'rss-' + Math.random().toString(36).slice(2),
+      type:   classify(combined, fallback),
+      title,
+      body:   body.slice(0, 250),
+      loc:    extractCity(combined),
+      src:    srcName,
+      link,
+      ts:     pub ? new Date(pub) : new Date(),
+      isTest: false
+    };
+  });
 }
 
-function renderIncident(inc, isNew = false) {
-  const anim = isNew ? '' : 'style="animation:none"';
-  return `
-  <div class="incident" data-type="${inc.type}" data-id="${inc.id}" ${anim}>
-    <div class="incident-top">
-      <div class="incident-title">${inc.title}</div>
-      <div class="incident-type">${inc.type}</div>
-    </div>
-    <div class="incident-meta">
-      <span class="incident-loc">📍 ${inc.loc}</span>
-      <span>${formatTime(inc.minsAgo)}</span>
-    </div>
-    <div class="incident-body">${inc.body}</div>
-    <div class="incident-source">Bron: <a href="#" onclick="return false">${inc.src}</a></div>
-  </div>`;
+// ─── FETCH ONE FEED ──────────────────────────────────────────────
+async function fetchFeed(feed) {
+  setStatus(feed.id, 'load', 'laden...');
+  try {
+    const res = await fetch(PROXY + encodeURIComponent(feed.url), { signal: AbortSignal.timeout(12000) });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    if (!json.contents?.trim()) throw new Error('lege feed');
+    const items = parseRSS(json.contents, feed.name, feed.fallback);
+    setStatus(feed.id, 'ok', items.length + ' items');
+    return items;
+  } catch (e) {
+    setStatus(feed.id, 'err', 'niet bereikbaar');
+    return [];
+  }
+}
+
+function setStatus(id, state, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'src-status src-' + state;
+  el.innerHTML = `<span class="dot-s"></span><span>${label}</span>`;
+}
+
+// ─── LOAD ALL ────────────────────────────────────────────────────
+async function loadRSS() {
+  const btn = document.getElementById('refreshBtn');
+  btn.classList.add('spinning');
+  setRSSStatus('amber', '⟳', 'Bronnen ophalen...');
+
+  const results = await Promise.allSettled(FEEDS.map(fetchFeed));
+  let all = [];
+  results.forEach(r => { if (r.status === 'fulfilled') all.push(...r.value); });
+
+  // Sort newest first
+  all.sort((a, b) => b.ts - a.ts);
+
+  // Deduplicate by title prefix
+  const seen = new Set();
+  all = all.filter(i => {
+    const k = i.title.slice(0, 50).toLowerCase().replace(/\s+/g, '');
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
+
+  realIncidents = all;
+
+  if (all.length > 0) {
+    setRSSStatus('teal', '●', `${all.length} meldingen geladen`);
+  } else {
+    setRSSStatus('amber', '○', 'Bronnen niet bereikbaar (CORS)');
+    // Show fallback message
+  }
+
+  updateStats();
+  renderFeed();
+  updateRegions();
+  updateTime();
+  btn.classList.remove('spinning');
+}
+
+function setRSSStatus(color, icon, text) {
+  const i = document.getElementById('rssIcon');
+  const t = document.getElementById('rssText');
+  i.textContent = icon;
+  i.style.color = `var(--${color})`;
+  t.textContent = text;
+}
+
+// ─── RENDER FEED ─────────────────────────────────────────────────
+function getVisible() {
+  const combined = [...testIncidents, ...realIncidents];
+  if (activeFilter === 'ALL') return combined;
+  if (activeFilter === 'TEST') return testIncidents;
+  return combined.filter(i => {
+    const t = i.isTest ? i.displayType : i.type;
+    return t === activeFilter;
+  });
 }
 
 function renderFeed() {
   const feed = document.getElementById('feed');
-  const visible = activeFilter === 'ALL'
-    ? allIncidents
-    : allIncidents.filter(i => i.type === activeFilter);
-
-  if (visible.length === 0) {
-    feed.innerHTML = `<div class="empty-state">Geen meldingen voor dit filter.</div>`;
+  const visible = getVisible();
+  if (!visible.length) {
+    feed.innerHTML = `<div class="empty-state">${
+      activeFilter === 'TEST'
+        ? 'Nog geen testmeldingen.<br>Gebruik het testpaneel in de zijbalk →'
+        : realIncidents.length === 0
+          ? 'Geen data van bronnen.<br>RSS-feeds niet bereikbaar of leeg.<br>Klik Vernieuwen om opnieuw te proberen.'
+          : 'Geen meldingen voor dit filter.'
+    }</div>`;
     return;
   }
-  feed.innerHTML = visible.map(inc => renderIncident(inc)).join('');
+  feed.innerHTML = visible.map(card).join('');
 }
 
-function updateStats() {
-  const total = allIncidents.length;
-  const brand = allIncidents.filter(i => i.type === 'BRAND').length;
-  const medisch = allIncidents.filter(i => i.type === 'MEDISCH').length;
-  const natuur = allIncidents.filter(i => i.type === 'NATUUR').length;
-
-  animateNum('statTotal', total);
-  animateNum('statBrand', brand);
-  animateNum('statMedisch', medisch);
-  animateNum('statNatuur', natuur);
+function card(inc) {
+  const type   = inc.isTest ? inc.displayType : inc.type;
+  const badge  = inc.isTest ? 'TEST' : inc.type;
+  const tsStr  = fmtTime(inc.ts);
+  const rssBadge = !inc.isTest ? `<span class="badge badge-rss">RSS</span>` : '';
+  const srcHtml = inc.link && inc.link !== '#'
+    ? `<a href="${inc.link}" target="_blank" rel="noopener">${escHtml(inc.src)} ↗</a>`
+    : escHtml(inc.src);
+  return `<div class="incident${inc.isTest?' is-test':''}" data-type="${inc.isTest?'TEST':inc.type}">
+    <div class="incident-top">
+      <div class="incident-title">${escHtml(inc.title)}</div>
+      <span class="badge badge-${badge}">${type}</span>
+    </div>
+    <div class="incident-meta">
+      <span class="incident-loc">📍 ${escHtml(inc.loc)}</span>
+      <span>${tsStr}</span>${rssBadge}
+    </div>
+    ${inc.body ? `<div class="incident-body">${escHtml(inc.body)}${inc.body.length>=250?'…':''}</div>` : ''}
+    <div class="incident-source">Bron: ${srcHtml}</div>
+  </div>`;
 }
 
-function animateNum(id, target) {
-  const el = document.getElementById(id);
-  const start = parseInt(el.textContent) || 0;
-  const diff = target - start;
-  if (diff === 0) { el.textContent = target; return; }
-  let step = 0;
-  const steps = 12;
-  const interval = setInterval(() => {
-    step++;
-    el.textContent = Math.round(start + diff * (step / steps));
-    if (step >= steps) { clearInterval(interval); el.textContent = target; }
-  }, 30);
+function escHtml(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-function updateRegions() {
-  const counts = {};
-  allIncidents.forEach(i => { counts[i.loc] = (counts[i.loc] || 0) + 1; });
-  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8);
-  document.getElementById('regionList').innerHTML = sorted.map(([reg, cnt]) => `
-    <div class="region-item" onclick="filterByRegion('${reg}')">
-      <span>${reg}</span>
-      <span class="region-count">${cnt}</span>
-    </div>`).join('');
+function fmtTime(dt) {
+  if (!dt) return '';
+  const diff = Math.floor((Date.now() - new Date(dt)) / 60000);
+  if (diff < 1)  return 'nu';
+  if (diff < 60) return diff + 'm geleden';
+  const h = Math.floor(diff/60), m = diff%60;
+  return m ? `${h}u ${m}m geleden` : `${h}u geleden`;
 }
 
-function filterByRegion(region) {
-  const visible = allIncidents.filter(i => i.loc === region);
-  document.getElementById('feed').innerHTML = visible.map(inc => renderIncident(inc, false)).join('');
-}
-
+// ─── FILTER ──────────────────────────────────────────────────────
 function setFilter(type, btn) {
   activeFilter = type;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -737,58 +494,117 @@ function setFilter(type, btn) {
   renderFeed();
 }
 
-function updateLastUpdate() {
-  const now = new Date();
-  const h = now.getHours().toString().padStart(2,'0');
-  const m = now.getMinutes().toString().padStart(2,'0');
-  const s = now.getSeconds().toString().padStart(2,'0');
-  document.getElementById('lastUpdate').textContent = `bijgewerkt ${h}:${m}:${s}`;
+// ─── STATS ───────────────────────────────────────────────────────
+function updateStats() {
+  const r = realIncidents;
+  animNum('statTotal',   r.length);
+  animNum('statBrand',   r.filter(i=>i.type==='BRAND').length);
+  animNum('statMedisch', r.filter(i=>i.type==='MEDISCH').length);
+  animNum('statNatuur',  r.filter(i=>i.type==='NATUUR'||i.type==='CRISIS').length);
 }
 
-function refresh() {
-  const btn = document.getElementById('refreshBtn');
-  btn.classList.add('spinning');
+function animNum(id, target) {
+  const el = document.getElementById(id);
+  const start = parseInt(el.textContent)||0;
+  if (start===target){el.textContent=target;return;}
+  let s=0; const steps=14;
+  const iv = setInterval(()=>{ s++; el.textContent=Math.round(start+(target-start)*(s/steps)); if(s>=steps){clearInterval(iv);el.textContent=target;} },25);
+}
 
-  // Age all existing incidents
-  allIncidents.forEach(i => i.minsAgo += 5);
+function updateRegions() {
+  const counts = {};
+  realIncidents.forEach(i => { counts[i.loc]=(counts[i.loc]||0)+1; });
+  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  document.getElementById('regionList').innerHTML = sorted.length
+    ? sorted.map(([r,c])=>`<div class="region-item"><span>${escHtml(r)}</span><span class="region-count">${c}</span></div>`).join('')
+    : `<div style="font-size:12px;color:var(--text3);padding:6px 0">Geen data</div>`;
+}
 
-  // Possibly add 1-3 new incidents
-  const newCount = Math.random() < 0.6 ? randN(1, 3) : 0;
-  for (let i = 0; i < newCount; i++) {
-    const inc = generateIncident();
-    inc.minsAgo = randN(1, 4);
-    allIncidents.unshift(inc);
+function updateTime() {
+  const n = new Date();
+  document.getElementById('lastUpdate').textContent =
+    `${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
+}
+
+// ─── TEST MODE ───────────────────────────────────────────────────
+function toggleTestMode() {
+  testPanelOpen = !testPanelOpen;
+  document.getElementById('toggleTestBtn').classList.toggle('active', testPanelOpen);
+  document.getElementById('testBanner').classList.toggle('visible', testPanelOpen);
+  document.getElementById('testPanel').classList.toggle('open', testPanelOpen);
+  document.getElementById('filterTest').style.display = testPanelOpen ? '' : 'none';
+  if (!testPanelOpen) {
+    // If currently on test filter, reset to ALL
+    if (activeFilter === 'TEST') setFilter('ALL', document.querySelector('[data-type="ALL"]'));
+  }
+}
+
+function sendTestIncident() {
+  const title = document.getElementById('tp-title').value.trim();
+  const type  = document.getElementById('tp-type').value;
+  const loc   = document.getElementById('tp-loc').value.trim() || 'België';
+  const body  = document.getElementById('tp-body').value.trim();
+
+  if (!title) {
+    const inp = document.getElementById('tp-title');
+    inp.style.borderColor = 'var(--red)';
+    inp.placeholder = 'Vul een titel in!';
+    setTimeout(()=>{ inp.style.borderColor=''; inp.placeholder='bijv. Woningbrand Gentstraat 12'; }, 2000);
+    return;
   }
 
-  // Remove very old
-  allIncidents = allIncidents.filter(i => i.minsAgo < 360);
+  testIncidents.unshift({
+    id: 'test-' + Date.now(),
+    type: 'TEST',
+    displayType: type,
+    title,
+    body: body || 'Testmelding verstuurd via het testpaneel.',
+    loc,
+    src: '⚗ Testpaneel',
+    link: '#',
+    ts: new Date(),
+    isTest: true
+  });
 
-  updateStats();
+  // Reset form
+  ['tp-title','tp-loc','tp-body'].forEach(id => document.getElementById(id).value = '');
+
   renderFeed();
-  updateRegions();
-  updateLastUpdate();
+  updateTime();
+  updateTestCount();
 
-  setTimeout(() => btn.classList.remove('spinning'), 800);
+  // Flash send button
+  const btn = document.getElementById('sendTestBtn');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Verstuurd!';
+  btn.style.cssText = 'background:rgba(59,255,194,0.1);border-color:rgba(59,255,194,0.4);color:var(--teal)';
+  setTimeout(()=>{ btn.textContent=orig; btn.style.cssText=''; }, 2000);
+}
+
+function clearTests() {
+  testIncidents = [];
+  updateTestCount();
+  if (activeFilter === 'TEST') setFilter('ALL', document.querySelector('[data-type="ALL"]'));
+  else renderFeed();
+}
+
+function updateTestCount() {
+  const countEl = document.getElementById('testCount');
+  const clearBtn = document.getElementById('clearTestBtn');
+  if (testIncidents.length > 0) {
+    countEl.style.display = '';
+    countEl.textContent = testIncidents.length + ' testmelding(en) actief';
+    clearBtn.style.display = '';
+  } else {
+    countEl.style.display = 'none';
+    clearBtn.style.display = 'none';
+  }
 }
 
 // ─── INIT ────────────────────────────────────────────────────────
-allIncidents = generateInitial();
-updateStats();
-renderFeed();
-updateRegions();
-updateLastUpdate();
-
-// Auto-refresh every 5 minutes (demo: 60s)
-setInterval(refresh, 60000);
-
-// Clock tick
-setInterval(updateLastUpdate, 10000);
-
-// Real implementation note (hidden from UI):
-// In productie vervang generateInitial() door:
-//   fetch("https://crisiscenter.be/nl/rss") → parse XML → map naar incidents
-//   fetch("https://be-alert.be/api/alerts") → map naar incidents
-//   Twitter API v2 Bearer Token → search "@112Belgium OR from:112Belgium"
+loadRSS();
+setInterval(loadRSS, 10 * 60 * 1000);
+setInterval(updateTime, 15000);
 </script>
 </body>
 </html>
