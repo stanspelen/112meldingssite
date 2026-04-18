@@ -6,41 +6,38 @@
 <title>Hulp112 — Belgische Hulpdienstmeldingen</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0a0c0f; --bg2:#111418; --bg3:#181c22; --bg4:#1e232b;
-  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13); --border3:rgba(255,255,255,0.2);
-  --text:#e8ecf0; --text2:#8a9099; --text3:#4a5260;
-  --red:#ff3b3b; --red-d:rgba(255,59,59,0.14);
-  --amber:#ffb83b; --amber-d:rgba(255,184,59,0.14);
-  --teal:#3bffc2; --teal-d:rgba(59,255,194,0.11);
-  --blue:#4da6ff; --blue-d:rgba(77,166,255,0.11);
-  --purple:#cc44ff; --purple-d:rgba(204,68,255,0.11);
-  --green:#3bff7a; --green-d:rgba(59,255,122,0.11);
+:root{
+  --bg:#0a0c0f;--bg2:#111418;--bg3:#181c22;--bg4:#1e232b;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#e8ecf0;--text2:#8a9099;--text3:#4a5260;
+  --red:#ff3b3b;--red-d:rgba(255,59,59,0.14);
+  --amber:#ffb83b;--amber-d:rgba(255,184,59,0.14);
+  --teal:#3bffc2;--teal-d:rgba(59,255,194,0.11);
+  --blue:#4da6ff;--blue-d:rgba(77,166,255,0.11);
+  --purple:#cc44ff;--purple-d:rgba(204,68,255,0.11);
+  --orange:#ff8c42;--orange-d:rgba(255,140,66,0.13);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
 
-/* ── HEADER ── */
-header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);backdrop-filter:blur(16px);position:sticky;top:0;z-index:200;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;height:58px}
+header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.94);backdrop-filter:blur(16px);position:sticky;top:0;z-index:200;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;height:58px}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.03em;display:flex;align-items:center;gap:9px}
-.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pulsered 2s infinite}
-@keyframes pulsered{0%,100%{box-shadow:0 0 0 0 rgba(255,59,59,.5)}50%{box-shadow:0 0 0 7px rgba(255,59,59,0)}}
-.hdr-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pr 2s infinite}
+@keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(255,59,59,.5)}50%{box-shadow:0 0 0 7px rgba(255,59,59,0)}}
+.hdr-r{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .live-pill{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);border:1px solid rgba(59,255,194,.28);background:rgba(59,255,194,.05);padding:3px 9px;border-radius:2px;display:flex;align-items:center;gap:5px}
-.live-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:blink 1.4s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:bl 1.4s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.15}}
 .ts{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)}
 .hdr-btn{font-family:'DM Mono',monospace;font-size:10px;background:transparent;border:1px solid var(--border2);color:var(--text2);padding:4px 11px;border-radius:2px;cursor:pointer;transition:all .15s}
 .hdr-btn:hover{background:var(--bg3);color:var(--text)}
-.hdr-btn.admin-active{border-color:rgba(255,184,59,.45);color:var(--amber);background:rgba(255,184,59,.08)}
+.hdr-btn.aa{border-color:rgba(255,184,59,.45);color:var(--amber);background:rgba(255,184,59,.08)}
 
-/* ── ADMIN BANNER ── */
-#adminBanner{background:rgba(255,184,59,.08);border-bottom:1px solid rgba(255,184,59,.25);padding:7px 1.75rem;display:none;align-items:center;gap:10px;font-size:11px;color:var(--amber);font-family:'DM Mono',monospace}
-#adminBanner.on{display:flex}
-#adminBanner .ab-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:blink .9s infinite;flex-shrink:0}
+#aBanner{background:rgba(255,184,59,.07);border-bottom:1px solid rgba(255,184,59,.22);padding:7px 1.75rem;display:none;align-items:center;gap:10px;font-size:11px;color:var(--amber);font-family:'DM Mono',monospace}
+#aBanner.on{display:flex}
+.ab-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:bl .9s infinite;flex-shrink:0}
 
-/* ── HERO ── */
 .hero{padding:2.25rem 1.75rem 1.75rem;border-bottom:1px solid var(--border)}
 .hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,4.5vw,46px);line-height:1.05;letter-spacing:-.035em;margin-bottom:.35rem}
 .hero-title em{color:var(--red);font-style:normal}
@@ -51,11 +48,9 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .sc-n{font-family:'Syne',sans-serif;font-weight:700;font-size:26px;line-height:1;margin-bottom:3px}
 .sc-l{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
 
-/* ── LAYOUT ── */
 .main{display:grid;grid-template-columns:1fr 296px}
 @media(max-width:860px){.main{grid-template-columns:1fr}}
 
-/* ── FEED ── */
 .feed-col{border-right:1px solid var(--border);padding:1.4rem 1.75rem}
 .col-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;gap:8px;flex-wrap:wrap}
 .col-title{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
@@ -67,9 +62,10 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .fb.on[data-t="POLITIE"]{border-color:rgba(255,184,59,.4);color:var(--amber);background:var(--amber-d)}
 .fb.on[data-t="NATUUR"]{border-color:rgba(59,255,194,.4);color:var(--teal);background:var(--teal-d)}
 .fb.on[data-t="CRISIS"]{border-color:rgba(204,68,255,.4);color:var(--purple);background:var(--purple-d)}
-.fb.on[data-t="ADMIN"]{border-color:rgba(255,184,59,.5);color:var(--amber);background:var(--amber-d)}
+.fb.on[data-t="HANDMATIG"]{border-color:rgba(255,184,59,.5);color:var(--amber);background:var(--amber-d)}
+.fb.on[data-t="TEST"]{border-color:rgba(255,140,66,.5);color:var(--orange);background:var(--orange-d)}
 
-/* ── INCIDENT CARD ── */
+/* INCIDENT CARDS */
 .inc{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:.9rem 1.1rem;margin-bottom:9px;animation:si .3s ease;position:relative;overflow:hidden;transition:border-color .2s}
 .inc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
 .inc[data-t="BRAND"]::before{background:var(--red)}
@@ -77,8 +73,10 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .inc[data-t="POLITIE"]::before{background:var(--amber)}
 .inc[data-t="NATUUR"]::before{background:var(--teal)}
 .inc[data-t="CRISIS"]::before{background:var(--purple)}
-.inc[data-t="ADMIN"]::before{background:repeating-linear-gradient(45deg,var(--amber),var(--amber) 3px,transparent 3px,transparent 7px)}
-.inc.is-admin{border-color:rgba(255,184,59,.2)}
+.inc[data-t="HANDMATIG"]::before{background:var(--amber)}
+.inc[data-t="TEST"]::before{background:repeating-linear-gradient(45deg,var(--orange),var(--orange) 3px,transparent 3px,transparent 7px)}
+.inc.is-admin{border-color:rgba(255,184,59,.18)}
+.inc.is-test{border-color:rgba(255,140,66,.25)}
 .inc:hover{border-color:var(--border2)}
 @keyframes si{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .inc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;margin-bottom:5px}
@@ -89,9 +87,9 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .bdg-POLITIE{background:var(--amber-d);color:var(--amber);border:1px solid rgba(255,184,59,.22)}
 .bdg-NATUUR{background:var(--teal-d);color:var(--teal);border:1px solid rgba(59,255,194,.22)}
 .bdg-CRISIS{background:var(--purple-d);color:var(--purple);border:1px solid rgba(204,68,255,.22)}
-.bdg-ADMIN{background:rgba(255,184,59,.18);color:var(--amber);border:1px solid rgba(255,184,59,.45)}
+.bdg-HANDMATIG{background:rgba(255,184,59,.15);color:var(--amber);border:1px solid rgba(255,184,59,.4)}
+.bdg-TEST{background:rgba(255,140,66,.15);color:var(--orange);border:1px solid rgba(255,140,66,.45)}
 .bdg-rss{background:rgba(59,255,194,.07);color:var(--teal);border:1px solid rgba(59,255,194,.18);font-size:8px;padding:1px 5px;margin-left:3px}
-.bdg-adm-tag{background:rgba(255,184,59,.1);color:var(--amber);border:1px solid rgba(255,184,59,.3);font-size:8px;padding:1px 5px;margin-left:3px}
 .inc-meta{display:flex;align-items:center;gap:.8rem;font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);flex-wrap:wrap}
 .inc-loc{color:var(--text2)}
 .inc-body{font-size:12.5px;color:var(--text2);margin:7px 0 0;line-height:1.55}
@@ -101,7 +99,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .del-btn{background:rgba(255,59,59,.08);border:1px solid rgba(255,59,59,.25);color:var(--red);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;margin-left:8px;transition:all .15s}
 .del-btn:hover{background:rgba(255,59,59,.18)}
 
-/* ── SIDEBAR ── */
 .sidebar{padding:1.4rem}
 .src-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
 .src-item:last-child{border-bottom:none}
@@ -112,32 +109,7 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .reg-item{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
 .reg-c{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);padding:1px 6px;border-radius:2px}
 
-/* ── ADMIN PANEL ── */
-#adminPanel{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center}
-#adminPanel.on{display:flex}
-.ap-box{background:var(--bg2);border:1px solid rgba(255,184,59,.3);border-radius:8px;width:min(480px,95vw);max-height:90vh;overflow-y:auto;padding:1.75rem}
-.ap-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem}
-.ap-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--amber)}
-.ap-close{background:transparent;border:1px solid var(--border2);color:var(--text2);width:28px;height:28px;border-radius:3px;cursor:pointer;font-size:14px;transition:all .15s}
-.ap-close:hover{background:var(--bg3);color:var(--text)}
-.ap-row{margin-bottom:11px}
-.ap-lbl{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:4px}
-.ap-inp,.ap-sel,.ap-ta{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:4px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 10px;outline:none;transition:border-color .15s}
-.ap-inp:focus,.ap-sel:focus,.ap-ta:focus{border-color:var(--amber)}
-.ap-sel option{background:var(--bg2)}
-.ap-ta{resize:vertical;min-height:72px}
-.ap-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ap-btn{width:100%;background:rgba(255,184,59,.1);border:1px solid rgba(255,184,59,.35);color:var(--amber);font-family:'DM Mono',monospace;font-size:11px;padding:9px;border-radius:4px;cursor:pointer;transition:all .15s;margin-top:4px}
-.ap-btn:hover{background:rgba(255,184,59,.2)}
-.ap-btn:disabled{opacity:.4;cursor:not-allowed}
-.ap-sep{height:1px;background:var(--border);margin:1.1rem 0}
-.ap-saved{margin-top:.75rem}
-.ap-saved-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
-.ap-saved-item{display:flex;align-items:center;justify-content:space-between;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:5px;font-size:12px;gap:8px}
-.ap-saved-lbl{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ap-saved-type{font-family:'DM Mono',monospace;font-size:9px}
-
-/* ── LOGIN OVERLAY ── */
+/* LOGIN */
 #loginOverlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);align-items:center;justify-content:center}
 #loginOverlay.on{display:flex}
 .lo-box{background:var(--bg2);border:1px solid rgba(255,184,59,.3);border-radius:8px;width:min(340px,92vw);padding:2rem}
@@ -149,7 +121,51 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 .lo-btn:hover{background:rgba(255,184,59,.2)}
 .lo-err{font-size:11px;color:var(--red);font-family:'DM Mono',monospace;margin-top:7px;min-height:16px}
 
-/* ── MISC ── */
+/* ADMIN PANEL */
+#adminPanel{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+#adminPanel.on{display:flex}
+.ap-box{background:var(--bg2);border:1px solid rgba(255,184,59,.28);border-radius:8px;width:min(520px,96vw);max-height:92vh;overflow-y:auto;padding:1.75rem}
+.ap-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.ap-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--amber)}
+.ap-close{background:transparent;border:1px solid var(--border2);color:var(--text2);width:28px;height:28px;border-radius:3px;cursor:pointer;font-size:14px;transition:all .15s}
+.ap-close:hover{background:var(--bg3);color:var(--text)}
+
+/* Tabs in admin panel */
+.ap-tabs{display:flex;gap:0;margin-bottom:1.25rem;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
+.ap-tab{flex:1;font-family:'DM Mono',monospace;font-size:11px;padding:8px;border:none;background:transparent;color:var(--text3);cursor:pointer;transition:all .15s;border-right:1px solid var(--border2)}
+.ap-tab:last-child{border-right:none}
+.ap-tab:hover{background:var(--bg3);color:var(--text2)}
+.ap-tab.on{background:var(--bg3);color:var(--text)}
+.ap-tab.on.tab-handmatig{color:var(--amber)}
+.ap-tab.on.tab-test{color:var(--orange)}
+
+.ap-pane{display:none}
+.ap-pane.on{display:block}
+
+/* test pane styling */
+.test-notice{background:rgba(255,140,66,.07);border:1px solid rgba(255,140,66,.22);border-radius:4px;padding:.7rem .9rem;font-size:11px;color:rgba(255,140,66,.9);font-family:'DM Mono',monospace;line-height:1.6;margin-bottom:1rem}
+
+.ap-row{margin-bottom:11px}
+.ap-lbl{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:4px}
+.ap-inp,.ap-sel,.ap-ta{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:4px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 10px;outline:none;transition:border-color .15s}
+.ap-inp:focus,.ap-sel:focus,.ap-ta:focus{border-color:var(--amber)}
+.ap-inp.test-focus:focus{border-color:var(--orange)}
+.ap-sel option{background:var(--bg2)}
+.ap-ta{resize:vertical;min-height:72px}
+.ap-2col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ap-btn{width:100%;background:rgba(255,184,59,.1);border:1px solid rgba(255,184,59,.35);color:var(--amber);font-family:'DM Mono',monospace;font-size:11px;padding:9px;border-radius:4px;cursor:pointer;transition:all .15s;margin-top:4px}
+.ap-btn:hover{background:rgba(255,184,59,.2)}
+.ap-btn:disabled{opacity:.4;cursor:not-allowed}
+.ap-btn-test{background:rgba(255,140,66,.1);border-color:rgba(255,140,66,.35);color:var(--orange)}
+.ap-btn-test:hover{background:rgba(255,140,66,.2)}
+.ap-sep{height:1px;background:var(--border);margin:1.1rem 0}
+.ap-list-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.ap-item{display:flex;align-items:center;justify-content:space-between;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:5px;font-size:12px;gap:8px}
+.ap-item-lbl{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.jb-row{display:flex;align-items:center;gap:6px;font-size:10px;font-family:'DM Mono',monospace;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:.9rem}
+.jb-ok{color:var(--teal)}.jb-err{color:var(--red)}.jb-load{color:var(--amber)}
+
 .notice{background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.18);border-radius:5px;padding:.8rem 1rem;font-size:11.5px;color:var(--text2);line-height:1.7;margin-bottom:1.1rem}
 .notice strong{color:var(--blue)}
 .notice a{color:var(--blue)}
@@ -163,18 +179,13 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,0.94);back
 footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;flex-wrap:wrap;gap:.4rem}
 .tag{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:2px;padding:1px 6px;font-size:9px;margin-right:3px}
 .wrap{position:relative;z-index:1}
-
-/* ── JSONBIN STATUS ── */
-.jb-row{display:flex;align-items:center;gap:6px;font-size:10px;font-family:'DM Mono',monospace;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:.8rem}
-.jb-ok{color:var(--teal)}.jb-err{color:var(--red)}.jb-load{color:var(--amber)}
-
 @media(max-width:560px){header{padding:0 1rem}.hero,.feed-col,.sidebar{padding:1rem}.hero-title{font-size:22px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- LOGIN OVERLAY -->
+<!-- LOGIN -->
 <div id="loginOverlay">
   <div class="lo-box">
     <div class="lo-title">🔐 Admin toegang</div>
@@ -189,7 +200,7 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
 <div id="adminPanel">
   <div class="ap-box">
     <div class="ap-hdr">
-      <div class="ap-title">⚡ Adminpaneel — Meldingen beheren</div>
+      <div class="ap-title">⚡ Adminpaneel</div>
       <button class="ap-close" onclick="closeAdmin()">✕</button>
     </div>
 
@@ -197,39 +208,82 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <span>○</span><span id="jbTxt">Database verbinden...</span>
     </div>
 
-    <div class="ap-row">
-      <div class="ap-lbl">Titel melding *</div>
-      <input class="ap-inp" id="ap-title" placeholder="bijv. Grote woningbrand Vrijdagmarkt, Gent">
+    <!-- TABS -->
+    <div class="ap-tabs">
+      <button class="ap-tab tab-handmatig on" id="tab-h" onclick="switchTab('handmatig')">⚡ Handmatige melding</button>
+      <button class="ap-tab tab-test" id="tab-t" onclick="switchTab('test')">⚗ Testmelding</button>
+      <button class="ap-tab" id="tab-l" onclick="switchTab('list')">📋 Beheer (<span id="apCount">0</span>)</button>
     </div>
-    <div class="ap-2col">
-      <div class="ap-row">
-        <div class="ap-lbl">Type *</div>
-        <select class="ap-sel" id="ap-type">
-          <option value="BRAND">🔴 Brandweer</option>
-          <option value="MEDISCH">🔵 Medisch</option>
-          <option value="POLITIE">🟡 Politie</option>
-          <option value="NATUUR">🟢 Natuur/milieu</option>
-          <option value="CRISIS">⚪ Nationale crisis</option>
-        </select>
-      </div>
-      <div class="ap-row">
-        <div class="ap-lbl">Locatie</div>
-        <input class="ap-inp" id="ap-loc" placeholder="bijv. Gent">
-      </div>
-    </div>
-    <div class="ap-row">
-      <div class="ap-lbl">Beschrijving</div>
-      <textarea class="ap-ta" id="ap-body" placeholder="Aanvullende details over de melding..."></textarea>
-    </div>
-    <div class="ap-row">
-      <div class="ap-lbl">Bron / link (optioneel)</div>
-      <input class="ap-inp" id="ap-link" placeholder="https://...">
-    </div>
-    <button class="ap-btn" id="ap-send" onclick="publishAlert()">↑ Melding publiceren voor iedereen</button>
 
-    <div class="ap-sep"></div>
-    <div class="ap-saved">
-      <div class="ap-saved-title">Gepubliceerde admin-meldingen (<span id="apCount">0</span>)</div>
+    <!-- PANE: HANDMATIGE MELDING -->
+    <div class="ap-pane on" id="pane-handmatig">
+      <div class="ap-row">
+        <div class="ap-lbl">Titel *</div>
+        <input class="ap-inp" id="h-title" placeholder="bijv. Grote woningbrand Vrijdagmarkt, Gent">
+      </div>
+      <div class="ap-2col">
+        <div class="ap-row">
+          <div class="ap-lbl">Type *</div>
+          <select class="ap-sel" id="h-type">
+            <option value="BRAND">🔴 Brandweer</option>
+            <option value="MEDISCH">🔵 Medisch</option>
+            <option value="POLITIE">🟡 Politie</option>
+            <option value="NATUUR">🟢 Natuur/milieu</option>
+            <option value="CRISIS">⚪ Nationale crisis</option>
+          </select>
+        </div>
+        <div class="ap-row">
+          <div class="ap-lbl">Locatie</div>
+          <input class="ap-inp" id="h-loc" placeholder="bijv. Gent">
+        </div>
+      </div>
+      <div class="ap-row">
+        <div class="ap-lbl">Beschrijving</div>
+        <textarea class="ap-ta" id="h-body" placeholder="Aanvullende details..."></textarea>
+      </div>
+      <div class="ap-row">
+        <div class="ap-lbl">Bronlink (optioneel)</div>
+        <input class="ap-inp" id="h-link" placeholder="https://...">
+      </div>
+      <button class="ap-btn" id="h-send" onclick="publishHandmatig()">↑ Handmatige melding publiceren voor iedereen</button>
+    </div>
+
+    <!-- PANE: TESTMELDING -->
+    <div class="ap-pane" id="pane-test">
+      <div class="test-notice">
+        ⚗ Testmeldingen zijn zichtbaar voor iedereen met een duidelijke oranje "TEST"-markering.
+        Gebruik dit om de site te testen zonder echte meldingen te verwarren.
+      </div>
+      <div class="ap-row">
+        <div class="ap-lbl">Titel testmelding *</div>
+        <input class="ap-inp ap-inp-test" id="t-title" placeholder="bijv. TEST — Oefening brandweer zone Oost">
+      </div>
+      <div class="ap-2col">
+        <div class="ap-row">
+          <div class="ap-lbl">Gesimuleerd type</div>
+          <select class="ap-sel" id="t-type">
+            <option value="BRAND">🔴 Brandweer</option>
+            <option value="MEDISCH">🔵 Medisch</option>
+            <option value="POLITIE">🟡 Politie</option>
+            <option value="NATUUR">🟢 Natuur/milieu</option>
+            <option value="CRISIS">⚪ Crisis</option>
+          </select>
+        </div>
+        <div class="ap-row">
+          <div class="ap-lbl">Locatie</div>
+          <input class="ap-inp" id="t-loc" placeholder="bijv. Gent">
+        </div>
+      </div>
+      <div class="ap-row">
+        <div class="ap-lbl">Beschrijving (optioneel)</div>
+        <textarea class="ap-ta" id="t-body" placeholder="Details van de testmelding..."></textarea>
+      </div>
+      <button class="ap-btn ap-btn-test" id="t-send" onclick="publishTest()">⚗ Testmelding publiceren</button>
+    </div>
+
+    <!-- PANE: BEHEER -->
+    <div class="ap-pane" id="pane-list">
+      <div class="ap-list-title">Alle gepubliceerde meldingen</div>
       <div id="apList"></div>
     </div>
   </div>
@@ -238,24 +292,23 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
 <!-- HEADER -->
 <header>
   <div class="logo"><div class="logo-dot"></div>Hulp112</div>
-  <div class="hdr-right">
+  <div class="hdr-r">
     <span class="ts" id="tsEl">--:--:--</span>
     <button class="hdr-btn" id="adminBtn" onclick="openAdminOrLogin()">🔐 Admin</button>
     <div class="live-pill"><div class="live-dot"></div>LIVE</div>
   </div>
 </header>
 
-<!-- ADMIN BANNER -->
-<div id="adminBanner">
+<div id="aBanner">
   <div class="ab-dot"></div>
-  ADMIN INGELOGD — Jouw gepubliceerde meldingen zijn zichtbaar voor alle bezoekers.
+  ADMIN INGELOGD — Gepubliceerde meldingen zijn zichtbaar voor alle bezoekers.
   <span style="margin-left:auto;cursor:pointer;opacity:.6" onclick="logout()">Uitloggen ✕</span>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <h1 class="hero-title">Belgische<br><em>hulpdienst</em>meldingen</h1>
-  <p class="hero-sub">Live publieke RSS-meldingen + officiële berichten — 100% legaal, geen scanner</p>
+  <p class="hero-sub">Live gefilterd nieuws van VRT NWS, HLN en Nieuwsblad + handmatige meldingen — 100% legaal</p>
   <div class="stats">
     <div class="sc"><div class="sc-n" id="stTotal" style="color:var(--text)">—</div><div class="sc-l">meldingen</div></div>
     <div class="sc"><div class="sc-n" id="stBrand" style="color:var(--red)">—</div><div class="sc-l">brandweer</div></div>
@@ -264,7 +317,6 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
   </div>
 </section>
 
-<!-- MAIN -->
 <div class="main">
   <div class="feed-col">
     <div class="col-hdr">
@@ -272,14 +324,11 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <button class="spin-btn" id="refBtn" onclick="loadAll()"><span class="si">↻</span> Vernieuwen</button>
     </div>
     <div class="notice">
-      <strong>Echte data</strong> — Live opgehaald van
-      <a href="https://crisiscenter.be" target="_blank">crisiscenter.be</a>,
-      <a href="https://be-alert.be" target="_blank">be-alert.be</a> en brandweerzones via publieke RSS.
-      Admin-meldingen worden opgeslagen in een gedeelde online database.
+      <strong>Hoe werkt dit?</strong> — Belgische nieuwsfeeds (VRT NWS, HLN, Nieuwsblad) worden live gefilterd op trefwoorden als "brand", "brandweer", "ambulance", "politie". Zo krijg je hulpdienstmeldingen zonder scanner. Handmatige en testmeldingen komen van de admin.
     </div>
     <div class="rss-row">
       <span id="rssIco" style="color:var(--amber)">○</span>
-      <span id="rssTxt">Laden...</span>
+      <span id="rssTxt">Bronnen laden...</span>
       <span class="rss-cnt" id="rssCnt"></span>
     </div>
     <div class="filter-row">
@@ -289,19 +338,20 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <button class="fb" data-t="POLITIE" onclick="setF('POLITIE',this)">🟡 Politie</button>
       <button class="fb" data-t="NATUUR" onclick="setF('NATUUR',this)">🟢 Natuur</button>
       <button class="fb" data-t="CRISIS" onclick="setF('CRISIS',this)">⚪ Crisis</button>
-      <button class="fb" data-t="ADMIN" onclick="setF('ADMIN',this)">⚡ Officieel</button>
+      <button class="fb" data-t="HANDMATIG" onclick="setF('HANDMATIG',this)">⚡ Handmatig</button>
+      <button class="fb" data-t="TEST" onclick="setF('TEST',this)">⚗ Test</button>
     </div>
     <div id="feed"></div>
   </div>
 
   <div class="sidebar">
-    <div class="col-title" style="margin-bottom:.9rem">RSS-bronnen</div>
-    <div class="src-item"><span>Crisis.be</span><span class="src-s s-load" id="s-crisis"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Be-Alert</span><span class="src-s s-load" id="s-bealert"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Brandweer Antwerpen</span><span class="src-s s-load" id="s-ant"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Brandweer Oost-VL</span><span class="src-s s-load" id="s-ovl"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politie.be</span><span class="src-s s-load" id="s-pol"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Admin-meldingen</span><span class="src-s s-load" id="s-adm"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="col-title" style="margin-bottom:.9rem">Nieuwsbronnen</div>
+    <div class="src-item"><span>VRT NWS</span><span class="src-s s-load" id="s-vrt"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>HLN.be</span><span class="src-s s-load" id="s-hln"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>Nieuwsblad.be</span><span class="src-s s-load" id="s-nwsblad"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>De Morgen</span><span class="src-s s-load" id="s-dm"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>RTBFinfo</span><span class="src-s s-load" id="s-rtbf"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>Handmatig / Test</span><span class="src-s s-load" id="s-adm"><span class="dot-s"></span><span>laden</span></span></div>
 
     <div class="sep"></div>
     <div class="col-title" style="margin-bottom:.7rem">Actieve regio's</div>
@@ -315,311 +365,172 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <div><span style="color:var(--amber)">█</span> Politie / verkeersongeval</div>
       <div><span style="color:var(--teal)">█</span> Natuur / overstroming / storm</div>
       <div><span style="color:var(--purple)">█</span> Nationale crisis / CBRN</div>
-      <div><span style="color:var(--amber)">▓</span> Admin-melding (officieel)</div>
+      <div><span style="color:var(--amber)">▓</span> Handmatige melding (admin)</div>
+      <div><span style="color:var(--orange)">▒</span> Testmelding</div>
     </div>
 
     <div style="font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1.25rem;line-height:2">
       Auto-refresh: 10 min<br>
       Admin-sync: 30 sec<br>
-      Database: JSONBin.io<br>
+      Filter: hulpdienst-trefwoorden<br>
       © Hulp112 — geen officiële dienst
     </div>
   </div>
 </div>
 
 <footer>
-  <div><span class="tag">legaal</span><span class="tag">RSS</span><span class="tag">publieke data</span><span class="tag">België</span></div>
+  <div><span class="tag">legaal</span><span class="tag">RSS</span><span class="tag">nieuwsfeeds</span><span class="tag">België</span></div>
   <div>hulp112 — niet verbonden met 112 of overheid</div>
 </footer>
-</div><!-- wrap -->
+</div>
 
 <script>
-// ════════════════════════════════════════════════════════════════
-// CONFIGURATIE — pas dit aan na setup
-// ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════
+// CONFIGURATIE
+// ════════════════════════════════════════════════════════
 const CFG = {
-  // ─── JSONBIN ───
-  // 1. Ga naar https://jsonbin.io → gratis account
-  // 2. Maak een nieuwe Bin aan met inhoud: {"alerts":[]}
-  // 3. Kopieer de Bin ID en je API key hieronder
-  JSONBIN_ID:  '69e3677736566621a8c7d68a',          // bijv. '6627f3e5acd3cb34a83e5678'
-  JSONBIN_KEY: '$2a$10$CdVZpTU3GQoVWqu7BP2pCe6gG7ZJy7iXIP/QRdbdl1UF5.hSfy3EC',         // bijv. '$2a$10$abc...'
-
-  // ─── ADMIN WACHTWOORD ───
-  // Verander dit naar jouw eigen wachtwoord!
-  ADMIN_PASS: 'hulp112admin',
-
-  // ─── RSS PROXY ───
-  PROXY: 'https://api.allorigins.win/get?url=',
+  JSONBIN_ID:  '69e3677736566621a8c7d68a',
+  JSONBIN_KEY: '$2a$10$CdVZpTU3GQoVWqu7BP2pCe6gG7ZJy7iXIP/QRdbdl1UF5.hSfy3EC',
+  ADMIN_PASS:  'hulp112admin',
+  PROXY:       'https://api.allorigins.win/get?url=',
 };
 
+// ════════════════════════════════════════════════════════
+// RSS BRONNEN — werkende Belgische nieuwsfeeds
+// Worden gefilterd op hulpdienst-trefwoorden
+// ════════════════════════════════════════════════════════
 const FEEDS = [
-  { id:'s-crisis',  name:'Crisis.be',          url:'https://crisiscenter.be/nl/rss',       fb:'CRISIS'  },
-  { id:'s-bealert', name:'Be-Alert',            url:'https://www.be-alert.be/nl/rss.xml',   fb:'NATUUR'  },
-  { id:'s-ant',     name:'Brandweer Antwerpen', url:'https://www.brandweerzone1.be/rss',     fb:'BRAND'   },
-  { id:'s-ovl',     name:'Brandweer Oost-VL',   url:'https://www.brandweerzoneovl.be/rss',  fb:'BRAND'   },
-  { id:'s-pol',     name:'Politie.be',           url:'https://www.politie.be/rss/nl',        fb:'POLITIE' },
+  {
+    id: 's-vrt',
+    name: 'VRT NWS',
+    url: 'https://www.vrt.be/vrtnws/nl.rss.articles.xml',
+  },
+  {
+    id: 's-hln',
+    name: 'HLN.be',
+    url: 'https://www.hln.be/home/rss.xml',
+  },
+  {
+    id: 's-nwsblad',
+    name: 'Nieuwsblad',
+    url: 'https://www.nieuwsblad.be/rss/section/4f3c52bc-da1c-4a56-91c7-6b8e35fb3d7f',
+  },
+  {
+    id: 's-dm',
+    name: 'De Morgen',
+    url: 'https://www.demorgen.be/in-het-nieuws/rss.xml',
+  },
+  {
+    id: 's-rtbf',
+    name: 'RTBFinfo',
+    url: 'https://www.rtbf.be/api/partner/v2/search?client_id=rtbfinfo&legacy=1&facets%5B%5D=provider_id&q=incendie+pompiers+urgences&format=rss',
+  },
 ];
 
-const CITIES = ['Antwerpen','Gent','Brussel','Brugge','Leuven','Luik','Charleroi','Namen','Hasselt','Kortrijk','Mechelen','Aalst','Turnhout','Roeselare','Genk','Sint-Niklaas','Dendermonde','Ieper','Mouscron','Verviers','Arlon','Mons'];
+// Trefwoorden die een artikel als hulpdienst-melding markeren
+const KEYWORDS = [
+  'brand','brandweer','bluswerken','gaslek','ontploffing','vuur','rookontwikkeling',
+  'ambulance','ziekenwagen','mug ','reanimatie','hartstilstand','spoedopname','gewonden',
+  'politie','verkeersongeval','aanrijding','botsing','overval','klopjacht',
+  'overstroming','wateroverlast','storm','schade','chemisch lek','gevaarlijke stof',
+  'noodplan','evacuatie','crisis','brand in ','brand te ','brand bij ',
+  'incendie','pompiers','ambulance','accident','inondation','évacuation',
+];
 
-// ════════════════════════════════════════════════════════════════
+const CITIES = ['Antwerpen','Gent','Brussel','Brugge','Leuven','Luik','Charleroi','Namen',
+  'Hasselt','Kortrijk','Mechelen','Aalst','Turnhout','Roeselare','Genk','Sint-Niklaas',
+  'Dendermonde','Ieper','Mouscron','Verviers','Arlon','Mons','Liège','Namur','Ostende',
+  'Oostende','Leuven','Vilvoorde','Waregem','Deinze','Oudenaarde'];
+
+// ════════════════════════════════════════════════════════
 // STATE
-// ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════
 let rssItems    = [];
 let adminAlerts = [];
 let activeFilter = 'ALL';
-let isAdmin = false;
-let adminSyncTimer = null;
+let isAdmin     = false;
 
-// ════════════════════════════════════════════════════════════════
-// AUTH
-// ════════════════════════════════════════════════════════════════
-function openAdminOrLogin() {
-  if (isAdmin) { openAdmin(); return; }
-  document.getElementById('loginOverlay').classList.add('on');
-  document.getElementById('loPass').value = '';
-  document.getElementById('loErr').textContent = '';
-  setTimeout(() => document.getElementById('loPass').focus(), 100);
-}
-
-function doLogin() {
-  const pass = document.getElementById('loPass').value;
-  if (pass === CFG.ADMIN_PASS) {
-    isAdmin = true;
-    document.getElementById('loginOverlay').classList.remove('on');
-    document.getElementById('adminBanner').classList.add('on');
-    document.getElementById('adminBtn').classList.add('admin-active');
-    document.getElementById('adminBtn').textContent = '⚡ Admin';
-    openAdmin();
-  } else {
-    const err = document.getElementById('loErr');
-    err.textContent = '✕ Ongeldig wachtwoord';
-    document.getElementById('loPass').style.borderColor = 'var(--red)';
-    setTimeout(() => {
-      err.textContent = '';
-      document.getElementById('loPass').style.borderColor = '';
-    }, 2500);
-  }
-}
-
-function logout() {
-  isAdmin = false;
-  document.getElementById('adminBanner').classList.remove('on');
-  document.getElementById('adminBtn').classList.remove('admin-active');
-  document.getElementById('adminBtn').textContent = '🔐 Admin';
-  closeAdmin();
-}
-
-// ════════════════════════════════════════════════════════════════
-// ADMIN PANEL
-// ════════════════════════════════════════════════════════════════
-function openAdmin() {
-  document.getElementById('adminPanel').classList.add('on');
-  loadAdminAlerts();
-}
-function closeAdmin() {
-  document.getElementById('adminPanel').classList.remove('on');
-}
-
-// ════════════════════════════════════════════════════════════════
-// JSONBIN — Gedeelde opslag
-// ════════════════════════════════════════════════════════════════
-const JB_BASE = 'https://api.jsonbin.io/v3/b/';
-
-function jbHeaders() {
-  return {
-    'Content-Type': 'application/json',
-    'X-Master-Key': CFG.JSONBIN_KEY,
-    'X-Bin-Versioning': 'false'
-  };
-}
-
-async function jbGet() {
-  if (CFG.JSONBIN_ID === 'JOUW_BIN_ID_HIER') {
-    setJBStatus('err', '⚠ JSONBin niet geconfigureerd — zie instructies onderaan');
-    return null;
-  }
-  try {
-    const r = await fetch(JB_BASE + CFG.JSONBIN_ID + '/latest', {
-      headers: { 'X-Master-Key': CFG.JSONBIN_KEY }
-    });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const j = await r.json();
-    setJBStatus('ok', '● Database verbonden');
-    return j.record || { alerts: [] };
-  } catch(e) {
-    setJBStatus('err', '✕ Database fout: ' + e.message);
-    return null;
-  }
-}
-
-async function jbSet(data) {
-  if (CFG.JSONBIN_ID === 'JOUW_BIN_ID_HIER') return false;
-  try {
-    const r = await fetch(JB_BASE + CFG.JSONBIN_ID, {
-      method: 'PUT',
-      headers: jbHeaders(),
-      body: JSON.stringify(data)
-    });
-    return r.ok;
-  } catch { return false; }
-}
-
-function setJBStatus(state, msg) {
-  const el = document.getElementById('jbStatus');
-  const tx = document.getElementById('jbTxt');
-  if (!el) return;
-  el.className = 'jb-row jb-' + state;
-  tx.textContent = msg;
-}
-
-// ════════════════════════════════════════════════════════════════
-// ADMIN ALERTS CRUD
-// ════════════════════════════════════════════════════════════════
-async function loadAdminAlerts(silent = false) {
-  if (!silent) setStatus('s-adm', 'load', 'laden');
-  const data = await jbGet();
-  if (!data) { setStatus('s-adm', 'err', 'fout'); return; }
-  adminAlerts = (data.alerts || []).sort((a, b) => new Date(b.ts) - new Date(a.ts));
-  setStatus('s-adm', 'ok', adminAlerts.length + ' items');
-  renderAdminList();
-  renderFeed();
-  updateStats();
-  updateRegions();
-}
-
-async function publishAlert() {
-  const title = document.getElementById('ap-title').value.trim();
-  const type  = document.getElementById('ap-type').value;
-  const loc   = document.getElementById('ap-loc').value.trim() || 'België';
-  const body  = document.getElementById('ap-body').value.trim();
-  const link  = document.getElementById('ap-link').value.trim();
-
-  if (!title) {
-    highlight('ap-title');
-    return;
-  }
-
-  const btn = document.getElementById('ap-send');
-  btn.disabled = true;
-  btn.textContent = 'Publiceren...';
-
-  const alert = {
-    id:    'adm-' + Date.now(),
-    type:  'ADMIN',
-    displayType: type,
-    title, body, loc, link,
-    ts:    new Date().toISOString(),
-    isAdmin: true
-  };
-
-  // Get current, add new
-  const data = await jbGet() || { alerts: [] };
-  data.alerts = [alert, ...(data.alerts || [])].slice(0, 50); // max 50 bewaren
-  const ok = await jbSet(data);
-
-  if (ok) {
-    adminAlerts = data.alerts;
-    ['ap-title','ap-loc','ap-body','ap-link'].forEach(id => document.getElementById(id).value = '');
-    renderAdminList();
-    renderFeed();
-    updateStats();
-    btn.textContent = '✓ Gepubliceerd!';
-    btn.style.cssText = 'background:rgba(59,255,194,.1);border-color:rgba(59,255,194,.3);color:var(--teal)';
-    setTimeout(() => {
-      btn.textContent = '↑ Melding publiceren voor iedereen';
-      btn.style.cssText = '';
-      btn.disabled = false;
-    }, 2500);
-  } else {
-    btn.textContent = '✕ Fout — JSONBin geconfigureerd?';
-    btn.style.cssText = 'background:rgba(255,59,59,.1);border-color:rgba(255,59,59,.3);color:var(--red)';
-    setTimeout(() => {
-      btn.textContent = '↑ Melding publiceren voor iedereen';
-      btn.style.cssText = '';
-      btn.disabled = false;
-    }, 3000);
-  }
-}
-
-async function deleteAlert(id) {
-  const data = await jbGet();
-  if (!data) return;
-  data.alerts = (data.alerts || []).filter(a => a.id !== id);
-  const ok = await jbSet(data);
-  if (ok) {
-    adminAlerts = data.alerts;
-    renderAdminList();
-    renderFeed();
-    updateStats();
-  }
-}
-
-function renderAdminList() {
-  const list = document.getElementById('apList');
-  const cnt  = document.getElementById('apCount');
-  cnt.textContent = adminAlerts.length;
-  if (!adminAlerts.length) {
-    list.innerHTML = '<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace">Nog geen gepubliceerde meldingen.</div>';
-    return;
-  }
-  list.innerHTML = adminAlerts.map(a => `
-    <div class="ap-saved-item">
-      <span class="ap-saved-lbl">${esc(a.title)}</span>
-      <span class="ap-saved-type bdg-${a.displayType||a.type}" style="margin-right:6px">${a.displayType||a.type}</span>
-      <button class="del-btn" onclick="deleteAlert('${a.id}')">✕ Wis</button>
-    </div>`).join('');
-}
-
-// ════════════════════════════════════════════════════════════════
-// RSS
-// ════════════════════════════════════════════════════════════════
-function classify(text, fb) {
+// ════════════════════════════════════════════════════════
+// CLASSIFY
+// ════════════════════════════════════════════════════════
+function classify(text) {
   const t = (text||'').toLowerCase();
-  if (/brand|vuur|gaslek|ontploff|bluswerk|rookontwikk|schoorst/.test(t)) return 'BRAND';
-  if (/medisch|mug|ambulan|ziekenwagen|gewond|reanimat|hartstilstand|spoedeis/.test(t)) return 'MEDISCH';
-  if (/politie|verkeersongeval|botsing|aanrijding|overval|inbraak/.test(t)) return 'POLITIE';
-  if (/overstroming|storm|wateroverlast|schade|chemisch|gevaarlijk|milieu|tornado/.test(t)) return 'NATUUR';
-  if (/crisis|alarm|fase|noodplan|cbrn|nucleair|evacuati|be-alert/.test(t)) return 'CRISIS';
-  return fb;
+  if (/brand|vuur|gaslek|ontploff|bluswerk|rookontwikk|schoorst|incendie|brandweer/.test(t)) return 'BRAND';
+  if (/\bmug\b|ambulan|ziekenwagen|gewond|reanimat|hartstilstand|spoedeis|urgence/.test(t)) return 'MEDISCH';
+  if (/politie|verkeersongeval|botsing|aanrijding|overval|inbraak|klopjacht|gendarmerie/.test(t)) return 'POLITIE';
+  if (/overstroming|storm|wateroverlast|chemisch|gevaarlijk|milieu|tornado|inondation|évacuation/.test(t)) return 'NATUUR';
+  if (/crisis|noodplan|cbrn|nucleair|evacuati/.test(t)) return 'CRISIS';
+  return null; // null = niet relevant, wordt gefilterd
 }
 
-function city(text) {
-  for (const c of CITIES) if ((text||'').toLowerCase().includes(c.toLowerCase())) return c;
+function isRelevant(title, body) {
+  const t = ((title||'') + ' ' + (body||'')).toLowerCase();
+  return KEYWORDS.some(kw => t.includes(kw));
+}
+
+function extractCity(text) {
+  for (const c of CITIES) {
+    if ((text||'').toLowerCase().includes(c.toLowerCase())) return c;
+  }
   return 'België';
 }
 
-function parseRSS(xml, name, fb) {
+// ════════════════════════════════════════════════════════
+// RSS PARSER + FILTER
+// ════════════════════════════════════════════════════════
+function parseAndFilter(xml, srcName) {
   const doc = new DOMParser().parseFromString(xml, 'text/xml');
-  return Array.from(doc.querySelectorAll('item')).slice(0,18).map(item => {
-    const title = item.querySelector('title')?.textContent?.trim() || '(geen titel)';
-    const raw   = item.querySelector('description')?.textContent || '';
-    const body  = raw.replace(/<[^>]+>/g,'').replace(/&[a-z]+;/gi,' ').trim();
-    const link  = item.querySelector('link')?.textContent?.trim() || '#';
-    const pub   = item.querySelector('pubDate')?.textContent?.trim() || '';
-    return {
+  const items = Array.from(doc.querySelectorAll('item'));
+  const result = [];
+  for (const item of items) {
+    const title = item.querySelector('title')?.textContent?.trim() || '';
+    const rawDesc = item.querySelector('description')?.textContent || '';
+    const body = rawDesc.replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/gi,' ').trim();
+    const link = item.querySelector('link')?.textContent?.trim() || '#';
+    const pub = item.querySelector('pubDate')?.textContent?.trim() || '';
+
+    // Filter: alleen hulpdienst-relevante artikelen
+    if (!isRelevant(title, body)) continue;
+
+    const combined = title + ' ' + body;
+    const type = classify(combined) || 'BRAND'; // fallback BRAND als trefwoord matcht maar type onduidelijk
+
+    result.push({
       id:      'rss-' + Math.random().toString(36).slice(2),
-      type:    classify(title+' '+body, fb),
-      title, body: body.slice(0,240), loc: city(title+' '+body),
-      src: name, link,
+      type,
+      title,
+      body:    body.slice(0, 280),
+      loc:     extractCity(combined),
+      src:     srcName,
+      link,
       ts:      pub ? new Date(pub) : new Date(),
-      isAdmin: false
-    };
-  });
+      isAdmin: false,
+      isTest:  false,
+    });
+    if (result.length >= 12) break; // max 12 per bron
+  }
+  return result;
 }
 
+// ════════════════════════════════════════════════════════
+// FETCH
+// ════════════════════════════════════════════════════════
 async function fetchFeed(feed) {
   setSrc(feed.id, 'load', 'laden');
   try {
-    const res = await fetch(CFG.PROXY + encodeURIComponent(feed.url), { signal: AbortSignal.timeout(12000) });
+    const res = await fetch(CFG.PROXY + encodeURIComponent(feed.url), {
+      signal: AbortSignal.timeout(14000)
+    });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const j = await res.json();
     if (!j.contents?.trim()) throw new Error('leeg');
-    const items = parseRSS(j.contents, feed.name, feed.fb);
+    const items = parseAndFilter(j.contents, feed.name);
     setSrc(feed.id, 'ok', items.length + ' items');
     return items;
-  } catch(e) { setSrc(feed.id, 'err', 'niet bereikbaar'); return []; }
+  } catch(e) {
+    setSrc(feed.id, 'err', 'niet bereikbaar');
+    return [];
+  }
 }
 
 function setSrc(id, st, lbl) {
@@ -628,91 +539,251 @@ function setSrc(id, st, lbl) {
   el.className = 'src-s s-' + st;
   el.innerHTML = `<span class="dot-s"></span><span>${lbl}</span>`;
 }
-function setStatus(id, st, lbl) { setSrc(id, st, lbl); }
 
 async function loadRSS() {
-  const btn = document.getElementById('refBtn');
-  btn.classList.add('go');
-  setRSSStatus('amber','⟳','Bronnen ophalen...');
+  document.getElementById('refBtn').classList.add('go');
+  setRSS('amber','⟳','Nieuws ophalen en filteren...');
 
   const results = await Promise.allSettled(FEEDS.map(fetchFeed));
   let all = [];
   results.forEach(r => { if (r.status==='fulfilled') all.push(...r.value); });
-  all.sort((a,b) => new Date(b.ts)-new Date(a.ts));
+
+  // Sorteren op datum
+  all.sort((a,b) => new Date(b.ts) - new Date(a.ts));
+
+  // Dedupliceren op titelbasis
   const seen = new Set();
   rssItems = all.filter(i => {
-    const k = i.title.slice(0,45).toLowerCase().replace(/\s+/g,'');
+    const k = i.title.slice(0,50).toLowerCase().replace(/\s+/g,'');
     if (seen.has(k)) return false;
     seen.add(k); return true;
   });
 
-  if (rssItems.length) setRSSStatus('teal','●', rssItems.length + ' RSS-meldingen');
-  else setRSSStatus('amber','○','RSS-bronnen niet bereikbaar');
-
-  btn.classList.remove('go');
+  if (rssItems.length > 0) {
+    setRSS('teal','●', rssItems.length + ' hulpdienst-meldingen gevonden');
+  } else {
+    setRSS('amber','○','Geen hulpdienst-meldingen gevonden in feeds');
+  }
+  document.getElementById('refBtn').classList.remove('go');
 }
 
-function setRSSStatus(c, ico, txt) {
+function setRSS(c, ico, txt) {
   document.getElementById('rssIco').textContent = ico;
   document.getElementById('rssIco').style.color = `var(--${c})`;
   document.getElementById('rssTxt').textContent = txt;
 }
 
-// ════════════════════════════════════════════════════════════════
-// RENDER
-// ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════
+// JSONBIN
+// ════════════════════════════════════════════════════════
+async function jbGet() {
+  try {
+    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}/latest`, {
+      headers: { 'X-Master-Key': CFG.JSONBIN_KEY }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const j = await r.json();
+    setJB('ok', '● Database verbonden');
+    return j.record || { alerts: [] };
+  } catch(e) {
+    setJB('err', '✕ Database fout: ' + e.message);
+    return null;
+  }
+}
+
+async function jbSet(data) {
+  try {
+    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}`, {
+      method: 'PUT',
+      headers: { 'Content-Type':'application/json','X-Master-Key':CFG.JSONBIN_KEY,'X-Bin-Versioning':'false' },
+      body: JSON.stringify(data)
+    });
+    return r.ok;
+  } catch { return false; }
+}
+
+function setJB(state, msg) {
+  const el = document.getElementById('jbStatus');
+  if (!el) return;
+  el.className = 'jb-row jb-' + state;
+  el.innerHTML = `<span>${msg}</span>`;
+}
+
+async function loadAdminAlerts(silent = false) {
+  if (!silent) setSrc('s-adm', 'load', 'laden');
+  const data = await jbGet();
+  if (!data) { setSrc('s-adm', 'err', 'fout'); return; }
+  adminAlerts = (data.alerts || []).sort((a,b) => new Date(b.ts) - new Date(a.ts));
+  const total = adminAlerts.length;
+  setSrc('s-adm', 'ok', total + ' items');
+  document.getElementById('apCount').textContent = total;
+  renderAdminList();
+}
+
+// ════════════════════════════════════════════════════════
+// PUBLISH
+// ════════════════════════════════════════════════════════
+async function publishHandmatig() {
+  const title = document.getElementById('h-title').value.trim();
+  if (!title) { hilite('h-title'); return; }
+  const btn = document.getElementById('h-send');
+  btn.disabled = true; btn.textContent = 'Publiceren...';
+
+  const entry = {
+    id:          'adm-' + Date.now(),
+    kind:        'HANDMATIG',         // onderscheid met test
+    displayType: document.getElementById('h-type').value,
+    title,
+    body:        document.getElementById('h-body').value.trim(),
+    loc:         document.getElementById('h-loc').value.trim() || 'België',
+    link:        document.getElementById('h-link').value.trim(),
+    ts:          new Date().toISOString(),
+  };
+
+  const data = await jbGet() || { alerts: [] };
+  data.alerts = [entry, ...data.alerts].slice(0, 60);
+  const ok = await jbSet(data);
+  if (ok) {
+    adminAlerts = data.alerts;
+    ['h-title','h-loc','h-body','h-link'].forEach(id => document.getElementById(id).value = '');
+    renderAdminList();
+    renderFeed(); updateStats(); updateRegions();
+    flashBtn(btn, '✓ Gepubliceerd!', 'teal', '↑ Handmatige melding publiceren voor iedereen');
+  } else {
+    flashBtn(btn, '✕ Fout — JSONBin geconfigureerd?', 'red', '↑ Handmatige melding publiceren voor iedereen');
+  }
+}
+
+async function publishTest() {
+  const title = document.getElementById('t-title').value.trim();
+  if (!title) { hilite('t-title'); return; }
+  const btn = document.getElementById('t-send');
+  btn.disabled = true; btn.textContent = 'Publiceren...';
+
+  const entry = {
+    id:          'test-' + Date.now(),
+    kind:        'TEST',
+    displayType: document.getElementById('t-type').value,
+    title,
+    body:        document.getElementById('t-body').value.trim(),
+    loc:         document.getElementById('t-loc').value.trim() || 'België',
+    link:        '',
+    ts:          new Date().toISOString(),
+  };
+
+  const data = await jbGet() || { alerts: [] };
+  data.alerts = [entry, ...data.alerts].slice(0, 60);
+  const ok = await jbSet(data);
+  if (ok) {
+    adminAlerts = data.alerts;
+    ['t-title','t-loc','t-body'].forEach(id => document.getElementById(id).value = '');
+    renderAdminList();
+    renderFeed(); updateStats(); updateRegions();
+    flashBtn(btn, '✓ Testmelding gepubliceerd!', 'teal', '⚗ Testmelding publiceren');
+  } else {
+    flashBtn(btn, '✕ Fout', 'red', '⚗ Testmelding publiceren');
+  }
+}
+
+async function deleteAlert(id) {
+  const data = await jbGet();
+  if (!data) return;
+  data.alerts = data.alerts.filter(a => a.id !== id);
+  const ok = await jbSet(data);
+  if (ok) {
+    adminAlerts = data.alerts;
+    document.getElementById('apCount').textContent = adminAlerts.length;
+    renderAdminList();
+    renderFeed(); updateStats(); updateRegions();
+  }
+}
+
+function renderAdminList() {
+  const list = document.getElementById('apList');
+  document.getElementById('apCount').textContent = adminAlerts.length;
+  if (!adminAlerts.length) {
+    list.innerHTML = '<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace;padding:8px 0">Geen gepubliceerde meldingen.</div>';
+    return;
+  }
+  list.innerHTML = adminAlerts.map(a => {
+    const isTest = a.kind === 'TEST';
+    const labelColor = isTest ? 'var(--orange)' : 'var(--amber)';
+    const typeLabel  = isTest ? '⚗ TEST' : '⚡ ' + (a.displayType || '');
+    return `<div class="ap-item">
+      <span class="ap-item-lbl">${esc(a.title)}</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:${labelColor};margin-right:6px;white-space:nowrap">${typeLabel}</span>
+      <button class="del-btn" onclick="deleteAlert('${a.id}')">✕ Wis</button>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════════
+// RENDER FEED
+// ════════════════════════════════════════════════════════
 function allItems() {
-  const admin = adminAlerts.map(a => ({ ...a, isAdmin: true }));
-  return [...admin, ...rssItems];
+  // Zet adminAlerts om naar feed-formaat
+  const adminMapped = adminAlerts.map(a => ({
+    ...a,
+    type:    a.kind === 'TEST' ? 'TEST' : 'HANDMATIG',
+    isAdmin: true,
+    isTest:  a.kind === 'TEST',
+    src:     a.kind === 'TEST' ? '⚗ Testmelding' : '⚡ Handmatige melding',
+  }));
+  return [...adminMapped, ...rssItems];
 }
 
 function renderFeed() {
-  const feed = document.getElementById('feed');
+  const feedEl = document.getElementById('feed');
   let list = allItems();
-  if (activeFilter === 'ADMIN') list = list.filter(i => i.isAdmin);
-  else if (activeFilter !== 'ALL') {
-    list = list.filter(i => {
-      const t = i.isAdmin ? (i.displayType || i.type) : i.type;
-      return t === activeFilter;
-    });
-  }
+
+  if (activeFilter === 'TEST')      list = list.filter(i => i.isTest);
+  else if (activeFilter === 'HANDMATIG') list = list.filter(i => i.isAdmin && !i.isTest);
+  else if (activeFilter !== 'ALL')  list = list.filter(i => {
+    const t = i.isAdmin ? i.displayType : i.type;
+    return t === activeFilter;
+  });
 
   if (!list.length) {
-    feed.innerHTML = `<div class="empty">${
-      activeFilter === 'ADMIN'
-        ? 'Geen admin-meldingen gepubliceerd.<br>Log in als admin om meldingen toe te voegen.'
-        : rssItems.length === 0 && adminAlerts.length === 0
-          ? 'Geen data beschikbaar.<br>RSS-feeds niet bereikbaar.<br>Klik Vernieuwen om opnieuw te proberen.'
-          : 'Geen meldingen voor dit filter.'
+    feedEl.innerHTML = `<div class="empty">${
+      activeFilter === 'TEST'      ? 'Geen testmeldingen. Open adminpaneel → ⚗ Testmelding.' :
+      activeFilter === 'HANDMATIG' ? 'Geen handmatige meldingen.' :
+      rssItems.length === 0 && adminAlerts.length === 0
+        ? 'Geen data beschikbaar.<br>Controleer je verbinding of klik Vernieuwen.'
+        : 'Geen meldingen voor dit filter.'
     }</div>`;
     return;
   }
-  feed.innerHTML = list.map(renderCard).join('');
+  feedEl.innerHTML = list.map(renderCard).join('');
 }
 
 function renderCard(inc) {
-  const type    = inc.isAdmin ? (inc.displayType || 'BRAND') : inc.type;
-  const badgeCls = inc.isAdmin ? 'ADMIN' : inc.type;
-  const badgeTxt = inc.isAdmin ? (inc.displayType || inc.type) : inc.type;
-  const ts      = fmtTime(inc.ts);
-  const rssBadge = !inc.isAdmin ? `<span class="bdg bdg-rss">RSS</span>` : '';
-  const admBadge = inc.isAdmin  ? `<span class="bdg bdg-adm-tag">⚡ officieel</span>` : '';
-  const srcHtml  = inc.link && inc.link !== '#'
+  const isTest    = inc.isTest;
+  const isManual  = inc.isAdmin && !isTest;
+  const cardType  = isTest ? 'TEST' : isManual ? 'HANDMATIG' : inc.type;
+  const badgeTxt  = isTest ? 'TEST' : isManual ? (inc.displayType||'MELDING') : inc.type;
+  const badgeCls  = isTest ? 'bdg-TEST' : isManual ? 'bdg-HANDMATIG' : 'bdg-' + inc.type;
+
+  const rssBadge  = (!inc.isAdmin) ? `<span class="bdg bdg-rss">RSS</span>` : '';
+  const adminTag  = isManual ? `<span style="font-size:8px;color:var(--amber);font-family:'DM Mono',monospace;margin-left:4px;opacity:.8">⚡ handmatig</span>` : '';
+  const testTag   = isTest   ? `<span style="font-size:8px;color:var(--orange);font-family:'DM Mono',monospace;margin-left:4px;opacity:.9">⚗ testmelding</span>` : '';
+
+  const srcHtml   = (inc.link && inc.link !== '#')
     ? `<a href="${esc(inc.link)}" target="_blank" rel="noopener">${esc(inc.src||'bron')} ↗</a>`
     : esc(inc.src || 'onbekend');
-  const delBtn = inc.isAdmin && isAdmin
+
+  const delBtn    = inc.isAdmin && isAdmin
     ? `<button class="del-btn" onclick="deleteAlert('${inc.id}')">✕ Wis</button>` : '';
 
-  return `<div class="inc${inc.isAdmin?' is-admin':''}" data-t="${inc.isAdmin?'ADMIN':inc.type}">
+  return `<div class="inc${inc.isAdmin?' is-admin':''}${isTest?' is-test':''}" data-t="${cardType}">
     <div class="inc-top">
       <div class="inc-title">${esc(inc.title)}</div>
-      <span class="bdg bdg-${badgeCls}">${badgeTxt}</span>
+      <span class="bdg ${badgeCls}">${badgeTxt}</span>
     </div>
     <div class="inc-meta">
       <span class="inc-loc">📍 ${esc(inc.loc||'België')}</span>
-      <span>${ts}</span>${rssBadge}${admBadge}
+      <span>${fmtTime(inc.ts)}</span>${rssBadge}${adminTag}${testTag}
     </div>
-    ${inc.body?`<div class="inc-body">${esc(inc.body)}${inc.body.length>=240?'…':''}</div>`:''}
+    ${inc.body ? `<div class="inc-body">${esc(inc.body)}${(inc.body||'').length>=280?'…':''}</div>` : ''}
     <div class="inc-src">Bron: ${srcHtml}${delBtn}</div>
   </div>`;
 }
@@ -720,7 +791,7 @@ function renderCard(inc) {
 function fmtTime(dt) {
   if (!dt) return '';
   const diff = Math.floor((Date.now() - new Date(dt)) / 60000);
-  if (diff < 1)  return 'nu';
+  if (diff < 1) return 'nu';
   if (diff < 60) return diff + 'm geleden';
   const h = Math.floor(diff/60), m = diff%60;
   return m ? `${h}u ${m}m geleden` : `${h}u geleden`;
@@ -737,12 +808,16 @@ function setF(t, btn) {
   renderFeed();
 }
 
+// ════════════════════════════════════════════════════════
+// STATS + REGIONS
+// ════════════════════════════════════════════════════════
 function updateStats() {
-  const all = rssItems;
-  anim('stTotal', all.length + adminAlerts.length);
-  anim('stBrand',  all.filter(i=>i.type==='BRAND').length);
-  anim('stMed',    all.filter(i=>i.type==='MEDISCH').length);
-  anim('stNat',    all.filter(i=>i.type==='NATUUR'||i.type==='CRISIS').length);
+  const r = rssItems;
+  const adminCount = adminAlerts.length;
+  anim('stTotal', r.length + adminCount);
+  anim('stBrand',  r.filter(i=>i.type==='BRAND').length);
+  anim('stMed',    r.filter(i=>i.type==='MEDISCH').length);
+  anim('stNat',    r.filter(i=>i.type==='NATUUR'||i.type==='CRISIS').length);
 }
 
 function anim(id, target) {
@@ -750,23 +825,94 @@ function anim(id, target) {
   const s = parseInt(el.textContent)||0;
   if (s===target){el.textContent=target;return;}
   let n=0;
-  const iv=setInterval(()=>{n++;el.textContent=Math.round(s+(target-s)*(n/14));if(n>=14){clearInterval(iv);el.textContent=target;}},22);
+  const iv=setInterval(()=>{ n++; el.textContent=Math.round(s+(target-s)*(n/14)); if(n>=14){clearInterval(iv);el.textContent=target;} },22);
 }
 
 function updateRegions() {
   const counts = {};
-  [...rssItems, ...adminAlerts].forEach(i => { counts[i.loc||'België']=(counts[i.loc||'België']||0)+1; });
+  [...rssItems, ...adminAlerts].forEach(i=>{
+    const loc = i.loc || 'België';
+    counts[loc] = (counts[loc]||0) + 1;
+  });
   const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);
   document.getElementById('regList').innerHTML = sorted.length
     ? sorted.map(([r,c])=>`<div class="reg-item"><span>${esc(r)}</span><span class="reg-c">${c}</span></div>`).join('')
     : `<div style="font-size:11px;color:var(--text3);padding:6px 0">Geen data</div>`;
 }
 
-function highlight(id) {
+// ════════════════════════════════════════════════════════
+// AUTH + ADMIN PANEL
+// ════════════════════════════════════════════════════════
+function openAdminOrLogin() {
+  if (isAdmin) { openAdmin(); return; }
+  document.getElementById('loginOverlay').classList.add('on');
+  document.getElementById('loPass').value = '';
+  document.getElementById('loErr').textContent = '';
+  setTimeout(() => document.getElementById('loPass').focus(), 80);
+}
+
+function doLogin() {
+  if (document.getElementById('loPass').value === CFG.ADMIN_PASS) {
+    isAdmin = true;
+    document.getElementById('loginOverlay').classList.remove('on');
+    document.getElementById('aBanner').classList.add('on');
+    document.getElementById('adminBtn').classList.add('aa');
+    document.getElementById('adminBtn').textContent = '⚡ Admin';
+    openAdmin();
+  } else {
+    document.getElementById('loErr').textContent = '✕ Ongeldig wachtwoord';
+    document.getElementById('loPass').style.borderColor = 'var(--red)';
+    setTimeout(()=>{ document.getElementById('loErr').textContent=''; document.getElementById('loPass').style.borderColor=''; }, 2500);
+  }
+}
+
+function logout() {
+  isAdmin = false;
+  document.getElementById('aBanner').classList.remove('on');
+  document.getElementById('adminBtn').classList.remove('aa');
+  document.getElementById('adminBtn').textContent = '🔐 Admin';
+  closeAdmin();
+  renderFeed(); // herrender zonder delete-knoppen
+}
+
+function openAdmin() {
+  document.getElementById('adminPanel').classList.add('on');
+  loadAdminAlerts();
+}
+
+function closeAdmin() {
+  document.getElementById('adminPanel').classList.remove('on');
+}
+
+function switchTab(name) {
+  ['handmatig','test','list'].forEach(t => {
+    document.getElementById('tab-' + (t==='list'?'l':t==='handmatig'?'h':'t')).classList.remove('on');
+    document.getElementById('pane-' + t).classList.remove('on');
+  });
+  const tabId = name === 'list' ? 'tab-l' : name === 'handmatig' ? 'tab-h' : 'tab-t';
+  document.getElementById(tabId).classList.add('on');
+  document.getElementById('pane-' + name).classList.add('on');
+  if (name === 'list') renderAdminList();
+}
+
+// ════════════════════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════════════════════
+function hilite(id) {
   const el = document.getElementById(id);
   el.style.borderColor = 'var(--red)';
   el.focus();
-  setTimeout(() => el.style.borderColor='', 2000);
+  setTimeout(()=>el.style.borderColor='', 2000);
+}
+
+function flashBtn(btn, msg, color, orig) {
+  const colors = {
+    teal: 'background:rgba(59,255,194,.1);border-color:rgba(59,255,194,.3);color:var(--teal)',
+    red:  'background:rgba(255,59,59,.1);border-color:rgba(255,59,59,.3);color:var(--red)',
+  };
+  btn.textContent = msg;
+  btn.style.cssText = colors[color] || '';
+  setTimeout(()=>{ btn.textContent=orig; btn.style.cssText=''; btn.disabled=false; }, 2500);
 }
 
 function tick() {
@@ -775,9 +921,9 @@ function tick() {
     `${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
 }
 
-// ════════════════════════════════════════════════════════════════
-// LOAD ALL + TIMERS
-// ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
 async function loadAll() {
   await Promise.all([loadRSS(), loadAdminAlerts(true)]);
   renderFeed();
@@ -785,45 +931,11 @@ async function loadAll() {
   updateRegions();
 }
 
-// Init
 loadAll();
-setInterval(loadAll, 10 * 60 * 1000);           // RSS elke 10 min
-setInterval(() => loadAdminAlerts(true), 30000); // Admin-meldingen elke 30 sec
+setInterval(loadAll, 10 * 60 * 1000);
+setInterval(() => loadAdminAlerts(true).then(() => { renderFeed(); updateStats(); updateRegions(); }), 30000);
 setInterval(tick, 1000);
 tick();
 </script>
-
-<!--
-════════════════════════════════════════════════════════
-  SETUP-INSTRUCTIES (verwijder dit na configuratie)
-════════════════════════════════════════════════════════
-
-STAP 1 — JSONBin instellen (gratis, 2 min):
-  1. Ga naar https://jsonbin.io en maak een gratis account
-  2. Klik op "Create a Bin"
-  3. Plak als inhoud: {"alerts":[]}
-  4. Klik Save — kopieer de Bin ID (in de URL, bijv. 6627f3e5...)
-  5. Ga naar Account → API Keys → kopieer je Master Key
-
-STAP 2 — Dit bestand configureren:
-  Zoek bovenaan in de <script> het CFG-object en vul in:
-    JSONBIN_ID:  'jouw-bin-id'
-    JSONBIN_KEY: '$2a$10$jouw-api-key'
-    ADMIN_PASS:  'jouw-geheim-wachtwoord'
-
-STAP 3 — Hosten op GitHub Pages (gratis, altijd online):
-  1. Ga naar github.com → nieuw repository (bijv. "hulp112")
-  2. Upload dit bestand als "index.html"
-  3. Settings → Pages → Branch: main → Save
-  4. Klaar! Beschikbaar op: jounaam.github.io/hulp112
-
-ADMIN GEBRUIKEN:
-  - Klik op "🔐 Admin" rechtsboven
-  - Voer je wachtwoord in
-  - Het adminpaneel opent — publiceer meldingen die iedereen ziet
-  - Meldingen worden opgeslagen in JSONBin en verschijnen bij alle bezoekers
-  - Iedereen ziet de meldingen, alleen jij kan ze toevoegen/wissen
-════════════════════════════════════════════════════════
--->
 </body>
 </html>
