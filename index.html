@@ -108,7 +108,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .reg-item{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
 .reg-c{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);padding:1px 6px;border-radius:2px}
 
-/* LOGIN */
 #loginOverlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);align-items:center;justify-content:center}
 #loginOverlay.on{display:flex}
 .lo-box{background:var(--bg2);border:1px solid rgba(255,184,59,.3);border-radius:8px;width:min(340px,92vw);padding:2rem}
@@ -120,7 +119,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .lo-btn:hover{background:rgba(255,184,59,.2)}
 .lo-err{font-size:11px;color:var(--red);font-family:'DM Mono',monospace;margin-top:7px;min-height:16px}
 
-/* ADMIN PANEL */
 #adminPanel{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);align-items:center;justify-content:center}
 #adminPanel.on{display:flex}
 .ap-box{background:var(--bg2);border:1px solid rgba(255,184,59,.28);border-radius:8px;width:min(520px,96vw);max-height:92vh;overflow-y:auto;padding:1.75rem}
@@ -128,7 +126,7 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .ap-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--amber)}
 .ap-close{background:transparent;border:1px solid var(--border2);color:var(--text2);width:28px;height:28px;border-radius:3px;cursor:pointer;font-size:14px;transition:all .15s}
 .ap-close:hover{background:var(--bg3);color:var(--text)}
-.ap-tabs{display:flex;gap:0;margin-bottom:1.25rem;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
+.ap-tabs{display:flex;margin-bottom:1.25rem;border:1px solid var(--border2);border-radius:4px;overflow:hidden}
 .ap-tab{flex:1;font-family:'DM Mono',monospace;font-size:11px;padding:8px;border:none;background:transparent;color:var(--text3);cursor:pointer;transition:all .15s;border-right:1px solid var(--border2)}
 .ap-tab:last-child{border-right:none}
 .ap-tab:hover{background:var(--bg3);color:var(--text2)}
@@ -150,7 +148,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .ap-btn:disabled{opacity:.4;cursor:not-allowed}
 .ap-btn-test{background:rgba(255,140,66,.1);border-color:rgba(255,140,66,.35);color:var(--orange)}
 .ap-btn-test:hover{background:rgba(255,140,66,.2)}
-.ap-sep{height:1px;background:var(--border);margin:1.1rem 0}
 .ap-list-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
 .ap-item{display:flex;align-items:center;justify-content:space-between;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:5px;font-size:12px;gap:8px}
 .ap-item-lbl{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -174,7 +171,6 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
 <body>
 <div class="wrap">
 
-<!-- LOGIN -->
 <div id="loginOverlay">
   <div class="lo-box">
     <div class="lo-title">🔐 Admin toegang</div>
@@ -185,7 +181,6 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
 <div id="adminPanel">
   <div class="ap-box">
     <div class="ap-hdr">
@@ -198,8 +193,6 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <button class="ap-tab tt" id="tab-t" onclick="switchTab('t')">⚗ Testmelding</button>
       <button class="ap-tab" id="tab-l" onclick="switchTab('l')">📋 Beheer (<span id="apCount">0</span>)</button>
     </div>
-
-    <!-- HANDMATIG -->
     <div class="ap-pane on" id="pane-h">
       <div class="ap-row"><div class="ap-lbl">Titel *</div>
         <input class="ap-inp" id="h-title" placeholder="bijv. Woningbrand Vrijdagmarkt, Gent"></div>
@@ -221,12 +214,10 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
         <input class="ap-inp" id="h-link" placeholder="https://..."></div>
       <button class="ap-btn" id="h-send" onclick="publishHandmatig()">↑ Handmatige melding publiceren voor iedereen</button>
     </div>
-
-    <!-- TEST -->
     <div class="ap-pane" id="pane-t">
-      <div class="test-notice">⚗ Testmeldingen zijn zichtbaar voor iedereen met een duidelijke oranje "TEST"-markering. Gebruik dit om de site te testen.</div>
+      <div class="test-notice">⚗ Testmeldingen zijn zichtbaar voor iedereen met een oranje "TEST"-markering.</div>
       <div class="ap-row"><div class="ap-lbl">Titel testmelding *</div>
-        <input class="ap-inp" id="t-title" placeholder="bijv. TEST — Oefening brandweer zone Oost"></div>
+        <input class="ap-inp" id="t-title" placeholder="bijv. TEST — Oefening brandweer"></div>
       <div class="ap-2col">
         <div class="ap-row"><div class="ap-lbl">Gesimuleerd type</div>
           <select class="ap-sel" id="t-type">
@@ -240,11 +231,9 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
           <input class="ap-inp" id="t-loc" placeholder="bijv. Antwerpen"></div>
       </div>
       <div class="ap-row"><div class="ap-lbl">Beschrijving (optioneel)</div>
-        <textarea class="ap-ta" id="t-body" placeholder="Details van de testmelding..."></textarea></div>
+        <textarea class="ap-ta" id="t-body" placeholder="Details..."></textarea></div>
       <button class="ap-btn ap-btn-test" id="t-send" onclick="publishTest()">⚗ Testmelding publiceren</button>
     </div>
-
-    <!-- LIJST -->
     <div class="ap-pane" id="pane-l">
       <div class="ap-list-title">Alle gepubliceerde meldingen</div>
       <div id="apList"></div>
@@ -252,7 +241,6 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
   </div>
 </div>
 
-<!-- HEADER -->
 <header>
   <div class="logo"><div class="logo-dot"></div>Hulp112</div>
   <div class="hdr-r">
@@ -262,11 +250,10 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
   </div>
 </header>
 <div id="aBanner">
-  <div class="ab-dot"></div>ADMIN INGELOGD — Meldingen zichtbaar voor alle bezoekers.
+  <div class="ab-dot"></div>ADMIN INGELOGD
   <span style="margin-left:auto;cursor:pointer;opacity:.6" onclick="logout()">Uitloggen ✕</span>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <h1 class="hero-title">Belgische<br><em>hulpdienst</em>meldingen</h1>
   <p class="hero-sub">Live nieuwsfeeds gefilterd op hulpdiensten + handmatige meldingen — 100% legaal</p>
@@ -285,7 +272,7 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <button class="spin-btn" id="refBtn" onclick="loadAll()"><span class="si">↻</span> Vernieuwen</button>
     </div>
     <div class="notice">
-      <strong>Hoe werkt dit?</strong> — VRT NWS, HLN en andere Belgische nieuwsfeeds worden opgehaald via <strong>rss2json.com</strong> en gefilterd op trefwoorden als "brand", "brandweer", "ambulance", "politie". Handmatige en testmeldingen komen van de admin.
+      <strong>Hoe werkt dit?</strong> — Belgische nieuwsfeeds worden live opgehaald en gefilterd op trefwoorden als "brand", "brandweer", "ambulance", "verkeersongeval". Bij proxy-fouten wordt automatisch een werkende fallback geprobeerd.
     </div>
     <div class="rss-row">
       <span id="rssIco" style="color:var(--amber)">○</span>
@@ -310,6 +297,7 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
     <div class="src-item"><span>VRT NWS</span><span class="src-s s-load" id="s-vrt"><span class="dot-s"></span><span>laden</span></span></div>
     <div class="src-item"><span>HLN.be</span><span class="src-s s-load" id="s-hln"><span class="dot-s"></span><span>laden</span></span></div>
     <div class="src-item"><span>Nieuwsblad.be</span><span class="src-s s-load" id="s-nwsblad"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="src-item"><span>De Morgen</span><span class="src-s s-load" id="s-dm"><span class="dot-s"></span><span>laden</span></span></div>
     <div class="src-item"><span>RTBFinfo</span><span class="src-s s-load" id="s-rtbf"><span class="dot-s"></span><span>laden</span></span></div>
     <div class="src-item"><span>Handmatig / Test</span><span class="src-s s-load" id="s-adm"><span class="dot-s"></span><span>laden</span></span></div>
     <div class="sep"></div>
@@ -327,88 +315,81 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <div><span style="color:var(--orange)">▒</span> Testmelding</div>
     </div>
     <div style="font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1.25rem;line-height:2">
-      API: rss2json.com<br>Auto-refresh: 10 min<br>Admin-sync: 30 sec<br>© Hulp112
+      Multi-proxy fallback<br>Auto-refresh: 10 min<br>Admin-sync: 30 sec<br>© Hulp112
     </div>
   </div>
 </div>
 
 <footer>
-  <div><span class="tag">legaal</span><span class="tag">rss2json</span><span class="tag">nieuwsfeeds</span><span class="tag">België</span></div>
+  <div><span class="tag">legaal</span><span class="tag">multi-proxy</span><span class="tag">nieuwsfeeds</span><span class="tag">België</span></div>
   <div>hulp112 — niet verbonden met 112 of overheid</div>
 </footer>
 </div>
 
 <script>
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // CONFIGURATIE
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 const CFG = {
   JSONBIN_ID:  '69e3677736566621a8c7d68a',
   JSONBIN_KEY: '$2a$10$CdVZpTU3GQoVWqu7BP2pCe6gG7ZJy7iXIP/QRdbdl1UF5.hSfy3EC',
   ADMIN_PASS:  'hulp112admin',
-  // rss2json.com: gratis, 10k requests/dag, werkt correct in browsers
-  RSS2JSON:    'https://api.rss2json.com/v1/api.json?rss_url=',
 };
 
-// ════════════════════════════════════════════════
-// FEEDS — Belgische nieuwssites met werkende RSS
-// rss2json haalt de XML op server-side op en
-// geeft JSON terug met CORS-headers → werkt altijd
-// ════════════════════════════════════════════════
-const FEEDS = [
-  {
-    id:   's-vrt',
-    name: 'VRT NWS',
-    url:  'https://www.vrt.be/vrtnws/nl.rss.articles.xml',
-  },
-  {
-    id:   's-hln',
-    name: 'HLN.be',
-    url:  'https://www.hln.be/home/rss.xml',
-  },
-  {
-    id:   's-nwsblad',
-    name: 'Nieuwsblad',
-    url:  'https://www.nieuwsblad.be/rss/section/f1812710-46d8-11e2-a6a8-00163edf3e2e',
-  },
-  {
-    id:   's-rtbf',
-    name: 'RTBFinfo',
-    url:  'https://www.rtbf.be/api/partner/v2/search?q=incendie+pompiers&format=rss&client_id=rtbfinfo',
-  },
+// ═══════════════════════════════════════════════════════
+// PROXY CHAIN — worden in volgorde geprobeerd per feed
+// Als proxy 1 faalt → proxy 2 → proxy 3, etc.
+// ═══════════════════════════════════════════════════════
+const PROXIES = [
+  // corsproxy.io: geen key, directe response als text
+  url => ({ fetchUrl: `https://corsproxy.io/?url=${encodeURIComponent(url)}`, type: 'text' }),
+  // allorigins raw: geeft content direct terug
+  url => ({ fetchUrl: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, type: 'text' }),
+  // allorigins json wrapper
+  url => ({ fetchUrl: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, type: 'json' }),
+  // thingproxy
+  url => ({ fetchUrl: `https://thingproxy.freeboard.io/fetch/${url}`, type: 'text' }),
 ];
 
-// Hulpdienst-trefwoorden (NL + FR)
+// ═══════════════════════════════════════════════════════
+// FEEDS
+// ═══════════════════════════════════════════════════════
+const FEEDS = [
+  { id:'s-vrt',     name:'VRT NWS',      url:'https://www.vrt.be/vrtnws/nl.rss.articles.xml' },
+  { id:'s-hln',     name:'HLN.be',       url:'https://www.hln.be/home/rss.xml' },
+  { id:'s-nwsblad', name:'Nieuwsblad',   url:'https://www.nieuwsblad.be/rss/section/f1812710-46d8-11e2-a6a8-00163edf3e2e' },
+  { id:'s-dm',      name:'De Morgen',    url:'https://www.demorgen.be/in-het-nieuws/rss.xml' },
+  { id:'s-rtbf',    name:'RTBFinfo',     url:'https://www.rtbf.be/rss/info/a-la-une.xml' },
+];
+
 const KW = [
-  'brandweer','brand ','brand te ','brand bij ','brand in ','bluswerken','gaslek',
-  'ontploffing','explosie','schoorsteenbrand','woningbrand','industriebrand',
-  'ambulance','ziekenwagen','mug ','reanimatie','hartstilstand','gewond','gewonden',
-  'verkeersongeval','aanrijding','botsing','zwaargewond','vluchtmisdrijf',
-  'politie','overval','klopjacht','inbraak','schietpartij','steekpartij',
+  'brandweer','bluswerken','gaslek','ontploffing','explosie','schoorsteenbrand',
+  'woningbrand','industriebrand','brand te ','brand in ','brand bij ','brand op ',
+  'ambulance','ziekenwagen',' mug ','reanimatie','hartstilstand','gewonden','gewond',
+  'verkeersongeval','aanrijding','botsing','klopjacht','overval','schietpartij',
   'overstroming','wateroverlast','stormschade','chemisch lek','gevaarlijke stof',
   'evacuatie','noodplan','crisissituatie',
-  'incendie','pompiers','blessés','accident','inondation','évacuation','explosion',
+  'incendie','pompiers','blessés','accident de la route','inondation','évacuation',
 ];
 
 const CITIES = [
   'Antwerpen','Gent','Brussel','Brugge','Leuven','Luik','Charleroi','Namen',
   'Hasselt','Kortrijk','Mechelen','Aalst','Turnhout','Roeselare','Genk',
   'Sint-Niklaas','Dendermonde','Ieper','Mouscron','Verviers','Arlon','Mons',
-  'Liège','Namur','Oostende','Vilvoorde','Waregem','Deinze','Oudenaarde',
-  'Lier','Herentals','Beringen','Lommel','Tongeren','Sint-Truiden',
+  'Liège','Namur','Oostende','Vilvoorde','Lier','Beringen','Lommel','Tongeren',
 ];
 
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // STATE
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 let rssItems    = [];
 let adminAlerts = [];
 let activeFilter = 'ALL';
 let isAdmin     = false;
 
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // HELPERS
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function isRelevant(text) {
   const t = (text||'').toLowerCase();
   return KW.some(k => t.includes(k));
@@ -416,18 +397,16 @@ function isRelevant(text) {
 
 function classify(text) {
   const t = (text||'').toLowerCase();
-  if (/brandweer|bluswerk|gaslek|ontploff|explosie|schoorst|woningbrand|industriebrand|brand |incendie|pompiers/.test(t)) return 'BRAND';
-  if (/\bmug\b|ambulan|ziekenwagen|reanimat|hartstilstand|spoedeis|blessés/.test(t)) return 'MEDISCH';
-  if (/politie|verkeersongeval|botsing|aanrijding|overval|klopjacht|schietpartij|steekpartij|accident de la route/.test(t)) return 'POLITIE';
-  if (/overstroming|wateroverlast|storm|chemisch|gevaarlijk|milieu|inondation|évacuation/.test(t)) return 'NATUUR';
+  if (/brandweer|bluswerk|gaslek|ontploff|explosie|schoorst|woningbrand|industriebrand|brand te|brand in|brand bij|brand op|incendie|pompiers/.test(t)) return 'BRAND';
+  if (/\bmug\b|ambulan|ziekenwagen|reanimat|hartstilstand|spoedeis|urgences/.test(t)) return 'MEDISCH';
+  if (/politie|verkeersongeval|botsing|aanrijding|overval|klopjacht|schietpartij|accident de la route/.test(t)) return 'POLITIE';
+  if (/overstroming|wateroverlast|storm|chemisch lek|gevaarlijk|milieu|inondation|évacuation/.test(t)) return 'NATUUR';
   if (/crisis|noodplan|cbrn|nucleair|evacuati/.test(t)) return 'CRISIS';
-  return 'BRAND'; // default als KW matcht maar geen specifiek type
+  return 'BRAND';
 }
 
 function extractCity(text) {
-  for (const c of CITIES) {
-    if ((text||'').toLowerCase().includes(c.toLowerCase())) return c;
-  }
+  for (const c of CITIES) if ((text||'').toLowerCase().includes(c.toLowerCase())) return c;
   return 'België';
 }
 
@@ -453,86 +432,104 @@ function setSrc(id, st, lbl) {
 
 function hilite(id) {
   const el = document.getElementById(id);
-  el.style.borderColor = 'var(--red)'; el.focus();
-  setTimeout(()=>el.style.borderColor='', 2000);
+  el.style.borderColor='var(--red)'; el.focus();
+  setTimeout(()=>el.style.borderColor='',2000);
 }
 
 function flashBtn(btn, msg, color, orig) {
-  const c = { teal:'background:rgba(59,255,194,.1);border-color:rgba(59,255,194,.3);color:var(--teal)', red:'background:rgba(255,59,59,.1);border-color:rgba(255,59,59,.3);color:var(--red)' };
-  btn.textContent = msg; btn.style.cssText = c[color]||'';
-  setTimeout(()=>{ btn.textContent=orig; btn.style.cssText=''; btn.disabled=false; }, 2500);
+  const c={teal:'background:rgba(59,255,194,.1);border-color:rgba(59,255,194,.3);color:var(--teal)',red:'background:rgba(255,59,59,.1);border-color:rgba(255,59,59,.3);color:var(--red)'};
+  btn.textContent=msg; btn.style.cssText=c[color]||'';
+  setTimeout(()=>{btn.textContent=orig;btn.style.cssText='';btn.disabled=false;},2500);
 }
 
 function anim(id, target) {
-  const el = document.getElementById(id);
-  const s = parseInt(el.textContent)||0;
-  if (s===target){el.textContent=target;return;}
+  const el=document.getElementById(id);
+  const s=parseInt(el.textContent)||0;
+  if(s===target){el.textContent=target;return;}
   let n=0;
-  const iv=setInterval(()=>{ n++; el.textContent=Math.round(s+(target-s)*(n/14)); if(n>=14){clearInterval(iv);el.textContent=target;} },22);
+  const iv=setInterval(()=>{n++;el.textContent=Math.round(s+(target-s)*(n/14));if(n>=14){clearInterval(iv);el.textContent=target;}},22);
 }
 
-// ════════════════════════════════════════════════
-// RSS VIA rss2json.com
-// rss2json geeft JSON: { status, feed, items: [{title, link, pubDate, description, ...}] }
-// ════════════════════════════════════════════════
-async function fetchFeed(feed) {
-  setSrc(feed.id, 'load', 'laden');
-  const apiUrl = CFG.RSS2JSON + encodeURIComponent(feed.url) + '&count=40';
+// ═══════════════════════════════════════════════════════
+// FETCH MET PROXY FALLBACK
+// Probeert elke proxy in volgorde, retourneert XML string
+// ═══════════════════════════════════════════════════════
+async function fetchWithFallback(url) {
+  for (const proxyFn of PROXIES) {
+    const { fetchUrl, type } = proxyFn(url);
+    try {
+      const res = await fetch(fetchUrl, { signal: AbortSignal.timeout(10000) });
+      if (!res.ok) continue;
+      if (type === 'json') {
+        const j = await res.json();
+        const xml = j.contents || j.body || '';
+        if (xml.trim().length > 50) return xml;
+      } else {
+        const xml = await res.text();
+        if (xml.trim().length > 50) return xml;
+      }
+    } catch { /* probeer volgende proxy */ }
+  }
+  return null;
+}
+
+function parseRSS(xml, name) {
   try {
-    const res = await fetch(apiUrl, { signal: AbortSignal.timeout(15000) });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const j = await res.json();
-
-    if (j.status !== 'ok') throw new Error(j.message || 'API fout');
-
-    const items = (j.items || []);
-    const filtered = [];
-
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    // Check voor parse error
+    if (doc.querySelector('parsererror')) return [];
+    const items = Array.from(doc.querySelectorAll('item'));
+    const result = [];
     for (const item of items) {
-      const title = (item.title||'').trim();
-      const body  = (item.description||'').replace(/<[^>]+>/g,'').trim();
+      const title = (item.querySelector('title')?.textContent || '').replace(/<!\[CDATA\[|\]\]>/g,'').trim();
+      const rawDesc = item.querySelector('description')?.textContent || '';
+      const body = rawDesc.replace(/<!\[CDATA\[|\]\]>/g,'').replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/gi,' ').trim();
+      const link = item.querySelector('link')?.textContent?.trim() || '#';
+      const pub = item.querySelector('pubDate')?.textContent?.trim() || '';
       const combined = title + ' ' + body;
-
       if (!isRelevant(combined)) continue;
-
-      filtered.push({
+      result.push({
         id:      'rss-' + Math.random().toString(36).slice(2),
         type:    classify(combined),
         title,
-        body:    body.slice(0, 280),
+        body:    body.slice(0,280),
         loc:     extractCity(combined),
-        src:     feed.name,
-        link:    item.link || '#',
-        ts:      item.pubDate ? new Date(item.pubDate) : new Date(),
+        src:     name,
+        link,
+        ts:      pub ? new Date(pub) : new Date(),
         isAdmin: false,
         isTest:  false,
       });
-
-      if (filtered.length >= 10) break;
+      if (result.length >= 12) break;
     }
+    return result;
+  } catch { return []; }
+}
 
-    setSrc(feed.id, filtered.length > 0 ? 'ok' : 'skip',
-      filtered.length > 0 ? filtered.length + ' meldingen' : '0 relevant');
-    return filtered;
-
-  } catch(e) {
-    setSrc(feed.id, 'err', 'fout: ' + e.message.slice(0,20));
+async function fetchFeed(feed) {
+  setSrc(feed.id, 'load', 'laden');
+  const xml = await fetchWithFallback(feed.url);
+  if (!xml) {
+    setSrc(feed.id, 'err', 'niet bereikbaar');
     return [];
   }
+  const items = parseRSS(xml, feed.name);
+  setSrc(feed.id, items.length > 0 ? 'ok' : 'skip',
+    items.length > 0 ? items.length + ' meldingen' : '0 relevant');
+  return items;
 }
 
 async function loadRSS() {
   document.getElementById('refBtn').classList.add('go');
   document.getElementById('rssIco').textContent = '⟳';
   document.getElementById('rssIco').style.color = 'var(--amber)';
-  document.getElementById('rssTxt').textContent = 'Nieuws ophalen via rss2json...';
+  document.getElementById('rssTxt').textContent = 'Nieuws ophalen...';
 
   const results = await Promise.allSettled(FEEDS.map(fetchFeed));
   let all = [];
   results.forEach(r => { if (r.status==='fulfilled') all.push(...r.value); });
 
-  // Sorteer op datum, dedupliceer
-  all.sort((a,b) => new Date(b.ts) - new Date(a.ts));
+  all.sort((a,b) => new Date(b.ts)-new Date(a.ts));
   const seen = new Set();
   rssItems = all.filter(i => {
     const k = i.title.slice(0,50).toLowerCase().replace(/\s+/g,'');
@@ -540,143 +537,124 @@ async function loadRSS() {
     seen.add(k); return true;
   });
 
-  const ico = document.getElementById('rssIco');
-  const txt = document.getElementById('rssTxt');
-  const cnt = document.getElementById('rssCnt');
-
+  const ico=document.getElementById('rssIco'), txt=document.getElementById('rssTxt'), cnt=document.getElementById('rssCnt');
   if (rssItems.length > 0) {
-    ico.textContent = '●'; ico.style.color = 'var(--teal)';
-    txt.textContent = rssItems.length + ' meldingen gevonden';
-    cnt.textContent = '';
+    ico.textContent='●'; ico.style.color='var(--teal)';
+    txt.textContent=rssItems.length+' meldingen gevonden'; cnt.textContent='';
   } else {
-    ico.textContent = '○'; ico.style.color = 'var(--amber)';
-    txt.textContent = 'Geen relevante meldingen in feeds';
-    cnt.textContent = '(probeer later opnieuw)';
+    ico.textContent='○'; ico.style.color='var(--amber)';
+    txt.textContent='Geen hulpdienst-meldingen in feeds nu'; cnt.textContent='';
   }
-
   document.getElementById('refBtn').classList.remove('go');
 }
 
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // JSONBIN
-// ════════════════════════════════════════════════
-function setJB(state, msg) {
-  const el = document.getElementById('jbStatus');
-  if (!el) return;
-  el.className = 'jb-row jb-' + state;
-  document.getElementById('jbTxt').textContent = msg;
+// ═══════════════════════════════════════════════════════
+function setJB(st,msg){
+  const el=document.getElementById('jbStatus');
+  if(!el)return;
+  el.className='jb-row jb-'+st;
+  document.getElementById('jbTxt').textContent=msg;
 }
 
 async function jbGet() {
   try {
-    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}/latest`, {
-      headers: { 'X-Master-Key': CFG.JSONBIN_KEY }
-    });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}/latest`,
+      { headers:{'X-Master-Key':CFG.JSONBIN_KEY} });
+    if (!r.ok) throw new Error('HTTP '+r.status);
     const j = await r.json();
-    setJB('ok', '● Database verbonden');
-    return j.record || { alerts: [] };
-  } catch(e) {
-    setJB('err', '✕ ' + e.message);
-    return null;
-  }
+    setJB('ok','● Database verbonden');
+    return j.record || {alerts:[]};
+  } catch(e) { setJB('err','✕ '+e.message); return null; }
 }
 
 async function jbSet(data) {
   try {
     const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}`, {
-      method: 'PUT',
-      headers: { 'Content-Type':'application/json','X-Master-Key':CFG.JSONBIN_KEY,'X-Bin-Versioning':'false' },
-      body: JSON.stringify(data)
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':CFG.JSONBIN_KEY,'X-Bin-Versioning':'false'},
+      body:JSON.stringify(data)
     });
     return r.ok;
   } catch { return false; }
 }
 
-async function loadAdminAlerts(silent = false) {
-  if (!silent) setSrc('s-adm', 'load', 'laden');
+async function loadAdminAlerts(silent=false) {
+  if (!silent) setSrc('s-adm','load','laden');
   const data = await jbGet();
-  if (!data) { setSrc('s-adm', 'err', 'fout'); return; }
-  adminAlerts = (data.alerts||[]).sort((a,b) => new Date(b.ts)-new Date(a.ts));
-  setSrc('s-adm', 'ok', adminAlerts.length + ' items');
+  if (!data) { setSrc('s-adm','err','fout'); return; }
+  adminAlerts = (data.alerts||[]).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  setSrc('s-adm','ok',adminAlerts.length+' items');
   document.getElementById('apCount').textContent = adminAlerts.length;
   renderAdminList();
 }
 
-// ════════════════════════════════════════════════
-// PUBLISH
-// ════════════════════════════════════════════════
 async function publishHandmatig() {
   const title = document.getElementById('h-title').value.trim();
   if (!title) { hilite('h-title'); return; }
   const btn = document.getElementById('h-send');
-  btn.disabled = true; btn.textContent = 'Publiceren...';
+  btn.disabled=true; btn.textContent='Publiceren...';
   const entry = {
-    id: 'adm-' + Date.now(), kind: 'HANDMATIG',
-    displayType: document.getElementById('h-type').value,
-    title, body: document.getElementById('h-body').value.trim(),
-    loc: document.getElementById('h-loc').value.trim() || 'België',
-    link: document.getElementById('h-link').value.trim(),
-    ts: new Date().toISOString(),
+    id:'adm-'+Date.now(), kind:'HANDMATIG',
+    displayType:document.getElementById('h-type').value,
+    title, body:document.getElementById('h-body').value.trim(),
+    loc:document.getElementById('h-loc').value.trim()||'België',
+    link:document.getElementById('h-link').value.trim(),
+    ts:new Date().toISOString(),
   };
-  const data = await jbGet() || { alerts: [] };
-  data.alerts = [entry, ...data.alerts].slice(0, 60);
-  const ok = await jbSet(data);
-  if (ok) {
-    adminAlerts = data.alerts;
-    ['h-title','h-loc','h-body','h-link'].forEach(id => document.getElementById(id).value = '');
+  const data = await jbGet()||{alerts:[]};
+  data.alerts = [entry,...data.alerts].slice(0,60);
+  if (await jbSet(data)) {
+    adminAlerts=data.alerts;
+    ['h-title','h-loc','h-body','h-link'].forEach(id=>document.getElementById(id).value='');
     renderAdminList(); renderFeed(); updateStats(); updateRegions();
-    flashBtn(btn, '✓ Gepubliceerd!', 'teal', '↑ Handmatige melding publiceren voor iedereen');
-  } else {
-    flashBtn(btn, '✕ Fout — JSONBin geconfigureerd?', 'red', '↑ Handmatige melding publiceren voor iedereen');
-  }
+    flashBtn(btn,'✓ Gepubliceerd!','teal','↑ Handmatige melding publiceren voor iedereen');
+  } else flashBtn(btn,'✕ Fout','red','↑ Handmatige melding publiceren voor iedereen');
 }
 
 async function publishTest() {
   const title = document.getElementById('t-title').value.trim();
   if (!title) { hilite('t-title'); return; }
   const btn = document.getElementById('t-send');
-  btn.disabled = true; btn.textContent = 'Publiceren...';
+  btn.disabled=true; btn.textContent='Publiceren...';
   const entry = {
-    id: 'test-' + Date.now(), kind: 'TEST',
-    displayType: document.getElementById('t-type').value,
-    title, body: document.getElementById('t-body').value.trim(),
-    loc: document.getElementById('t-loc').value.trim() || 'België',
-    link: '', ts: new Date().toISOString(),
+    id:'test-'+Date.now(), kind:'TEST',
+    displayType:document.getElementById('t-type').value,
+    title, body:document.getElementById('t-body').value.trim(),
+    loc:document.getElementById('t-loc').value.trim()||'België',
+    link:'', ts:new Date().toISOString(),
   };
-  const data = await jbGet() || { alerts: [] };
-  data.alerts = [entry, ...data.alerts].slice(0, 60);
-  const ok = await jbSet(data);
-  if (ok) {
-    adminAlerts = data.alerts;
-    ['t-title','t-loc','t-body'].forEach(id => document.getElementById(id).value = '');
+  const data = await jbGet()||{alerts:[]};
+  data.alerts = [entry,...data.alerts].slice(0,60);
+  if (await jbSet(data)) {
+    adminAlerts=data.alerts;
+    ['t-title','t-loc','t-body'].forEach(id=>document.getElementById(id).value='');
     renderAdminList(); renderFeed(); updateStats(); updateRegions();
-    flashBtn(btn, '✓ Testmelding gepubliceerd!', 'teal', '⚗ Testmelding publiceren');
-  } else {
-    flashBtn(btn, '✕ Fout', 'red', '⚗ Testmelding publiceren');
-  }
+    flashBtn(btn,'✓ Testmelding gepubliceerd!','teal','⚗ Testmelding publiceren');
+  } else flashBtn(btn,'✕ Fout','red','⚗ Testmelding publiceren');
 }
 
 async function deleteAlert(id) {
   const data = await jbGet();
   if (!data) return;
-  data.alerts = data.alerts.filter(a => a.id !== id);
+  data.alerts = data.alerts.filter(a=>a.id!==id);
   if (await jbSet(data)) {
-    adminAlerts = data.alerts;
-    document.getElementById('apCount').textContent = adminAlerts.length;
+    adminAlerts=data.alerts;
+    document.getElementById('apCount').textContent=adminAlerts.length;
     renderAdminList(); renderFeed(); updateStats(); updateRegions();
   }
 }
 
 function renderAdminList() {
-  const list = document.getElementById('apList');
-  document.getElementById('apCount').textContent = adminAlerts.length;
+  const list=document.getElementById('apList');
+  document.getElementById('apCount').textContent=adminAlerts.length;
   if (!adminAlerts.length) {
-    list.innerHTML = '<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace;padding:8px 0">Geen gepubliceerde meldingen.</div>';
+    list.innerHTML='<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace;padding:8px 0">Geen gepubliceerde meldingen.</div>';
     return;
   }
-  list.innerHTML = adminAlerts.map(a => {
-    const isT = a.kind === 'TEST';
+  list.innerHTML=adminAlerts.map(a=>{
+    const isT=a.kind==='TEST';
     return `<div class="ap-item">
       <span class="ap-item-lbl">${esc(a.title)}</span>
       <span style="font-family:'DM Mono',monospace;font-size:9px;color:${isT?'var(--orange)':'var(--amber)'};margin-right:6px;white-space:nowrap">${isT?'⚗ TEST':'⚡ '+esc(a.displayType||'')}</span>
@@ -685,55 +663,44 @@ function renderAdminList() {
   }).join('');
 }
 
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // RENDER
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function allItems() {
-  const mapped = adminAlerts.map(a => ({
-    ...a,
-    type:    a.kind === 'TEST' ? 'TEST' : 'HANDMATIG',
-    isAdmin: true,
-    isTest:  a.kind === 'TEST',
-    src:     a.kind === 'TEST' ? '⚗ Testmelding' : '⚡ Handmatige melding',
-  }));
-  return [...mapped, ...rssItems];
+  return [
+    ...adminAlerts.map(a=>({...a,type:a.kind==='TEST'?'TEST':'HANDMATIG',isAdmin:true,isTest:a.kind==='TEST',src:a.kind==='TEST'?'⚗ Testmelding':'⚡ Handmatige melding'})),
+    ...rssItems
+  ];
 }
 
 function renderFeed() {
-  const feedEl = document.getElementById('feed');
-  let list = allItems();
-  if      (activeFilter === 'TEST')      list = list.filter(i => i.isTest);
-  else if (activeFilter === 'HANDMATIG') list = list.filter(i => i.isAdmin && !i.isTest);
-  else if (activeFilter !== 'ALL')       list = list.filter(i => {
-    const t = i.isAdmin ? i.displayType : i.type;
-    return t === activeFilter;
-  });
+  const feedEl=document.getElementById('feed');
+  let list=allItems();
+  if      (activeFilter==='TEST')      list=list.filter(i=>i.isTest);
+  else if (activeFilter==='HANDMATIG') list=list.filter(i=>i.isAdmin&&!i.isTest);
+  else if (activeFilter!=='ALL')       list=list.filter(i=>(i.isAdmin?i.displayType:i.type)===activeFilter);
 
   if (!list.length) {
-    feedEl.innerHTML = `<div class="empty">${
-      activeFilter==='TEST'      ? 'Geen testmeldingen. Adminpaneel → ⚗ Testmelding.' :
-      activeFilter==='HANDMATIG' ? 'Geen handmatige meldingen.' :
-      rssItems.length===0 && adminAlerts.length===0
-        ? 'Geen data. Controleer verbinding of klik Vernieuwen.'
-        : 'Geen meldingen voor dit filter.'
+    feedEl.innerHTML=`<div class="empty">${
+      activeFilter==='TEST'?'Geen testmeldingen. Adminpaneel → ⚗ Testmelding.':
+      activeFilter==='HANDMATIG'?'Geen handmatige meldingen.':
+      rssItems.length===0&&adminAlerts.length===0?'Geen data beschikbaar.\nControleer verbinding of klik Vernieuwen.':
+      'Geen meldingen voor dit filter.'
     }</div>`;
     return;
   }
-  feedEl.innerHTML = list.map(c => {
-    const isT = c.isTest;
-    const isM = c.isAdmin && !isT;
-    const ct  = isT ? 'TEST' : isM ? 'HANDMATIG' : c.type;
-    const bt  = isT ? 'TEST' : isM ? (c.displayType||'MELDING') : c.type;
-    const bc  = 'bdg-' + ct;
-    const rssBdg = !c.isAdmin ? `<span class="bdg bdg-src">${esc(c.src)}</span>` : '';
-    const admTag = isM ? `<span style="font-size:8px;color:var(--amber);font-family:'DM Mono',monospace;margin-left:4px">⚡ handmatig</span>` : '';
-    const tstTag = isT ? `<span style="font-size:8px;color:var(--orange);font-family:'DM Mono',monospace;margin-left:4px">⚗ testmelding</span>` : '';
-    const srcHtml = (c.link && c.link !== '#')
-      ? `<a href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.isAdmin ? c.src : c.src)} ↗</a>`
-      : esc(c.src||'');
-    const delBtn = c.isAdmin && isAdmin ? `<button class="del-btn" onclick="deleteAlert('${c.id}')">✕ Wis</button>` : '';
+
+  feedEl.innerHTML=list.map(c=>{
+    const isT=c.isTest, isM=c.isAdmin&&!isT;
+    const ct=isT?'TEST':isM?'HANDMATIG':c.type;
+    const bt=isT?'TEST':isM?(c.displayType||'MELDING'):c.type;
+    const rssBdg=!c.isAdmin?`<span class="bdg bdg-src">${esc(c.src)}</span>`:'';
+    const admTag=isM?`<span style="font-size:8px;color:var(--amber);font-family:'DM Mono',monospace;margin-left:4px">⚡ handmatig</span>`:'';
+    const tstTag=isT?`<span style="font-size:8px;color:var(--orange);font-family:'DM Mono',monospace;margin-left:4px">⚗ test</span>`:'';
+    const srcHtml=(c.link&&c.link!=='#')?`<a href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.src)} ↗</a>`:esc(c.src||'');
+    const delBtn=c.isAdmin&&isAdmin?`<button class="del-btn" onclick="deleteAlert('${c.id}')">✕ Wis</button>`:'';
     return `<div class="inc${c.isAdmin?' is-admin':''}${isT?' is-test':''}" data-t="${ct}">
-      <div class="inc-top"><div class="inc-title">${esc(c.title)}</div><span class="bdg ${bc}">${bt}</span></div>
+      <div class="inc-top"><div class="inc-title">${esc(c.title)}</div><span class="bdg bdg-${ct}">${bt}</span></div>
       <div class="inc-meta"><span class="inc-loc">📍 ${esc(c.loc||'België')}</span><span>${fmtTime(c.ts)}</span>${rssBdg}${admTag}${tstTag}</div>
       ${c.body?`<div class="inc-body">${esc(c.body)}${(c.body||'').length>=280?'…':''}</div>`:''}
       <div class="inc-src">Bron: ${srcHtml}${delBtn}</div>
@@ -741,93 +708,93 @@ function renderFeed() {
   }).join('');
 }
 
-function setF(t, btn) {
-  activeFilter = t;
-  document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderFeed();
+function setF(t,btn){
+  activeFilter=t;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on'); renderFeed();
 }
 
-function updateStats() {
-  anim('stTotal', rssItems.length + adminAlerts.length);
-  anim('stBrand',  rssItems.filter(i=>i.type==='BRAND').length);
-  anim('stMed',    rssItems.filter(i=>i.type==='MEDISCH').length);
-  anim('stNat',    rssItems.filter(i=>i.type==='NATUUR'||i.type==='CRISIS').length);
+function updateStats(){
+  anim('stTotal',rssItems.length+adminAlerts.length);
+  anim('stBrand',rssItems.filter(i=>i.type==='BRAND').length);
+  anim('stMed',rssItems.filter(i=>i.type==='MEDISCH').length);
+  anim('stNat',rssItems.filter(i=>i.type==='NATUUR'||i.type==='CRISIS').length);
 }
 
-function updateRegions() {
-  const counts = {};
-  [...rssItems, ...adminAlerts].forEach(i=>{
-    const l = i.loc||'België';
-    counts[l] = (counts[l]||0)+1;
-  });
-  const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);
-  document.getElementById('regList').innerHTML = sorted.length
-    ? sorted.map(([r,c])=>`<div class="reg-item"><span>${esc(r)}</span><span class="reg-c">${c}</span></div>`).join('')
-    : `<div style="font-size:11px;color:var(--text3);padding:6px 0">Geen data</div>`;
+function updateRegions(){
+  const counts={};
+  [...rssItems,...adminAlerts].forEach(i=>{const l=i.loc||'België';counts[l]=(counts[l]||0)+1;});
+  const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  document.getElementById('regList').innerHTML=sorted.length
+    ?sorted.map(([r,c])=>`<div class="reg-item"><span>${esc(r)}</span><span class="reg-c">${c}</span></div>`).join('')
+    :`<div style="font-size:11px;color:var(--text3);padding:6px 0">Geen data</div>`;
 }
 
-// ════════════════════════════════════════════════
-// AUTH
-// ════════════════════════════════════════════════
-function openAdminOrLogin() {
-  if (isAdmin) { openAdmin(); return; }
+// ═══════════════════════════════════════════════════════
+// AUTH + ADMIN UI
+// ═══════════════════════════════════════════════════════
+function openAdminOrLogin(){
+  if(isAdmin){openAdmin();return;}
   document.getElementById('loginOverlay').classList.add('on');
-  document.getElementById('loPass').value = '';
-  document.getElementById('loErr').textContent = '';
-  setTimeout(()=>document.getElementById('loPass').focus(), 80);
+  document.getElementById('loPass').value='';
+  document.getElementById('loErr').textContent='';
+  setTimeout(()=>document.getElementById('loPass').focus(),80);
 }
-function doLogin() {
-  if (document.getElementById('loPass').value === CFG.ADMIN_PASS) {
-    isAdmin = true;
+
+function doLogin(){
+  if(document.getElementById('loPass').value===CFG.ADMIN_PASS){
+    isAdmin=true;
     document.getElementById('loginOverlay').classList.remove('on');
     document.getElementById('aBanner').classList.add('on');
     document.getElementById('adminBtn').classList.add('aa');
-    document.getElementById('adminBtn').textContent = '⚡ Admin';
+    document.getElementById('adminBtn').textContent='⚡ Admin';
     openAdmin();
   } else {
-    document.getElementById('loErr').textContent = '✕ Ongeldig wachtwoord';
-    document.getElementById('loPass').style.borderColor = 'var(--red)';
-    setTimeout(()=>{ document.getElementById('loErr').textContent=''; document.getElementById('loPass').style.borderColor=''; }, 2500);
+    document.getElementById('loErr').textContent='✕ Ongeldig wachtwoord';
+    document.getElementById('loPass').style.borderColor='var(--red)';
+    setTimeout(()=>{document.getElementById('loErr').textContent='';document.getElementById('loPass').style.borderColor='';},2500);
   }
 }
-function logout() {
-  isAdmin = false;
+
+function logout(){
+  isAdmin=false;
   document.getElementById('aBanner').classList.remove('on');
   document.getElementById('adminBtn').classList.remove('aa');
-  document.getElementById('adminBtn').textContent = '🔐 Admin';
+  document.getElementById('adminBtn').textContent='🔐 Admin';
   closeAdmin(); renderFeed();
 }
-function openAdmin() { document.getElementById('adminPanel').classList.add('on'); loadAdminAlerts(); }
-function closeAdmin() { document.getElementById('adminPanel').classList.remove('on'); }
-function switchTab(name) {
-  ['h','t','l'].forEach(n => {
+
+function openAdmin(){document.getElementById('adminPanel').classList.add('on');loadAdminAlerts();}
+function closeAdmin(){document.getElementById('adminPanel').classList.remove('on');}
+
+function switchTab(name){
+  ['h','t','l'].forEach(n=>{
     document.getElementById('tab-'+n).classList.remove('on');
     document.getElementById('pane-'+n).classList.remove('on');
   });
   document.getElementById('tab-'+name).classList.add('on');
   document.getElementById('pane-'+name).classList.add('on');
-  if (name==='l') renderAdminList();
+  if(name==='l')renderAdminList();
 }
 
-function tick() {
-  const n = new Date();
-  document.getElementById('tsEl').textContent =
+function tick(){
+  const n=new Date();
+  document.getElementById('tsEl').textContent=
     `${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
 }
 
-// ════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // INIT
-// ════════════════════════════════════════════════
-async function loadAll() {
-  await Promise.all([loadRSS(), loadAdminAlerts(true)]);
+// ═══════════════════════════════════════════════════════
+async function loadAll(){
+  await Promise.all([loadRSS(),loadAdminAlerts(true)]);
   renderFeed(); updateStats(); updateRegions();
 }
 
 loadAll();
-setInterval(loadAll, 10 * 60 * 1000);
-setInterval(async ()=>{ await loadAdminAlerts(true); renderFeed(); updateStats(); updateRegions(); }, 30000);
-setInterval(tick, 1000);
+setInterval(loadAll, 10*60*1000);
+setInterval(async()=>{await loadAdminAlerts(true);renderFeed();updateStats();updateRegions();},30000);
+setInterval(tick,1000);
 tick();
 </script>
 </body>
