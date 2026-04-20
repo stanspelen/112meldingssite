@@ -341,15 +341,12 @@ const CFG = {
 // Als proxy 1 faalt → proxy 2 → proxy 3, etc.
 // ═══════════════════════════════════════════════════════
 const PROXIES = [
-  // corsproxy.io: geen key, directe response als text
-  url => ({ fetchUrl: `https://corsproxy.io/?url=${encodeURIComponent(url)}`, type: 'text' }),
-  // allorigins raw: geeft content direct terug
-  url => ({ fetchUrl: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`, type: 'text' }),
-  // allorigins json wrapper
-  url => ({ fetchUrl: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, type: 'json' }),
-  // thingproxy
-  url => ({ fetchUrl: `https://thingproxy.freeboard.io/fetch/${url}`, type: 'text' }),
+  url => ({ 
+    fetchUrl: `/api/rss?url=${encodeURIComponent(url)}`, 
+    type: 'text' 
+  })
 ];
+
 
 // ═══════════════════════════════════════════════════════
 // FEEDS
