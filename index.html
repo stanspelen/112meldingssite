@@ -21,7 +21,6 @@
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
 .wrap{position:relative;z-index:1}
-
 header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backdrop-filter:blur(16px);position:sticky;top:0;z-index:200;padding:0 1.75rem;display:flex;align-items:center;justify-content:space-between;height:58px}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.03em;display:flex;align-items:center;gap:9px}
 .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pr 2s infinite}
@@ -34,11 +33,9 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .hdr-btn{font-family:'DM Mono',monospace;font-size:10px;background:transparent;border:1px solid var(--border2);color:var(--text2);padding:4px 11px;border-radius:2px;cursor:pointer;transition:all .15s}
 .hdr-btn:hover{background:var(--bg3);color:var(--text)}
 .hdr-btn.aa{border-color:rgba(255,184,59,.45);color:var(--amber);background:rgba(255,184,59,.08)}
-
 #aBanner{background:rgba(255,184,59,.07);border-bottom:1px solid rgba(255,184,59,.22);padding:7px 1.75rem;display:none;align-items:center;gap:10px;font-size:11px;color:var(--amber);font-family:'DM Mono',monospace}
 #aBanner.on{display:flex}
 .ab-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:bl .9s infinite;flex-shrink:0}
-
 .hero{padding:2.25rem 1.75rem 1.75rem;border-bottom:1px solid var(--border)}
 .hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,4.5vw,46px);line-height:1.05;letter-spacing:-.035em;margin-bottom:.35rem}
 .hero-title em{color:var(--red);font-style:normal}
@@ -48,7 +45,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .sc{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:.9rem 1.1rem}
 .sc-n{font-family:'Syne',sans-serif;font-weight:700;font-size:26px;line-height:1;margin-bottom:3px}
 .sc-l{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace}
-
 .main{display:grid;grid-template-columns:1fr 296px}
 @media(max-width:860px){.main{grid-template-columns:1fr}}
 .feed-col{border-right:1px solid var(--border);padding:1.4rem 1.75rem}
@@ -64,7 +60,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .fb.on[data-t="CRISIS"]{border-color:rgba(204,68,255,.4);color:var(--purple);background:var(--purple-d)}
 .fb.on[data-t="HANDMATIG"]{border-color:rgba(255,184,59,.5);color:var(--amber);background:var(--amber-d)}
 .fb.on[data-t="TEST"]{border-color:rgba(255,140,66,.5);color:var(--orange);background:var(--orange-d)}
-
 .inc{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:.9rem 1.1rem;margin-bottom:9px;animation:si .3s ease;position:relative;overflow:hidden;transition:border-color .2s}
 .inc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
 .inc[data-t="BRAND"]::before{background:var(--red)}
@@ -97,17 +92,16 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .inc-src a:hover{text-decoration:underline}
 .del-btn{background:rgba(255,59,59,.08);border:1px solid rgba(255,59,59,.25);color:var(--red);font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;cursor:pointer;margin-left:8px;transition:all .15s}
 .del-btn:hover{background:rgba(255,59,59,.18)}
-
-.sidebar{padding:1.4rem}
-.src-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
+.sidebar{padding:1.4rem;overflow-y:auto}
+.src-group-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:10px 0 5px;border-bottom:1px solid var(--border);margin-bottom:2px}
+.src-item{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:11px}
 .src-item:last-child{border-bottom:none}
-.src-s{font-family:'DM Mono',monospace;font-size:9px;display:flex;align-items:center;gap:4px}
+.src-s{font-family:'DM Mono',monospace;font-size:9px;display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px}
 .s-ok{color:var(--teal)}.s-err{color:var(--red)}.s-load{color:var(--amber)}.s-skip{color:var(--text3)}
 .dot-s{width:4px;height:4px;border-radius:50%;background:currentColor}
 .sep{height:1px;background:var(--border);margin:1.1rem 0}
 .reg-item{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
 .reg-c{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);padding:1px 6px;border-radius:2px}
-
 #loginOverlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);align-items:center;justify-content:center}
 #loginOverlay.on{display:flex}
 .lo-box{background:var(--bg2);border:1px solid rgba(255,184,59,.3);border-radius:8px;width:min(340px,92vw);padding:2rem}
@@ -118,7 +112,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .lo-btn{width:100%;background:rgba(255,184,59,.1);border:1px solid rgba(255,184,59,.35);color:var(--amber);font-family:'DM Mono',monospace;font-size:12px;padding:9px;border-radius:4px;cursor:pointer;transition:all .15s;margin-top:10px}
 .lo-btn:hover{background:rgba(255,184,59,.2)}
 .lo-err{font-size:11px;color:var(--red);font-family:'DM Mono',monospace;margin-top:7px;min-height:16px}
-
 #adminPanel{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);align-items:center;justify-content:center}
 #adminPanel.on{display:flex}
 .ap-box{background:var(--bg2);border:1px solid rgba(255,184,59,.28);border-radius:8px;width:min(520px,96vw);max-height:92vh;overflow-y:auto;padding:1.75rem}
@@ -133,8 +126,7 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .ap-tab.on{background:var(--bg3);color:var(--text)}
 .ap-tab.on.th{color:var(--amber)}
 .ap-tab.on.tt{color:var(--orange)}
-.ap-pane{display:none}
-.ap-pane.on{display:block}
+.ap-pane{display:none}.ap-pane.on{display:block}
 .test-notice{background:rgba(255,140,66,.07);border:1px solid rgba(255,140,66,.22);border-radius:4px;padding:.7rem .9rem;font-size:11px;color:rgba(255,140,66,.9);font-family:'DM Mono',monospace;line-height:1.6;margin-bottom:1rem}
 .ap-row{margin-bottom:11px}
 .ap-lbl{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:4px}
@@ -153,7 +145,6 @@ header{border-bottom:1px solid var(--border);background:rgba(10,12,15,.95);backd
 .ap-item-lbl{flex:1;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .jb-row{display:flex;align-items:center;gap:6px;font-size:10px;font-family:'DM Mono',monospace;padding:7px 9px;background:var(--bg3);border-radius:3px;margin-bottom:.9rem}
 .jb-ok{color:var(--teal)}.jb-err{color:var(--red)}.jb-load{color:var(--amber)}
-
 .notice{background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.18);border-radius:5px;padding:.8rem 1rem;font-size:11.5px;color:var(--text2);line-height:1.7;margin-bottom:1.1rem}
 .notice strong{color:var(--blue)}
 .rss-row{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:1rem;flex-wrap:wrap}
@@ -272,7 +263,7 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <button class="spin-btn" id="refBtn" onclick="loadAll()"><span class="si">↻</span> Vernieuwen</button>
     </div>
     <div class="notice">
-      <strong>Hoe werkt dit?</strong> — Belgische nieuwsfeeds worden live opgehaald en gefilterd op trefwoorden als "brand", "brandweer", "ambulance", "verkeersongeval". Bij proxy-fouten wordt automatisch een werkende fallback geprobeerd.
+      <strong>Hoe werkt dit?</strong> — Belgische nieuwsfeeds worden live opgehaald via een automatische proxy-keten (corsproxy.io → allorigins.win) en gefilterd op trefwoorden als "brand", "brandweer", "ambulance", "verkeersongeval". Bronnen zonder RSS zijn weggelaten.
     </div>
     <div class="rss-row">
       <span id="rssIco" style="color:var(--amber)">○</span>
@@ -293,48 +284,9 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
   </div>
 
   <div class="sidebar">
-    <<div class="src-item"><span>Brandweer Zone Centrum</span><span class="src-s s-load" id="bw-centrum"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Brandweer Zone Rand</span><span class="src-s s-load" id="bw-rand"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Brandweer Zone Antwerpen</span><span class="src-s s-load" id="bw-antwerpen"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Zone Rivierenland</span><span class="src-s s-load" id="bw-rivierenland"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Zone Waasland</span><span class="src-s s-load" id="bw-waasland"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Zone Fluvia</span><span class="src-s s-load" id="bw-fluvia"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Zone Oost-Limburg</span><span class="src-s s-load" id="bw-oostlimburg"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Zone Taxandria</span><span class="src-s s-load" id="bw-taxandria"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Hulpverleningszone 1</span><span class="src-s s-load" id="bw-wvl"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Antwerpen</span><span class="src-s s-load" id="pz-antwerpen"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Gent</span><span class="src-s s-load" id="pz-gent"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Mechelen-Willebroek</span><span class="src-s s-load" id="pz-mechelen"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Waasland</span><span class="src-s s-load" id="pz-waasland"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Sint-Niklaas</span><span class="src-s s-load" id="pz-sintniklaas"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Lokeren</span><span class="src-s s-load" id="pz-lokeren"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Dendermonde</span><span class="src-s s-load" id="pz-dendermonde"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Politiezone Wetteren-Laarne-Wichelen</span><span class="src-s s-load" id="pz-wlw"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Federale Politie</span><span class="src-s s-load" id="pz-federaal"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Gent</span><span class="src-s s-load" id="st-gent"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Antwerpen</span><span class="src-s s-load" id="st-antwerpen"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Brugge</span><span class="src-s s-load" id="st-brugge"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Leuven</span><span class="src-s s-load" id="st-leuven"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Mechelen</span><span class="src-s s-load" id="st-mechelen"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Stad Sint-Niklaas</span><span class="src-s s-load" id="st-sintniklaas"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Gemeente Temse</span><span class="src-s s-load" id="gm-temse"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Gemeente Lokeren</span><span class="src-s s-load" id="gm-lokeren"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Gemeente Beveren</span><span class="src-s s-load" id="gm-beveren"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Gemeente Hamme</span><span class="src-s s-load" id="gm-hamme"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Gemeente Bornem</span><span class="src-s s-load" id="gm-bornem"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Crisiscentrum België</span><span class="src-s s-load" id="crisis-cc"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>BE-Alert</span><span class="src-s s-load" id="crisis-bealert"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>KMI Waarschuwingen</span><span class="src-s s-load" id="kmi"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>FOD Volksgezondheid</span><span class="src-s s-load" id="fod-vg"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>FOD Binnenlandse Zaken</span><span class="src-s s-load" id="fod-biza"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Verkeerscentrum Vlaanderen</span><span class="src-s s-load" id="vcv"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Wegen & Verkeer</span><span class="src-s s-load" id="awv"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>NMBS Storingen</span><span class="src-s s-load" id="nmbs"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>De Lijn Storingen</span><span class="src-s s-load" id="delijn"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Brussel Mobiliteit</span><span class="src-s s-load" id="brumob"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>VRT NWS</span><span class="src-s s-load" id="s-vrt"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>RTBF Info</span><span class="src-s s-load" id="s-rtbf"><span class="dot-s"></span><span>laden</span></span></div>
-    <div class="src-item"><span>Handmatig / Test</span><span class="src-s s-load" id="s-adm"><span class="dot-s"></span><span>laden</span></span></div>
+    <div class="col-title" style="margin-bottom:.6rem">Bronnen</div>
+    <!-- Dynamisch gegenereerd door JS — geen hardcoded HTML meer -->
+    <div id="srcList"></div>
     <div class="sep"></div>
     <div class="col-title" style="margin-bottom:.7rem">Actieve regio's</div>
     <div id="regList"></div>
@@ -350,7 +302,8 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
       <div><span style="color:var(--orange)">▒</span> Testmelding</div>
     </div>
     <div style="font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:1.25rem;line-height:2">
-      Multi-proxy fallback<br>Auto-refresh: 10 min<br>Admin-sync: 30 sec<br>© Hulp112
+      Proxy: corsproxy.io → allorigins<br>
+      Auto-refresh: 10 min<br>Admin-sync: 30 sec<br>© Hulp112
     </div>
   </div>
 </div>
@@ -362,75 +315,84 @@ footer{border-top:1px solid var(--border);padding:1.1rem 1.75rem;display:flex;ju
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // CONFIGURATIE
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 const CFG = {
   JSONBIN_ID:  '69e3677736566621a8c7d68a',
   JSONBIN_KEY: '$2a$10$CdVZpTU3GQoVWqu7BP2pCe6gG7ZJy7iXIP/QRdbdl1UF5.hSfy3EC',
   ADMIN_PASS:  'hulp112admin',
 };
 
-// ═══════════════════════════════════════════════════════
-// PROXY CHAIN — worden in volgorde geprobeerd per feed
-// Als proxy 1 faalt → proxy 2 → proxy 3, etc.
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+// PROXY-KETEN
+// Elke proxy wordt in volgorde geprobeerd.
+// GEEN lokale /api/... paden — alleen externe diensten.
+// ═══════════════════════════════════════════
 const PROXIES = [
+  // 1. corsproxy.io — gratis, geen key, directe text response
   url => ({
-    fetchUrl: `/api/rss?url=${encodeURIComponent(url)}`,
-    type: 'text'
-  })
+    fetchUrl: `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+    extract:  r => r.text()
+  }),
+  // 2. allorigins raw — directe content, geen JSON wrapper
+  url => ({
+    fetchUrl: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    extract:  r => r.text()
+  }),
+  // 3. allorigins json — JSON wrapper, pak contents eruit
+  url => ({
+    fetchUrl: `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+    extract:  async r => { const j = await r.json(); return j.contents || ''; }
+  }),
+  // 4. thingproxy — laatste fallback
+  url => ({
+    fetchUrl: `https://thingproxy.freeboard.io/fetch/${url}`,
+    extract:  r => r.text()
+  }),
 ];
 
-// ═══════════════════════════════════════════════════════
-// FEEDS
-// ═══════════════════════════════════════════════════════
-const FEEDS = [
-  { id:'bw-centrum',     name:'Brandweer Zone Centrum',     url:'https://www.brandweerzonecentrum.be/rss' },
-  { id:'bw-rand',        name:'Brandweer Zone Rand',        url:'https://www.hvzr.be/rss' },
-  { id:'bw-antwerpen',   name:'Brandweer Zone Antwerpen',   url:'https://www.brandweer.antwerpen.be/rss' },
-  { id:'bw-rivierenland',name:'Zone Rivierenland',          url:'https://www.hvzrivierenland.be/rss' },
-  { id:'bw-waasland',    name:'Zone Waasland',              url:'https://www.hvzwaasland.be/rss' },
-  { id:'bw-fluvia',      name:'Zone Fluvia',                url:'https://www.fluvia.be/rss' },
-  { id:'bw-oostlimburg', name:'Zone Oost-Limburg',          url:'https://www.hvzol.be/rss' },
-  { id:'bw-taxandria',   name:'Zone Taxandria',             url:'https://www.hvzt.be/rss' },
-  { id:'bw-wvl',         name:'Hulpverleningszone 1',       url:'https://www.hvzeen.be/rss' },
-  { id:'pz-antwerpen',   name:'Politiezone Antwerpen',      url:'https://www.politieantwerpen.be/rss' },
-  { id:'pz-gent',        name:'Politiezone Gent',           url:'https://www.politiegent.be/rss' },
-  { id:'pz-mechelen',    name:'Politiezone Mechelen',       url:'https://www.politie-mechelen-willebroek.be/rss' },
-  { id:'pz-waasland',    name:'Politiezone Waasland',       url:'https://www.politiewaasland.be/rss' },
-  { id:'pz-sintniklaas', name:'Politiezone Sint-Niklaas',   url:'https://www.politie-sint-niklaas.be/rss' },
-  { id:'pz-lokeren',     name:'Politiezone Lokeren',        url:'https://www.politielokeren.be/rss' },
-  { id:'pz-dendermonde', name:'Politiezone Dendermonde',    url:'https://www.politiedendermonde.be/rss' },
-  { id:'pz-wlw',         name:'Politiezone Wetteren-Laarne-Wichelen', url:'https://www.politiewlw.be/rss' },
-  { id:'pz-federaal',    name:'Federale Politie',           url:'https://www.politie.be/rss' },
-  { id:'st-gent',        name:'Stad Gent',                  url:'https://stad.gent/nl/rss' },
-  { id:'st-antwerpen',   name:'Stad Antwerpen',             url:'https://www.antwerpen.be/nl/rss' },
-  { id:'st-brugge',      name:'Stad Brugge',                url:'https://www.brugge.be/rss' },
-  { id:'st-leuven',      name:'Stad Leuven',                url:'https://www.leuven.be/rss' },
-  { id:'st-mechelen',    name:'Stad Mechelen',              url:'https://www.mechelen.be/rss' },
-  { id:'st-sintniklaas', name:'Stad Sint-Niklaas',          url:'https://www.sint-niklaas.be/rss' },
-  { id:'gm-temse',       name:'Gemeente Temse',             url:'https://www.temse.be/rss' },
-  { id:'gm-lokeren',     name:'Gemeente Lokeren',           url:'https://www.lokeren.be/rss' },
-  { id:'gm-beveren',     name:'Gemeente Beveren',           url:'https://www.beveren.be/rss' },
-  { id:'gm-hamme',       name:'Gemeente Hamme',             url:'https://www.hamme.be/rss' },
-  { id:'gm-bornem',      name:'Gemeente Bornem',            url:'https://www.bornem.be/rss' },
-  { id:'crisis-cc',      name:'Crisiscentrum België',       url:'https://crisiscentrum.be/nl/rss' },
-  { id:'crisis-bealert', name:'BE-Alert',                   url:'https://be-alert.be/nl/rss' },
-  { id:'kmi',            name:'KMI Waarschuwingen',         url:'https://www.meteo.be/rss' },
-  { id:'fod-vg',         name:'FOD Volksgezondheid',        url:'https://www.health.belgium.be/nl/rss' },
-  { id:'fod-biza',       name:'FOD Binnenlandse Zaken',     url:'https://www.ibz.be/nl/rss' },
-  { id:'vcv',            name:'Verkeerscentrum Vlaanderen', url:'https://www.verkeerscentrum.be/rss' },
-  { id:'awv',            name:'Wegen & Verkeer',            url:'https://www.wegenenverkeer.be/rss' },
-  { id:'nmbs',           name:'NMBS Storingen',             url:'https://www.belgiantrain.be/nl/rss' },
-  { id:'delijn',         name:'De Lijn Storingen',          url:'https://www.delijn.be/nl/rss' },
-  { id:'brumob',         name:'Brussel Mobiliteit',         url:'https://mobilite-mobiliteit.brussels/nl/rss' },
-  { id:'s-vrt',          name:'VRT NWS',                    url:'https://www.vrt.be/vrtnws/nl.rss.articles.xml' },
-  { id:'s-rtbf',         name:'RTBF Info',                  url:'https://www.rtbf.be/rss/info/a-la-une.xml' },
-
-
+// ═══════════════════════════════════════════
+// FEEDS — alleen bronnen met bewezen publieke RSS
+//
+// Verwijderd (geen publieke RSS):
+//   - Brandweerzones (.be/rss bestaat niet)
+//   - Politiezones (.be/rss bestaat niet)
+//   - Gemeenten (.be/rss bestaat niet)
+//   - FOD-sites (geen RSS)
+//   - NMBS / De Lijn / Brussel Mobiliteit (geen gratis RSS)
+//
+// Behouden: betrouwbare nieuwsmedia + officiële overheidsfeeds
+// ═══════════════════════════════════════════
+const FEED_GROUPS = [
+  {
+    label: 'Nieuws (gefilterd op hulpdiensten)',
+    feeds: [
+      { id:'s-vrt',     name:'VRT NWS',         url:'https://www.vrt.be/vrtnws/nl.rss.articles.xml' },
+      { id:'s-hln',     name:'HLN.be',           url:'https://www.hln.be/home/rss.xml' },
+      { id:'s-nwsblad', name:'Nieuwsblad.be',    url:'https://www.nieuwsblad.be/rss/section/f1812710-46d8-11e2-a6a8-00163edf3e2e' },
+      { id:'s-dm',      name:'De Morgen',         url:'https://www.demorgen.be/in-het-nieuws/rss.xml' },
+      { id:'s-rtbf',    name:'RTBF Info (FR)',    url:'https://www.rtbf.be/rss/info/a-la-une.xml' },
+      { id:'s-sudinfo',  name:'Sudinfo (FR)',     url:'https://www.sudinfo.be/rss/sections/actualite.xml' },
+    ]
+  },
+  {
+    label: 'Overheid & veiligheid',
+    feeds: [
+      { id:'s-crisis',  name:'Crisiscentrum.be', url:'https://crisiscentrum.be/nl/rss' },
+      { id:'s-ibz',     name:'FOD Binnenl. Zaken',url:'https://ibz.be/nl/rss.xml' },
+      { id:'s-kmi',     name:'KMI Waarschuwingen',url:'https://www.meteo.be/nl/rss' },
+      { id:'s-vcv',     name:'Verkeerscentrum Vl.',url:'https://www.verkeerscentrum.be/rss' },
+    ]
+  },
 ];
 
+// Flat lijst voor fetchAll
+const ALL_FEEDS = FEED_GROUPS.flatMap(g => g.feeds);
+
+// ═══════════════════════════════════════════
+// TREFWOORDEN & STEDEN
+// ═══════════════════════════════════════════
 const KW = [
   'brandweer','bluswerken','gaslek','ontploffing','explosie','schoorsteenbrand',
   'woningbrand','industriebrand','brand te ','brand in ','brand bij ','brand op ',
@@ -448,24 +410,18 @@ const CITIES = [
   'Liège','Namur','Oostende','Vilvoorde','Lier','Beringen','Lommel','Tongeren',
 ];
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // STATE
-// ═══════════════════════════════════════════════════════
-let rssItems    = [];
-let adminAlerts = [];
-let activeFilter = 'ALL';
-let isAdmin     = false;
+// ═══════════════════════════════════════════
+let rssItems = [], adminAlerts = [], activeFilter = 'ALL', isAdmin = false;
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // HELPERS
-// ═══════════════════════════════════════════════════════
-function isRelevant(text) {
-  const t = (text||'').toLowerCase();
-  return KW.some(k => t.includes(k));
-}
+// ═══════════════════════════════════════════
+const isRelevant = t => KW.some(k => (t||'').toLowerCase().includes(k));
 
-function classify(text) {
-  const t = (text||'').toLowerCase();
+function classify(t) {
+  t = (t||'').toLowerCase();
   if (/brandweer|bluswerk|gaslek|ontploff|explosie|schoorst|woningbrand|industriebrand|brand te|brand in|brand bij|brand op|incendie|pompiers/.test(t)) return 'BRAND';
   if (/\bmug\b|ambulan|ziekenwagen|reanimat|hartstilstand|spoedeis|urgences/.test(t)) return 'MEDISCH';
   if (/politie|verkeersongeval|botsing|aanrijding|overval|klopjacht|schietpartij|accident de la route/.test(t)) return 'POLITIE';
@@ -474,70 +430,68 @@ function classify(text) {
   return 'BRAND';
 }
 
-function extractCity(text) {
-  for (const c of CITIES) if ((text||'').toLowerCase().includes(c.toLowerCase())) return c;
-  return 'België';
-}
-
-function esc(s) {
-  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+const extractCity = t => CITIES.find(c => (t||'').toLowerCase().includes(c.toLowerCase())) || 'België';
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 function fmtTime(dt) {
-  if (!dt) return '';
-  const diff = Math.floor((Date.now() - new Date(dt)) / 60000);
-  if (diff < 1) return 'nu';
-  if (diff < 60) return diff + 'm geleden';
-  const h = Math.floor(diff/60), m = diff%60;
-  return m ? `${h}u ${m}m geleden` : `${h}u geleden`;
+  const d = Math.floor((Date.now()-new Date(dt))/60000);
+  if (d<1) return 'nu';
+  if (d<60) return d+'m geleden';
+  const h=Math.floor(d/60),m=d%60;
+  return m?`${h}u ${m}m geleden`:`${h}u geleden`;
 }
 
 function setSrc(id, st, lbl) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.className = 'src-s s-' + st;
+  el.className = 'src-s s-'+st;
   el.innerHTML = `<span class="dot-s"></span><span>${lbl}</span>`;
 }
 
-function hilite(id) {
-  const el = document.getElementById(id);
-  el.style.borderColor='var(--red)'; el.focus();
-  setTimeout(()=>el.style.borderColor='',2000);
-}
+function hilite(id) { const e=document.getElementById(id); e.style.borderColor='var(--red)'; e.focus(); setTimeout(()=>e.style.borderColor='',2000); }
 
-function flashBtn(btn, msg, color, orig) {
+function flashBtn(btn,msg,color,orig) {
   const c={teal:'background:rgba(59,255,194,.1);border-color:rgba(59,255,194,.3);color:var(--teal)',red:'background:rgba(255,59,59,.1);border-color:rgba(255,59,59,.3);color:var(--red)'};
   btn.textContent=msg; btn.style.cssText=c[color]||'';
   setTimeout(()=>{btn.textContent=orig;btn.style.cssText='';btn.disabled=false;},2500);
 }
 
-function anim(id, target) {
-  const el=document.getElementById(id);
-  const s=parseInt(el.textContent)||0;
+function anim(id,target) {
+  const el=document.getElementById(id); const s=parseInt(el.textContent)||0;
   if(s===target){el.textContent=target;return;}
-  let n=0;
-  const iv=setInterval(()=>{n++;el.textContent=Math.round(s+(target-s)*(n/14));if(n>=14){clearInterval(iv);el.textContent=target;}},22);
+  let n=0; const iv=setInterval(()=>{n++;el.textContent=Math.round(s+(target-s)*(n/14));if(n>=14){clearInterval(iv);el.textContent=target;}},22);
 }
 
-// ═══════════════════════════════════════════════════════
-// FETCH MET PROXY FALLBACK
-// Probeert elke proxy in volgorde, retourneert XML string
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+// SIDEBAR — dynamisch bouwen vanuit FEED_GROUPS
+// Geen hardcoded HTML → geen kans op <<div typefouten
+// ═══════════════════════════════════════════
+function buildSrcList() {
+  const el = document.getElementById('srcList');
+  let html = '';
+  FEED_GROUPS.forEach(group => {
+    html += `<div class="src-group-label">${esc(group.label)}</div>`;
+    group.feeds.forEach(f => {
+      html += `<div class="src-item"><span>${esc(f.name)}</span><span class="src-s s-load" id="${f.id}"><span class="dot-s"></span><span>laden</span></span></div>`;
+    });
+  });
+  html += `<div class="src-item" style="margin-top:4px"><span>Handmatig / Test</span><span class="src-s s-load" id="s-adm"><span class="dot-s"></span><span>laden</span></span></div>`;
+  el.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// FETCH MET PROXY-KETEN
+// ═══════════════════════════════════════════
 async function fetchWithFallback(url) {
   for (const proxyFn of PROXIES) {
-    const { fetchUrl, type } = proxyFn(url);
+    const { fetchUrl, extract } = proxyFn(url);
     try {
-      const res = await fetch(fetchUrl, { signal: AbortSignal.timeout(10000) });
+      const res = await fetch(fetchUrl, { signal: AbortSignal.timeout(12000) });
       if (!res.ok) continue;
-      if (type === 'json') {
-        const j = await res.json();
-        const xml = j.contents || j.body || '';
-        if (xml.trim().length > 50) return xml;
-      } else {
-        const xml = await res.text();
-        if (xml.trim().length > 50) return xml;
-      }
-    } catch { /* probeer volgende proxy */ }
+      const xml = await extract(res);
+      // Geldig als het XML-achtige content bevat
+      if (xml && xml.length > 100 && (xml.includes('<item') || xml.includes('<entry'))) return xml;
+    } catch { /* probeer volgende */ }
   }
   return null;
 }
@@ -545,29 +499,22 @@ async function fetchWithFallback(url) {
 function parseRSS(xml, name) {
   try {
     const doc = new DOMParser().parseFromString(xml, 'text/xml');
-    // Check voor parse error
     if (doc.querySelector('parsererror')) return [];
-    const items = Array.from(doc.querySelectorAll('item'));
     const result = [];
-    for (const item of items) {
-      const title = (item.querySelector('title')?.textContent || '').replace(/<!\[CDATA\[|\]\]>/g,'').trim();
-      const rawDesc = item.querySelector('description')?.textContent || '';
+    for (const item of doc.querySelectorAll('item, entry')) {
+      const title = (item.querySelector('title')?.textContent||'').replace(/<!\[CDATA\[|\]\]>/g,'').trim();
+      const rawDesc = item.querySelector('description, summary, content')?.textContent||'';
       const body = rawDesc.replace(/<!\[CDATA\[|\]\]>/g,'').replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/gi,' ').trim();
-      const link = item.querySelector('link')?.textContent?.trim() || '#';
-      const pub = item.querySelector('pubDate')?.textContent?.trim() || '';
-      const combined = title + ' ' + body;
+      const link = item.querySelector('link')?.textContent?.trim() || item.querySelector('link')?.getAttribute('href') || '#';
+      const pub = item.querySelector('pubDate, published, updated')?.textContent?.trim()||'';
+      const combined = title+' '+body;
       if (!isRelevant(combined)) continue;
       result.push({
-        id:      'rss-' + Math.random().toString(36).slice(2),
-        type:    classify(combined),
-        title,
-        body:    body.slice(0,280),
-        loc:     extractCity(combined),
-        src:     name,
-        link,
-        ts:      pub ? new Date(pub) : new Date(),
-        isAdmin: false,
-        isTest:  false,
+        id: 'rss-'+Math.random().toString(36).slice(2),
+        type: classify(combined), title,
+        body: body.slice(0,280), loc: extractCity(combined),
+        src: name, link, ts: pub?new Date(pub):new Date(),
+        isAdmin: false, isTest: false,
       });
       if (result.length >= 12) break;
     }
@@ -578,166 +525,130 @@ function parseRSS(xml, name) {
 async function fetchFeed(feed) {
   setSrc(feed.id, 'load', 'laden');
   const xml = await fetchWithFallback(feed.url);
-  if (!xml) {
-    setSrc(feed.id, 'err', 'niet bereikbaar');
-    return [];
-  }
+  if (!xml) { setSrc(feed.id, 'err', 'niet bereikbaar'); return []; }
   const items = parseRSS(xml, feed.name);
-  setSrc(feed.id, items.length > 0 ? 'ok' : 'skip',
-    items.length > 0 ? items.length + ' meldingen' : '0 relevant');
+  setSrc(feed.id, items.length>0?'ok':'skip', items.length>0?items.length+' meldingen':'0 relevant');
   return items;
 }
 
 async function loadRSS() {
   document.getElementById('refBtn').classList.add('go');
-  document.getElementById('rssIco').textContent = '⟳';
-  document.getElementById('rssIco').style.color = 'var(--amber)';
-  document.getElementById('rssTxt').textContent = 'Nieuws ophalen...';
+  document.getElementById('rssIco').textContent='⟳';
+  document.getElementById('rssIco').style.color='var(--amber)';
+  document.getElementById('rssTxt').textContent='Nieuws ophalen...';
 
-  const results = await Promise.allSettled(FEEDS.map(fetchFeed));
+  const results = await Promise.allSettled(ALL_FEEDS.map(fetchFeed));
   let all = [];
-  results.forEach(r => { if (r.status==='fulfilled') all.push(...r.value); });
-
-  all.sort((a,b) => new Date(b.ts)-new Date(a.ts));
+  results.forEach(r=>{ if(r.status==='fulfilled') all.push(...r.value); });
+  all.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
   const seen = new Set();
-  rssItems = all.filter(i => {
-    const k = i.title.slice(0,50).toLowerCase().replace(/\s+/g,'');
-    if (seen.has(k)) return false;
-    seen.add(k); return true;
+  rssItems = all.filter(i=>{
+    const k=i.title.slice(0,50).toLowerCase().replace(/\s+/g,'');
+    if(seen.has(k)) return false; seen.add(k); return true;
   });
 
-  const ico=document.getElementById('rssIco'), txt=document.getElementById('rssTxt'), cnt=document.getElementById('rssCnt');
-  if (rssItems.length > 0) {
-    ico.textContent='●'; ico.style.color='var(--teal)';
-    txt.textContent=rssItems.length+' meldingen gevonden'; cnt.textContent='';
-  } else {
-    ico.textContent='○'; ico.style.color='var(--amber)';
-    txt.textContent='Geen hulpdienst-meldingen in feeds nu'; cnt.textContent='';
-  }
+  const ico=document.getElementById('rssIco'), txt=document.getElementById('rssTxt');
+  if (rssItems.length>0) { ico.textContent='●'; ico.style.color='var(--teal)'; txt.textContent=rssItems.length+' meldingen gevonden'; }
+  else { ico.textContent='○'; ico.style.color='var(--amber)'; txt.textContent='Geen hulpdienst-meldingen gevonden nu'; }
   document.getElementById('refBtn').classList.remove('go');
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // JSONBIN
-// ═══════════════════════════════════════════════════════
-function setJB(st,msg){
-  const el=document.getElementById('jbStatus');
-  if(!el)return;
-  el.className='jb-row jb-'+st;
-  document.getElementById('jbTxt').textContent=msg;
-}
+// ═══════════════════════════════════════════
+function setJB(st,msg) { const el=document.getElementById('jbStatus'); if(!el)return; el.className='jb-row jb-'+st; document.getElementById('jbTxt').textContent=msg; }
 
 async function jbGet() {
   try {
-    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}/latest`,
-      { headers:{'X-Master-Key':CFG.JSONBIN_KEY} });
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    const j = await r.json();
-    setJB('ok','● Database verbonden');
-    return j.record || {alerts:[]};
+    const r=await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}/latest`,{headers:{'X-Master-Key':CFG.JSONBIN_KEY}});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const j=await r.json(); setJB('ok','● Database verbonden'); return j.record||{alerts:[]};
   } catch(e) { setJB('err','✕ '+e.message); return null; }
 }
 
 async function jbSet(data) {
   try {
-    const r = await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}`, {
-      method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':CFG.JSONBIN_KEY,'X-Bin-Versioning':'false'},
+    const r=await fetch(`https://api.jsonbin.io/v3/b/${CFG.JSONBIN_ID}`,{
+      method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':CFG.JSONBIN_KEY,'X-Bin-Versioning':'false'},
       body:JSON.stringify(data)
-    });
-    return r.ok;
+    }); return r.ok;
   } catch { return false; }
 }
 
 async function loadAdminAlerts(silent=false) {
-  if (!silent) setSrc('s-adm','load','laden');
-  const data = await jbGet();
-  if (!data) { setSrc('s-adm','err','fout'); return; }
-  adminAlerts = (data.alerts||[]).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  if(!silent) setSrc('s-adm','load','laden');
+  const data=await jbGet();
+  if(!data){ setSrc('s-adm','err','fout'); return; }
+  adminAlerts=(data.alerts||[]).sort((a,b)=>new Date(b.ts)-new Date(a.ts));
   setSrc('s-adm','ok',adminAlerts.length+' items');
-  document.getElementById('apCount').textContent = adminAlerts.length;
+  document.getElementById('apCount').textContent=adminAlerts.length;
   renderAdminList();
 }
 
 async function publishHandmatig() {
-  const title = document.getElementById('h-title').value.trim();
-  if (!title) { hilite('h-title'); return; }
-  const btn = document.getElementById('h-send');
-  btn.disabled=true; btn.textContent='Publiceren...';
-  const entry = {
-    id:'adm-'+Date.now(), kind:'HANDMATIG',
-    displayType:document.getElementById('h-type').value,
-    title, body:document.getElementById('h-body').value.trim(),
+  const title=document.getElementById('h-title').value.trim();
+  if(!title){hilite('h-title');return;}
+  const btn=document.getElementById('h-send'); btn.disabled=true; btn.textContent='Publiceren...';
+  const entry={id:'adm-'+Date.now(),kind:'HANDMATIG',displayType:document.getElementById('h-type').value,
+    title,body:document.getElementById('h-body').value.trim(),
     loc:document.getElementById('h-loc').value.trim()||'België',
-    link:document.getElementById('h-link').value.trim(),
-    ts:new Date().toISOString(),
-  };
-  const data = await jbGet()||{alerts:[]};
-  data.alerts = [entry,...data.alerts].slice(0,60);
-  if (await jbSet(data)) {
+    link:document.getElementById('h-link').value.trim(),ts:new Date().toISOString()};
+  const data=await jbGet()||{alerts:[]};
+  data.alerts=[entry,...data.alerts].slice(0,60);
+  if(await jbSet(data)){
     adminAlerts=data.alerts;
     ['h-title','h-loc','h-body','h-link'].forEach(id=>document.getElementById(id).value='');
-    renderAdminList(); renderFeed(); updateStats(); updateRegions();
+    renderAdminList();renderFeed();updateStats();updateRegions();
     flashBtn(btn,'✓ Gepubliceerd!','teal','↑ Handmatige melding publiceren voor iedereen');
   } else flashBtn(btn,'✕ Fout','red','↑ Handmatige melding publiceren voor iedereen');
 }
 
 async function publishTest() {
-  const title = document.getElementById('t-title').value.trim();
-  if (!title) { hilite('t-title'); return; }
-  const btn = document.getElementById('t-send');
-  btn.disabled=true; btn.textContent='Publiceren...';
-  const entry = {
-    id:'test-'+Date.now(), kind:'TEST',
-    displayType:document.getElementById('t-type').value,
-    title, body:document.getElementById('t-body').value.trim(),
-    loc:document.getElementById('t-loc').value.trim()||'België',
-    link:'', ts:new Date().toISOString(),
-  };
-  const data = await jbGet()||{alerts:[]};
-  data.alerts = [entry,...data.alerts].slice(0,60);
-  if (await jbSet(data)) {
+  const title=document.getElementById('t-title').value.trim();
+  if(!title){hilite('t-title');return;}
+  const btn=document.getElementById('t-send'); btn.disabled=true; btn.textContent='Publiceren...';
+  const entry={id:'test-'+Date.now(),kind:'TEST',displayType:document.getElementById('t-type').value,
+    title,body:document.getElementById('t-body').value.trim(),
+    loc:document.getElementById('t-loc').value.trim()||'België',link:'',ts:new Date().toISOString()};
+  const data=await jbGet()||{alerts:[]};
+  data.alerts=[entry,...data.alerts].slice(0,60);
+  if(await jbSet(data)){
     adminAlerts=data.alerts;
     ['t-title','t-loc','t-body'].forEach(id=>document.getElementById(id).value='');
-    renderAdminList(); renderFeed(); updateStats(); updateRegions();
+    renderAdminList();renderFeed();updateStats();updateRegions();
     flashBtn(btn,'✓ Testmelding gepubliceerd!','teal','⚗ Testmelding publiceren');
   } else flashBtn(btn,'✕ Fout','red','⚗ Testmelding publiceren');
 }
 
 async function deleteAlert(id) {
-  const data = await jbGet();
-  if (!data) return;
-  data.alerts = data.alerts.filter(a=>a.id!==id);
-  if (await jbSet(data)) {
+  const data=await jbGet(); if(!data)return;
+  data.alerts=data.alerts.filter(a=>a.id!==id);
+  if(await jbSet(data)){
     adminAlerts=data.alerts;
     document.getElementById('apCount').textContent=adminAlerts.length;
-    renderAdminList(); renderFeed(); updateStats(); updateRegions();
+    renderAdminList();renderFeed();updateStats();updateRegions();
   }
 }
 
 function renderAdminList() {
   const list=document.getElementById('apList');
   document.getElementById('apCount').textContent=adminAlerts.length;
-  if (!adminAlerts.length) {
-    list.innerHTML='<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace;padding:8px 0">Geen gepubliceerde meldingen.</div>';
-    return;
-  }
+  if(!adminAlerts.length){list.innerHTML='<div style="font-size:11px;color:var(--text3);font-family:\'DM Mono\',monospace;padding:8px 0">Geen gepubliceerde meldingen.</div>';return;}
   list.innerHTML=adminAlerts.map(a=>{
     const isT=a.kind==='TEST';
-    return `<div class="ap-item">
-      <span class="ap-item-lbl">${esc(a.title)}</span>
+    return `<div class="ap-item"><span class="ap-item-lbl">${esc(a.title)}</span>
       <span style="font-family:'DM Mono',monospace;font-size:9px;color:${isT?'var(--orange)':'var(--amber)'};margin-right:6px;white-space:nowrap">${isT?'⚗ TEST':'⚡ '+esc(a.displayType||'')}</span>
-      <button class="del-btn" onclick="deleteAlert('${a.id}')">✕</button>
-    </div>`;
+      <button class="del-btn" onclick="deleteAlert('${a.id}')">✕</button></div>`;
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+// RENDER FEED
+// ═══════════════════════════════════════════
 function allItems() {
   return [
-    ...adminAlerts.map(a=>({...a,type:a.kind==='TEST'?'TEST':'HANDMATIG',isAdmin:true,isTest:a.kind==='TEST',src:a.kind==='TEST'?'⚗ Testmelding':'⚡ Handmatige melding'})),
+    ...adminAlerts.map(a=>({...a,type:a.kind==='TEST'?'TEST':'HANDMATIG',isAdmin:true,isTest:a.kind==='TEST',
+      src:a.kind==='TEST'?'⚗ Testmelding':'⚡ Handmatige melding'})),
     ...rssItems
   ];
 }
@@ -745,22 +656,22 @@ function allItems() {
 function renderFeed() {
   const feedEl=document.getElementById('feed');
   let list=allItems();
-  if      (activeFilter==='TEST')      list=list.filter(i=>i.isTest);
-  else if (activeFilter==='HANDMATIG') list=list.filter(i=>i.isAdmin&&!i.isTest);
-  else if (activeFilter!=='ALL')       list=list.filter(i=>(i.isAdmin?i.displayType:i.type)===activeFilter);
+  if(activeFilter==='TEST') list=list.filter(i=>i.isTest);
+  else if(activeFilter==='HANDMATIG') list=list.filter(i=>i.isAdmin&&!i.isTest);
+  else if(activeFilter!=='ALL') list=list.filter(i=>(i.isAdmin?i.displayType:i.type)===activeFilter);
 
-  if (!list.length) {
+  if(!list.length){
     feedEl.innerHTML=`<div class="empty">${
       activeFilter==='TEST'?'Geen testmeldingen. Adminpaneel → ⚗ Testmelding.':
       activeFilter==='HANDMATIG'?'Geen handmatige meldingen.':
-      rssItems.length===0&&adminAlerts.length===0?'Geen data beschikbaar.\nControleer verbinding of klik Vernieuwen.':
+      rssItems.length===0&&adminAlerts.length===0?'Geen data.\nControleer verbinding of klik Vernieuwen.':
       'Geen meldingen voor dit filter.'
     }</div>`;
     return;
   }
 
   feedEl.innerHTML=list.map(c=>{
-    const isT=c.isTest, isM=c.isAdmin&&!isT;
+    const isT=c.isTest,isM=c.isAdmin&&!isT;
     const ct=isT?'TEST':isM?'HANDMATIG':c.type;
     const bt=isT?'TEST':isM?(c.displayType||'MELDING'):c.type;
     const rssBdg=!c.isAdmin?`<span class="bdg bdg-src">${esc(c.src)}</span>`:'';
@@ -777,11 +688,7 @@ function renderFeed() {
   }).join('');
 }
 
-function setF(t,btn){
-  activeFilter=t;
-  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on'); renderFeed();
-}
+function setF(t,btn){ activeFilter=t; document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderFeed(); }
 
 function updateStats(){
   anim('stTotal',rssItems.length+adminAlerts.length);
@@ -799,17 +706,15 @@ function updateRegions(){
     :`<div style="font-size:11px;color:var(--text3);padding:6px 0">Geen data</div>`;
 }
 
-// ═══════════════════════════════════════════════════════
-// AUTH + ADMIN UI
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════
 function openAdminOrLogin(){
   if(isAdmin){openAdmin();return;}
   document.getElementById('loginOverlay').classList.add('on');
-  document.getElementById('loPass').value='';
-  document.getElementById('loErr').textContent='';
+  document.getElementById('loPass').value=''; document.getElementById('loErr').textContent='';
   setTimeout(()=>document.getElementById('loPass').focus(),80);
 }
-
 function doLogin(){
   if(document.getElementById('loPass').value===CFG.ADMIN_PASS){
     isAdmin=true;
@@ -824,46 +729,33 @@ function doLogin(){
     setTimeout(()=>{document.getElementById('loErr').textContent='';document.getElementById('loPass').style.borderColor='';},2500);
   }
 }
-
-function logout(){
-  isAdmin=false;
-  document.getElementById('aBanner').classList.remove('on');
-  document.getElementById('adminBtn').classList.remove('aa');
-  document.getElementById('adminBtn').textContent='🔐 Admin';
-  closeAdmin(); renderFeed();
-}
-
-function openAdmin(){document.getElementById('adminPanel').classList.add('on');loadAdminAlerts();}
-function closeAdmin(){document.getElementById('adminPanel').classList.remove('on');}
-
+function logout(){ isAdmin=false; document.getElementById('aBanner').classList.remove('on'); document.getElementById('adminBtn').classList.remove('aa'); document.getElementById('adminBtn').textContent='🔐 Admin'; closeAdmin(); renderFeed(); }
+function openAdmin(){ document.getElementById('adminPanel').classList.add('on'); loadAdminAlerts(); }
+function closeAdmin(){ document.getElementById('adminPanel').classList.remove('on'); }
 function switchTab(name){
-  ['h','t','l'].forEach(n=>{
-    document.getElementById('tab-'+n).classList.remove('on');
-    document.getElementById('pane-'+n).classList.remove('on');
-  });
+  ['h','t','l'].forEach(n=>{ document.getElementById('tab-'+n).classList.remove('on'); document.getElementById('pane-'+n).classList.remove('on'); });
   document.getElementById('tab-'+name).classList.add('on');
   document.getElementById('pane-'+name).classList.add('on');
-  if(name==='l')renderAdminList();
+  if(name==='l') renderAdminList();
 }
-
 function tick(){
   const n=new Date();
-  document.getElementById('tsEl').textContent=
-    `${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
+  document.getElementById('tsEl').textContent=`${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}:${n.getSeconds().toString().padStart(2,'0')}`;
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 async function loadAll(){
-  await Promise.all([loadRSS(),loadAdminAlerts(true)]);
+  await Promise.all([loadRSS(), loadAdminAlerts(true)]);
   renderFeed(); updateStats(); updateRegions();
 }
 
+buildSrcList();
 loadAll();
 setInterval(loadAll, 10*60*1000);
-setInterval(async()=>{await loadAdminAlerts(true);renderFeed();updateStats();updateRegions();},30000);
-setInterval(tick,1000);
+setInterval(async()=>{ await loadAdminAlerts(true); renderFeed(); updateStats(); updateRegions(); }, 30000);
+setInterval(tick, 1000);
 tick();
 </script>
 </body>
